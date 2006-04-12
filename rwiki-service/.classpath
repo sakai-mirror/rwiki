@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry sourcepath="JRE_SRC" kind="var" path="JRE_LIB"/>
+	<classpathentry kind="src" path="/radeox"/>
+	<classpathentry sourcepath="SAKAI2_SOURCE/legacy-service/service/src/java" kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-legacy-service-2.0.0.jar"/>
+	<classpathentry sourcepath="/MAVEN_REPO/log4j/src/log4j-1.2.8.zip" kind="var" path="MAVEN_REPO/log4j/jars/log4j-1.2.8.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/servletapi/jars/servletapi-2.3.jar"/>
+	<classpathentry kind="src" path="src/test"/>
+	<classpathentry kind="var" path="MAVEN_REPO/junit/jars/junit-3.8.1.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
