@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="rwiki/src/java"/>
-	<classpathentry kind="src" path="rwiki/src/webapp"/>
-	<classpathentry kind="src" path="rwiki/src/test"/>
-	<classpathentry kind="src" path="rwiki-service/src/java"/>
-	<classpathentry kind="src" path="rwiki-service-impl/src/java"/>
-	<classpathentry kind="src" path="rwiki-component/src/webapp"/>
+	<classpathentry kind="src" path="rwiki-tool/tool/src/java"/>
+	<classpathentry kind="src" path="rwiki-tool/tool/src/webapp"/>
+	<classpathentry kind="src" path="rwiki-tool/tool/src/test"/>
+	<classpathentry kind="src" path="rwiki-api/api/src/java"/>
+	<classpathentry kind="src" path="rwiki-impl/impl/src/java"/>
+	<classpathentry kind="src" path="rwiki-impl/pack/src/webapp"/>
 	<classpathentry kind="src" path="rwiki-model/src/java"/>
 	<classpathentry kind="src" path="rwiki-utils/src/java"/>
 	<classpathentry kind="src" path="rwiki-utils/src/test"/>
-	<classpathentry kind="src" path="rwiki-service/src/test"/>
-	<classpathentry kind="src" path="rwiki-service-impl/src/test"/>
+	<classpathentry kind="src" path="rwiki-api/api/src/test"/>
+	<classpathentry kind="src" path="rwiki-impl/impl/src/test"/>
 	<classpathentry kind="src" path="rwiki-integration-test/src/test"/>
 	<classpathentry kind="src" path="rwiki-integration-test/src/conf"/>
 	<classpathentry kind="src" path="rwiki-integration-test/src/testBundle"/>
@@ -50,12 +50,12 @@
 	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-bridge-1.6.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-awt-util-1.6.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/test-harness"/>
-	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-legacy-util-TRUNK.jar"/>
-	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-legacy-service-TRUNK.jar"/>
-	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-legacy-component-TRUNK.jar"/>
-	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-util-xml-TRUNK.jar"/>
-	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-util-text-TRUNK.jar"/>
-	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-util-java-TRUNK.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-legacy-util-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-legacy-service-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-legacy-component-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-util-xml-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-util-text-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-util-java-dev.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/xerces/jars/xmlParserAPIs-2.6.2.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/fop/jars/fop-20060405.jar"/>
 	<classpathentry kind="output" path="bin"/>
