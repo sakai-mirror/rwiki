@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="impl/src/java"/>
+	<classpathentry kind="src" path="impl/src/test"/>
+	<classpathentry kind="src" path="pack/src/webapp"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="JUNIT_HOME/junit.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/rwiki-api"/>
+	<classpathentry kind="var" path="MAVEN_REPO/commons-logging/jars/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/servletapi/jars/servletapi-2.4.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/rwiki-model"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-tool-api-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-entity-api-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-site-api-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-event-api-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/springframework/jars/spring-1.2.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-component-api-dev.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/rwiki-util"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-event-util-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-email-api-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-user-api-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/avalon-framework/jars/avalon-framework-api-4.2.0.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/avalon-framework/jars/avalon-framework-impl-4.2.0.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/fop/jars/fop-20060405.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/xalan/jars/xalan-2.6.0.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/xerces/jars/xmlParserAPIs-2.6.2.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/xerces/jars/xercesImpl-2.6.2.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-content-api-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/hibernate/jars/hibernate-2.1.8.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-util-api-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-db-api-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/ehcache/jars/ehcache-1.1.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-util-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-authz-api-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/springframework/jars/spring-mock-1.2.6.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
