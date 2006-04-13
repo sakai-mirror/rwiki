@@ -33,5 +33,7 @@
 	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-util-dev.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-authz-api-dev.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/springframework/jars/spring-mock-1.2.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-sections-api-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-entity-util-dev.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
