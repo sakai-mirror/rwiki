@@ -33,28 +33,27 @@
 	<classpathentry kind="var" path="MAVEN_REPO/springframework/jars/spring-mock-1.2.6.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-sections-api-dev.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-entity-util-dev.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/avalon-framework/jars/avalon-framework-impl-4.2.0.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/avalon-framework/jars/avalon-framework-api-4.2.0.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/commons-io/jars/commons-io-1.1.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-xml-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-util-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-ttf2svg-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-transcoder-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-svgpp-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-svggen-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-svg-dom-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-script-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-rasterizer-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-parser-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-gvt-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-gui-util-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-extension-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-ext-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-dom-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-css-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-bridge-1.6.jar"/>
-        <classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-awt-util-1.6.jar"/>
-
-
+	<classpathentry kind="var" path="MAVEN_REPO/avalon-framework/jars/avalon-framework-impl-4.2.0.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/avalon-framework/jars/avalon-framework-api-4.2.0.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/commons-io/jars/commons-io-1.1.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-xml-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-util-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-ttf2svg-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-transcoder-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-svgpp-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-svggen-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-svg-dom-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-script-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-rasterizer-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-parser-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-gvt-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-gui-util-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-extension-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-ext-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-dom-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-css-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-bridge-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/batik/jars/batik-awt-util-1.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-component-dev.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
