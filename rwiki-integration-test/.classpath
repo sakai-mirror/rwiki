@@ -132,5 +132,6 @@
 	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-authz-impl-dev.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-alias-impl-dev.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/sakaiproject/jars/sakai-alias-api-dev.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/lucene/jars/lucene-1.4.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
