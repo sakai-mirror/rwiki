@@ -48,7 +48,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/entity-util"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/event-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/event-util"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/sections-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/site-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/tool-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/user-api"/>
