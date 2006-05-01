@@ -19,6 +19,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/user-api"/>
 	<classpathentry kind="var" path="MAVEN_REPO/jspapi/jars/jsp-api-2.0.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/easymock/jars/easymock-1.1.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/util"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/util-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/util-util"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
