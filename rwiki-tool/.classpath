@@ -21,5 +21,6 @@
 	<classpathentry kind="var" path="MAVEN_REPO/easymock/jars/easymock-1.1.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/util-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/util-util"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/search-api"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
