@@ -116,17 +116,20 @@ function addAttachment(textareaid, formid, editcontrolid, type) {
     textareaRange = document.selection.createRange().duplicate();
     duplicate.select();
 
-    var length = duplicate.text.length;
+    var duplicateText = duplicate.text;
+    var length = duplicateText.replace(/\r\n/g,"\n").length;
 
     duplicate.setEndPoint("StartToStart", textareaRange); 	
 
-    var endPoint = duplicate.text.length;
+    duplicateText = duplicate.text;
+    var endPoint = duplicateText.replace(/\r\n/g,"\n").length;
+
     var startPoint = endPoint - length;
     store = startPoint + ":" + endPoint;
   } else if (typeof(textarea.selectionStart) != "undefined") {
     store = textarea.selectionStart + ":" + textarea.selectionEnd;
   } else {
-    store = (textarea.text.length - 1) + ":" + (textarea.text.length - 1)
+    store = "0:0";
   }
 
   editcontrol.innerHTML += "<input type='hidden' name='save' value='Attach" + type + "'/><input type='hidden' name='caretPosition' value='"+ store + "'/>";
