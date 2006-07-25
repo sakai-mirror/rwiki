@@ -1,6 +1,2 @@
 Skipped:
-11682 SAK-5235 Upgrade Spring to 1.2.8
-11683 SAK-5235 Upgrade Spring to 1.2.8
-11684 SAK-5235 Upgrade Spring to 1.2.8
-11737 add metaprops files for managing resource bundles
 11939 SAK-5235 Upgrade Spring to 1.2.8
