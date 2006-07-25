@@ -1,2 +1,0 @@
-Skipped:
-11939 SAK-5235 Upgrade Spring to 1.2.8

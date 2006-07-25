@@ -13,7 +13,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/content-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/authz-api"/>
 	<classpathentry kind="var" path="MAVEN_REPO/commons-logging/jars/commons-logging-1.0.4.jar"/>
-	<classpathentry kind="var" path="MAVEN_REPO/springframework/jars/spring-1.2.6.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/org.springframework/jars/spring-1.2.8.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/component-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/site-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/user-api"/>
