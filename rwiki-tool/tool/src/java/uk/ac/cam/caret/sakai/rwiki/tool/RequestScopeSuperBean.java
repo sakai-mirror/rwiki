@@ -53,6 +53,7 @@ import uk.ac.cam.caret.sakai.rwiki.tool.bean.ErrorBean;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.FullSearchBean;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.HistoryBean;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.HomeBean;
+import uk.ac.cam.caret.sakai.rwiki.tool.bean.MultiRealmEditBean;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.PermissionsBean;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.PrePopulateBean;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.PreferencesBean;
@@ -68,6 +69,7 @@ import uk.ac.cam.caret.sakai.rwiki.tool.bean.helper.AuthZGroupBeanHelper;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.helper.AuthZGroupCollectionBeanHelper;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.helper.AuthZGroupEditBeanHelper;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.helper.DiffHelperBean;
+import uk.ac.cam.caret.sakai.rwiki.tool.bean.helper.MultiRealmEditBeanHelper;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.helper.PreferencesBeanHelper;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.helper.PresenceBeanHelper;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.helper.RecentlyVisitedHelperBean;
@@ -77,7 +79,6 @@ import uk.ac.cam.caret.sakai.rwiki.tool.bean.helper.UpdatePermissionsBeanHelper;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.helper.UserHelperBean;
 import uk.ac.cam.caret.sakai.rwiki.tool.bean.helper.ViewParamsHelperBean;
 import uk.ac.cam.caret.sakai.rwiki.tool.util.WikiPageAction;
-import uk.ac.cam.caret.sakai.rwiki.utils.NameHelper;
 
 /**
  * This is a replacement for the RequestScopeApplicationContext which turned out
@@ -217,9 +218,15 @@ public class RequestScopeSuperBean
 			String user = this.getCurrentUser();
 			if (user != null && user.length() > 0)
 			{
-				messageService.updatePresence(session.getId(), this
-						.getCurrentUser(), this.getCurrentPageName(), this
-						.getCurrentPageSpace());
+				String currentPageName = this.getCurrentPageName();
+				String pageSpace = this.getCurrentPageSpace();
+				if ( currentPageName != null && currentPageName.length() < 255 && pageSpace != null && pageSpace.length() < 255 ) {
+					messageService.updatePresence(session.getId(), this
+							.getCurrentUser(), this.getCurrentPageName(), this
+							.getCurrentPageSpace());
+				} else {
+					log.warn("Page names in wiki cannot be over 225 characters in length, presence not updated. Page Name was "+currentPageName);
+				}
 			}
 		}
 		
@@ -706,7 +713,7 @@ public class RequestScopeSuperBean
 		if (map.get(key) == null)
 		{
 			AuthZGroupBean rb = AuthZGroupBeanHelper.createRealmBean(
-					realmService, getCurrentRWikiObject(), getErrorBean(),
+					realmService, siteService,getCurrentRWikiObject(), getErrorBean(),
 					getViewBean());
 			map.put(key, rb);
 		}
@@ -738,6 +745,19 @@ public class RequestScopeSuperBean
 			map.put(key, cb);
 		}
 		return (AuthZGroupCollectionBean) map.get(key);
+	}
+
+	public MultiRealmEditBean getMultiRealmEditBean()
+	{
+		String key = "multiRealmEditBean";
+		if (map.get(key) == null)
+		{
+			MultiRealmEditBean cb = MultiRealmEditBeanHelper
+					.createMultiRealmEditBean(
+							getCurrentRWikiObject(), request,this);
+			map.put(key, cb);
+		}
+		return (MultiRealmEditBean) map.get(key);
 	}
 
 	public PresenceBean getPresenceBean()
