@@ -26,7 +26,6 @@ import java.io.Writer;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.radeox.api.engine.RenderEngine;
 import org.radeox.macro.BaseMacro;
 import org.radeox.macro.parameter.MacroParameter;
 import org.sakaiproject.exception.IdUnusedException;
@@ -76,7 +75,6 @@ public class SectionsMacro extends BaseMacro
 
 		SpecializedRenderContext context = (SpecializedRenderContext) params
 				.getContext();
-		RenderEngine engine = context.getRenderEngine();
 
 		String useids = params.get("useids", 0);
 
