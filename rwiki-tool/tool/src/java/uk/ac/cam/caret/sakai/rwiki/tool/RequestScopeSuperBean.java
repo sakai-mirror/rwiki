@@ -198,9 +198,9 @@ public class RequestScopeSuperBean
 				"search.experimental", false);
 
 		withnotification = ServerConfigurationService.getBoolean(
-				"wiki.notification", true);
+				"wiki.notification", false);
 		withcomments = ServerConfigurationService.getBoolean("wiki.comments",
-				true);
+				false);
 		defaultUIHomePageName = ServerConfigurationService.getString(
 				"wiki.ui.homepage", "Home");
 		
