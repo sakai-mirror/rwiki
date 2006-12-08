@@ -211,21 +211,20 @@ both pages are identical. Any change in the page, will change the digest on the 
 	<div class="portletBody">
 	  <div class="navIntraTool">
 	    <form action="?#" method="get" class="rwiki_searchForm">
-	      <span class="rwiki_pageLinks">
-		<!-- Home Link -->
-		<jsp:element name="a"><jsp:attribute name="href"><c:out value="${homeBean.homeLinkUrl}"/></jsp:attribute><c:out value="${homeBean.homeLinkValue}"/></jsp:element>
-		<!-- View Link -->
-		<jsp:element name="a"><jsp:attribute name="href"><c:out value="${realmBean.viewUrl}"/></jsp:attribute>View</jsp:element>
-		<!-- Edit Link -->
-		<jsp:element name="a"><jsp:attribute name="href"><c:out value="${realmBean.editUrl}"/></jsp:attribute>Edit</jsp:element>
-		<!-- Info Link -->
-		<jsp:element name="a"><jsp:attribute name="href"><c:out value="${realmBean.infoUrl}"/></jsp:attribute><jsp:attribute name="class">rwiki_currentPage</jsp:attribute>Info</jsp:element>
-		<!-- History Link -->
-		<jsp:element name="a"><jsp:attribute name="href"><c:out value="${realmBean.historyUrl}"/></jsp:attribute>History</jsp:element>
-	      </span>
-	      
+	     	<rwiki:commandlinks 
+							useHomeLink="true"
+							useViewLink="true"
+							useEditLink="true"
+							useInfoLink="true"
+							useHistoryLink="true"
+							useWatchLink="true"
+							withNotification="${requestScope.rsacMap.withnotification}"
+							viewLinkName="View"
+							homeBean="${homeBean}"
+							viewBean="${realmBean}"  
+						        />	      
 	      <span class="rwiki_searchBox">
-		Search:	<input type="hidden" name="action" value="${requestScope.rsacMap.searchTarget}" />
+			Search:	<input type="hidden" name="action" value="${requestScope.rsacMap.searchTarget}" />
 		<input type="hidden" name="panel" value="Main" />
 		<input type="text" name="search" />
 	      </span>

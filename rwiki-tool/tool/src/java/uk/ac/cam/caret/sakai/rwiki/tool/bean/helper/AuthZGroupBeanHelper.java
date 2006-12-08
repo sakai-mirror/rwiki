@@ -38,7 +38,7 @@ public class AuthZGroupBeanHelper
 
 	public static AuthZGroupBean createRealmBean(
 			AuthzGroupService realmService, SiteService siteService, RWikiObject rwikiObject,
-			ErrorBean errorBean, ViewBean vb)
+			ErrorBean errorBean, ViewBean vb, String siteId)
 	{
 		AuthZGroupBean rb = new AuthZGroupBean(vb.getPageName(), vb
 				.getLocalSpace());
@@ -56,8 +56,11 @@ public class AuthZGroupBeanHelper
 			errorBean.addError("Realm: " + realmId
 					+ " is not recognised in the system.");
 		}
+		boolean update = realmService.allowUpdate(realmId);
+		boolean siteUpdate = siteService.allowUpdateSite(siteId);
+		
 
-		rb.setSiteUpdateAllowed(realmService.allowUpdate(realmId) && siteService.allowUpdateSite(realmId));
+		rb.setSiteUpdateAllowed(update && siteUpdate);
 
 		return rb;
 	}

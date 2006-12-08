@@ -28,6 +28,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.sakaiproject.authz.api.AuthzGroupService;
 import org.sakaiproject.component.cover.ServerConfigurationService;
+import org.sakaiproject.entity.api.Entity;
 import org.sakaiproject.exception.IdUnusedException;
 import org.sakaiproject.search.api.SearchService;
 import org.sakaiproject.site.api.Site;
@@ -291,14 +292,18 @@ public class RequestScopeSuperBean
 		return (String) map.get(key);
 	}
 
-	public String getCurrentPageName()
+	public String getCurrentPageName(boolean refresh)
 	{
 		String key = "currentPageName";
-		if (map.get(key) == null)
+		if (map.get(key) == null || refresh )
 		{
 			map.put(key, getNameHelperBean().getGlobalName());
 		}
 		return (String) map.get(key);
+	}
+	public String getCurrentPageName()
+	{
+		return getCurrentPageName(false);
 	}
 
 	public String getCurrentPageSpace()
@@ -376,10 +381,10 @@ public class RequestScopeSuperBean
 		return (ViewBean) map.get(key);
 	}
 
-	public RWikiObject getCurrentRWikiObject()
+	public RWikiObject getCurrentRWikiObject(boolean refresh)
 	{
 		String key = "currentRWikiObject";
-		if (map.get(key) == null)
+		if (map.get(key) == null || refresh )
 		{
 
 			RWikiObject rwo = objectService.getRWikiObject(
@@ -387,6 +392,23 @@ public class RequestScopeSuperBean
 			map.put(key, rwo);
 		}
 		return (RWikiObject) map.get(key);
+	}
+
+	public RWikiObject getCurrentRWikiObject()
+	{
+		return getCurrentRWikiObject(false);
+	}
+	
+	public String getCurrentRWikiObjectReference() 
+	{
+		String key = "currentRWikiObjectReference";
+		if ( map.get(key) == null ) 
+		{
+			RWikiObject rwo = getCurrentRWikiObject();
+			Entity e =  objectService.getEntity(rwo);
+			map.put(key,e.getReference());
+		}
+		return (String) map.get(key);
 	}
 
 	public RecentlyVisitedBean getRecentlyVisitedBean()
@@ -712,9 +734,10 @@ public class RequestScopeSuperBean
 		String key = "realmBean";
 		if (map.get(key) == null)
 		{
+			String siteId = toolManager.getCurrentPlacement().getContext();
 			AuthZGroupBean rb = AuthZGroupBeanHelper.createRealmBean(
 					realmService, siteService,getCurrentRWikiObject(), getErrorBean(),
-					getViewBean());
+					getViewBean(),siteId);
 			map.put(key, rb);
 		}
 		return (AuthZGroupBean) map.get(key);
@@ -868,6 +891,15 @@ public class RequestScopeSuperBean
 			map.put(key, configBean);
 		}
 		return configBean;
+	}
+
+	public boolean getLoadAutoSave() {
+		boolean b =  getNameHelperBean().isLoadAutoSave();
+		return b;
+	}
+	public boolean getRemoveAutoSave() {
+		boolean b =  getNameHelperBean().isRemoveAutoSave();
+		return b;
 	}
 	
 }

@@ -76,6 +76,14 @@
       </properties>
     </dependency>
     
+      <dependency>
+      <groupId>sakaiproject</groupId>
+      <artifactId>sakai-util</artifactId>
+      <version>${sakai.version}</version>
+      <properties>
+        <war.bundle>true</war.bundle>
+      </properties>
+    </dependency>
   
   
   
@@ -106,6 +114,12 @@
     <dependency>
       <groupId>sakaiproject</groupId>
       <artifactId>sakai-util-api</artifactId>
+      <version>${sakai.version}</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>sakaiproject</groupId>
+      <artifactId>sakai-event-api</artifactId>
       <version>${sakai.version}</version>
       <type>jar</type>
     </dependency>

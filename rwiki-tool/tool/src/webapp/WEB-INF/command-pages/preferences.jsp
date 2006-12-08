@@ -25,13 +25,16 @@
   xmlns:c="http://java.sun.com/jsp/jstl/core"
   xmlns:fn="http://java.sun.com/jsp/jstl/functions"
   xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+   xmlns:rwiki="urn:jsptld:/WEB-INF/rwiki.tld"
   ><jsp:directive.page language="java"
     contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
     errorPage="/WEB-INF/command-pages/errorpage.jsp"
     /><jsp:text><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
   </jsp:text>
   <c:set var="viewBean" value="${requestScope.rsacMap.viewBean}"/>
+  <c:set var="homeBean" value="${requestScope.rsacMap.homeBean}"/>
   <c:set var="preferencesBean" value="${requestScope.rsacMap.preferencesBean}"/>
+  <c:set var="realmBean" value="${requestScope.rsacMap.realmBean}"/>
   <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
     <head>
       <title>Info: <c:out value="${realmBean.localName}" /></title>
@@ -44,18 +47,18 @@
 	<div class="portletBody">
 	  <div class="navIntraTool">
 	    <form action="?#" method="get" class="rwiki_searchForm">
-	      <span class="rwiki_pageLinks">
-		<!-- Home Link -->
-		<jsp:element name="a"><jsp:attribute name="href"><c:out value="${homeBean.homeLinkUrl}"/></jsp:attribute><c:out value="${homeBean.homeLinkValue}"/></jsp:element>
-		<!-- View Link -->
-		<jsp:element name="a"><jsp:attribute name="href"><c:out value="${viewBean.viewUrl}"/></jsp:attribute>View</jsp:element>
-		<!-- Edit Link -->
-		<jsp:element name="a"><jsp:attribute name="href"><c:out value="${viewBean.editUrl}"/></jsp:attribute>Edit</jsp:element>
-		<!-- Info Link -->
-		<jsp:element name="a"><jsp:attribute name="href"><c:out value="${viewBean.infoUrl}"/></jsp:attribute><jsp:attribute name="class">rwiki_currentPage</jsp:attribute>Info</jsp:element>
-		<!-- History Link -->
-		<jsp:element name="a"><jsp:attribute name="href"><c:out value="${viewBean.historyUrl}"/></jsp:attribute>History</jsp:element>
-	      </span>
+	    	  	<rwiki:commandlinks 
+							useHomeLink="true"
+							useViewLink="true"
+							useEditLink="true"
+							useInfoLink="true"
+							useHistoryLink="true"
+							useWatchLink="true"
+							withNotification="${requestScope.rsacMap.withnotification}"
+							viewLinkName="View"
+							homeBean="${homeBean}"
+							viewBean="${viewBean}"
+						        />
 	      <span class="rwiki_searchBox">
 		Search:	<input type="hidden" name="action" value="${requestScope.rsacMap.searchTarget}" />
 		<input type="hidden" name="panel" value="Main" />

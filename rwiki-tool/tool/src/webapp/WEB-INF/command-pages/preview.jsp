@@ -24,6 +24,7 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0" 
   xmlns:c="http://java.sun.com/jsp/jstl/core"
   xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+   xmlns:rwiki="urn:jsptld:/WEB-INF/rwiki.tld"
   ><jsp:directive.page language="java"
 		contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 		errorPage="/WEB-INF/command-pages/errorpage.jsp" 
@@ -38,6 +39,7 @@
   <c:set var="rightRenderBean" value="${requestScope.rsacMap.previewRightRenderBean}"/>
   <c:set var="errorBean" value="${requestScope.rsacMap.errorBean}"/>
   <c:set var="editBean" value="${requestScope.rsacMap.editBean}"/>
+  <c:set var="realmBean" value="${requestScope.rsacMap.realmBean}"/>
   <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
     <head>
       <title>Preview Changes To: <c:out value="${viewBean.localName}"/></title>
@@ -50,11 +52,22 @@
       	<div class="portletBody">
       		<div class="navIntraTool">
 	  <form action="?#" method="get" class="rwiki_searchForm">
-	    <jsp:element name="a"><jsp:attribute name="href"><c:out value="${viewBean.viewUrl}"/></jsp:attribute>View</jsp:element>
-	    <jsp:element name="a"><jsp:attribute name="href"><c:out value="${viewBean.infoUrl}"/></jsp:attribute>Info</jsp:element>
-	    Search:	<input type="hidden" name="action" value="${requestScope.rsacMap.searchTarget}" />
-	    <input type="hidden" name="panel" value="Main" />
-	    <input type="text" name="search" />
+	  	  	<rwiki:commandlinks 
+							useHomeLink="true"
+							useViewLink="true"
+							useEditLink="false"
+							useInfoLink="true"
+							useHistoryLink="false"
+							useWatchLink="false"
+							viewLinkName="View"
+							homeBean="${homeBean}"
+							viewBean="${viewBean}"
+						        />
+		<span class="rwiki_searchBox">
+	    		Search:	<input type="hidden" name="action" value="${requestScope.rsacMap.searchTarget}" />
+	    		<input type="hidden" name="panel" value="Main" />
+	    		<input type="text" name="search" />
+	    </span>
 	  </form>
 	</div>
 		<c:set var="rwikiContentStyle"  value="rwiki_content" />
