@@ -14,5 +14,6 @@
 	<classpathentry kind="src" path="util/src/testBundle"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/util-util"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/util-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/component-api"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
