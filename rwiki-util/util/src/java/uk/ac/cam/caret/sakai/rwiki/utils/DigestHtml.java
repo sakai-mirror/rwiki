@@ -23,6 +23,7 @@ package uk.ac.cam.caret.sakai.rwiki.utils;
 
 import java.io.StringReader;
 
+import org.sakaiproject.util.ResourceLoader;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
@@ -43,13 +44,13 @@ public class DigestHtml
 			XMLReader reader = XMLReaderFactory
 					.createXMLReader("org.apache.xerces.parsers.SAXParser");
 			reader.setContentHandler(d);
-			reader.parse(new InputSource(new StringReader("<content>"
-					+ todigest + "</content>")));
+			reader.parse(new InputSource(new StringReader("<content>" //$NON-NLS-1$
+					+ todigest + "</content>"))); //$NON-NLS-1$
 			return d.toString();
 		}
 		catch (Exception ex)
 		{
-			return d.toString() + "\n Failed at " + ex.getMessage();
+			return d.toString() + Messages.getString("DigestHtml.3") + ex.getMessage(); //$NON-NLS-1$
 		}
 	}
 

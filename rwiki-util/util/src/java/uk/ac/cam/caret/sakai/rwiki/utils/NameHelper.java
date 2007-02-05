@@ -26,8 +26,6 @@ import java.nio.CharBuffer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-// FIXME: Component
-// FORCED TO BIN DUE TO SVN Insisting on Commit
 public class NameHelper
 {
 
@@ -299,6 +297,11 @@ public class NameHelper
 
 		int index = globalName.lastIndexOf(SPACE_SEPARATOR);
 		return globalName.substring(0, index);
+	}
+	public static String localizeSpace(final String globalPageName)
+	{
+		int index = globalPageName.lastIndexOf(SPACE_SEPARATOR);
+		return globalPageName.substring(0, index);
 	}
 
 }

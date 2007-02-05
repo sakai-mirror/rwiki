@@ -20,16 +20,29 @@
  * limitations under the License.
  *
  **********************************************************************************/
+
+
 -->
-<jspiii:root xmlns:jspiii="http://java.sun.com/JSP/Page" version="2.0">
-  <jspiii:directive.page language="java"
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	version="2.0">
+  <jsp:directive.page language="java"
     contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" />
-<div id="sidebar_switcher">
-  <div id="sidebar_switch_on">
-    <jspiii:element name="a"><jspiii:attribute name="href">#</jspiii:attribute><jspiii:attribute name="onclick">showSidebar('<jspiii:expression>request.getAttribute("sakai.tool.placement.id")</jspiii:expression>')</jspiii:attribute>show the help sidebar</jspiii:element>
-  </div>
-  <div id="sidebar_switch_off">
-    <jspiii:element name="a"><jspiii:attribute name="href">#</jspiii:attribute><jspiii:attribute name="onclick">hideSidebar('<jspiii:expression>request.getAttribute("sakai.tool.placement.id")</jspiii:expression>')</jspiii:attribute>hide the help sidebar</jspiii:element>
-  </div>
+   <c:if test="${rightRenderBean.hasContent}" > 
+      <c:set var="rlb" value="${requestScope.rsacMap.resourceLoaderBean}"/>    
+<div id="rwiki_sidebar_switcher">
+    <jsp:element name="a">
+    	<jsp:attribute name="id">sidebar_switch_on</jsp:attribute>      
+    	<jsp:attribute name="href">#</jsp:attribute>
+    	<jsp:attribute name="onclick">showSidebar('<jsp:expression>request.getAttribute("sakai.tool.placement.id")</jsp:expression>')</jsp:attribute>
+    	<jsp:body>(+)</jsp:body>
+    </jsp:element>
+    <jsp:element name="a">
+    	<jsp:attribute name="id">sidebar_switch_off</jsp:attribute>      
+    	<jsp:attribute name="href">#</jsp:attribute>
+    	<jsp:attribute name="onclick">hideSidebar('<jsp:expression>request.getAttribute("sakai.tool.placement.id")</jsp:expression>')</jsp:attribute>
+    	<jsp:body>(-)</jsp:body>
+    </jsp:element>
 </div>
-</jspiii:root>
+    </c:if>
+</jsp:root>

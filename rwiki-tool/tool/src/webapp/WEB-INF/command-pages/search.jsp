@@ -37,9 +37,11 @@
         <c:set var="recentlyVisitedBean" value="${requestScope.rsacMap.recentlyVisitedBean}"/>
   		<c:set target="${recentlyVisitedBean}" property="searchPage" value="${searchBean}"/>
   <c:set var="homeBean" value="${requestScope.rsacMap.homeBean}"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <c:set var="rlb" value="${requestScope.rsacMap.resourceLoaderBean}"/>
+  
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="${rlb.jsp_lang}" xml:lang="${rlb.jsp_xml_lang}" >
     <head>
-      <title>Search: <c:out value="${searchBean.search}"/></title>
+      <title><c:out value="${rlb.jsp_search}"/>: <c:out value="${searchBean.search}"/></title>
       <jsp:expression>request.getAttribute("sakai.html.head")</jsp:expression>
     </head>
     <jsp:element name="body">
@@ -58,28 +60,40 @@
 							useHistoryLink="false"
 							useWatchLink="false"
 							homeBean="${homeBean}"
+							resourceLoaderBean="${rlb}"
 						        />
 	  <span class="rwiki_searchBox">
-	    Search: 
+	    <c:out value="${rlb.jsp_search}"/>: 
 	    <input type="hidden" name="action" value="search" />
 	    <input type="hidden" name="panel" value="Main" />
 	    <input type="text" name="search" />
 	  </span>
 	</form>
       </div>
+			<c:choose>
+      
+      <c:when test="${rightRenderBean.hasContent}" >
+		<c:set var="rwikiContentStyle"  value="withsidebar" />	
+	  </c:when>
+	  <c:otherwise>
+		<c:set var="rwikiContentStyle"  value="nosidebar" />    
+	  </c:otherwise>
+      
+			</c:choose>
 
-      	<c:set var="rwikiContentStyle"  value="rwiki_content" />
       	
 	<jsp:directive.include file="breadcrumb.jsp"/>
-	<!-- Creates the right hand sidebar -->
-	<jsp:directive.include file="sidebar.jsp"/>
+	<div id="rwiki_head" >				    
+		<jsp:directive.include file="sidebar-switcher.jsp"/>		     
+	</div>
+	
 
-	<h3>Search: <c:out value="${searchBean.search}"/></h3>
+    <div id="rwiki_content" class="${rwikiContentStyle}" >
+	<h3><c:out value="${rlb.jsp_search}"/>: <c:out value="${searchBean.search}"/></h3>
 
 	<c:set var="searchResults" value="${searchBean.searchResults}"/>
 	<jsp:useBean id="searchViewBean" class="uk.ac.cam.caret.sakai.rwiki.tool.bean.ViewBean"/>
 	<jsp:setProperty name="searchViewBean" value="${currentLocalSpace}" property="localSpace"/>
-      	<div id="${rwikiContentStyle}" >
       		<p>
 	  	<c:choose>
 		  	<c:when test="${fn:length(searchResults) gt 0 }">
@@ -99,12 +113,14 @@
 	    		</c:forEach>
 		  	</c:when>
 	  		<c:otherwise>
-	  		   <b>No results found.</b>
+	  		   <b><c:out value="${rlb.jsp_no_results_found}"/></b>
 	  		</c:otherwise>
 	  	</c:choose>
 	    
 	  </p>
 	</div>
+	<!-- Creates the right hand sidebar -->
+	<jsp:directive.include file="sidebar.jsp"/>
 
       </div>
       </div>

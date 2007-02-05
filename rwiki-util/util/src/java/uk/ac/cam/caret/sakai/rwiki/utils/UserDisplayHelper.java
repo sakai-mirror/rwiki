@@ -21,6 +21,7 @@
 
 package uk.ac.cam.caret.sakai.rwiki.utils;
 
+import org.sakaiproject.component.cover.ServerConfigurationService;
 import org.sakaiproject.user.api.User;
 import org.sakaiproject.user.api.UserNotDefinedException;
 import org.sakaiproject.user.cover.UserDirectoryService;
@@ -28,10 +29,11 @@ import org.sakaiproject.user.cover.UserDirectoryService;
 public class UserDisplayHelper
 {
 
+	private static boolean displayID = ServerConfigurationService.getBoolean("wiki.display.user.id", false);
+	
 	public static String formatDisplayName(String name)
 	{
-		// FIXME internationalize
-		return formatDisplayName(name, "Unknown");
+		return formatDisplayName(name, Messages.getString("UserDisplayHelper.0")); //$NON-NLS-1$
 	}
 
 	public static String formatDisplayName(String name, String defaultName)
@@ -43,8 +45,12 @@ public class UserDisplayHelper
 		}
 		catch (UserNotDefinedException e)
 		{
-			return defaultName + " (" + XmlEscaper.xmlEscape(name) + ")";
+			return defaultName + " (" + XmlEscaper.xmlEscape(name) + ")"; //$NON-NLS-1$ //$NON-NLS-2$
 		}
-		return XmlEscaper.xmlEscape(user.getDisplayName() + " (" + user.getDisplayId() + ")");
+		if ( displayID ) {
+			return XmlEscaper.xmlEscape(user.getDisplayName() + " (" + user.getDisplayId() + ")"); //$NON-NLS-1$ //$NON-NLS-2$
+		} else {
+			return XmlEscaper.xmlEscape(user.getDisplayName()); //$NON-NLS-1$ //$NON-NLS-2$
+		}
 	}
 }

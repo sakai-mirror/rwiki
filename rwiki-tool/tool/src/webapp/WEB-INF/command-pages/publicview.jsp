@@ -30,56 +30,21 @@
   /><jsp:text
   ><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
   </jsp:text>
-  <jsp:scriptlet>
-    long start = System.currentTimeMillis();
-  </jsp:scriptlet>
   <c:set var="viewBean" value="${requestScope.rsacMap.viewBean}"/>
-  <jsp:scriptlet>
-	  	long finish = System.currentTimeMillis();
-    uk.ac.cam.caret.sakai.rwiki.utils.TimeLogger.printTimer("get ViewBean:",start,finish);
-        start = System.currentTimeMillis();
-  </jsp:scriptlet>
-  
+  <c:set var="rlb" value="${requestScope.rsacMap.resourceLoaderBean}"/>
   <c:set var="renderBean" value="${requestScope.rsacMap.renderBean}"/>
-  <jsp:scriptlet>
-    finish = System.currentTimeMillis();
-    uk.ac.cam.caret.sakai.rwiki.utils.TimeLogger.printTimer("RenderBean",start,finish);
-    start = System.currentTimeMillis();
-  </jsp:scriptlet>
   <c:set var="rightRenderBean" value="${requestScope.rsacMap.viewRightRenderBean}"/>
-    <jsp:scriptlet>
-      finish = System.currentTimeMillis();
-      uk.ac.cam.caret.sakai.rwiki.utils.TimeLogger.printTimer("get RightRenderBean:",start,finish);
-      start = System.currentTimeMillis();
-  </jsp:scriptlet>
-  
   <c:set var="permissionsBean" value="${requestScope.rsacMap.permissionsBean}"/>
-      <jsp:scriptlet>
-        finish = System.currentTimeMillis();
-        uk.ac.cam.caret.sakai.rwiki.utils.TimeLogger.printTimer("get permissionsBean:",start,finish);
-        start = System.currentTimeMillis();
-  </jsp:scriptlet>
-  
   <c:set var="homeBean" value="${requestScope.rsacMap.homeBean}"/>
-      <jsp:scriptlet>
-        finish = System.currentTimeMillis();
-        uk.ac.cam.caret.sakai.rwiki.utils.TimeLogger.printTimer("get homeBean:",start,finish);
-        start = System.currentTimeMillis();
-  </jsp:scriptlet>
   <c:set var="recentlyVisitedBean" value="${requestScope.rsacMap.recentlyVisitedBean }"/>
-      <jsp:scriptlet>
-        finish = System.currentTimeMillis();
-        uk.ac.cam.caret.sakai.rwiki.utils.TimeLogger.printTimer("get recentlyVisitedBean:",start,finish);
-        start = System.currentTimeMillis();
-  </jsp:scriptlet>
   
   <c:if test="${requestScope.rsacMap.withBreadcrumbs}">
   		<c:set target="${recentlyVisitedBean}" property="viewPage" value="${viewBean }"/>
   </c:if>
   
-  <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="${rlb.jsp_lang}" xml:lang="${rlb.jsp_xml_lang}" >
     <head>
-      <title>View: <c:out value="${renderBean.localisedPageName}"/></title>
+      <title><c:out value="${rlb.jsp_view}"/>: <c:out value="${renderBean.localisedPageName}"/></title>
       <jsp:expression>request.getAttribute("sakai.html.head")</jsp:expression>
 
     </head>
@@ -91,15 +56,30 @@
 	  <c:if test="${requestScope.rsacMap.withBreadcrumbs}">
 	  	<jsp:directive.include file="publicbreadcrumb.jsp"/>
 	  </c:if>
+	  	<c:choose>
+	<c:when test="${rightRenderBean.hasContent}" >
+		<c:set var="rwikiContentStyle"  value="withsidebar" />	
+	</c:when>
+	<c:otherwise>
+		<c:set var="rwikiContentStyle"  value="nosidebar" />    
+	</c:otherwise>
+	</c:choose>
+	  <div id="rwiki_head" >				    
+		<jsp:directive.include file="sidebar-switcher.jsp"/>		     
+	  </div>
+	  
 	  <!-- Creates the right hand sidebar -->
 	  <!-- Main page -->
-	  <div id="rwiki_content" class="nosidebar">
+	  <div id="rwiki_content" class="${rwikiContentStyle}">
 	    <div class="rwikiRenderBody">
 	      <div class="rwikiRenderedContent"> 
 		<c:out value="${renderBean.publicRenderedPage}" escapeXml="false"/><br/>	    
 	      </div>
 	    </div>
 	  </div>
+	 <!-- Creates the right hand sidebar -->
+	 <jsp:directive.include file="sidebar.jsp"/>
+	  
 	</div>
       </div>
       <jsp:directive.include file="footer.jsp"/>

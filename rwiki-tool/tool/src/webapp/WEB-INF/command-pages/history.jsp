@@ -42,9 +42,11 @@
   <c:set var="referencesBean"
     value="${requestScope.rsacMap.referencesBean}" />
   <c:set var="homeBean" value="${requestScope.rsacMap.homeBean}"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <c:set var="rlb" value="${requestScope.rsacMap.resourceLoaderBean}"/>
+  
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="${rlb.jsp_xml_lang}">
     <head>
-      <title>Info: <c:out value="${historyBean.localName}" /></title>
+      <title><c:out value="${rlb.jsp_info}"/>: <c:out value="${historyBean.localName}" /></title>
       <jsp:expression>request.getAttribute("sakai.html.head")</jsp:expression>
     </head>
     <jsp:element name="body">
@@ -52,72 +54,37 @@
       <jsp:directive.include file="header.jsp"/>
         	<div id="versionhelp" style=" position: absolute; top: -1000px; left: -1000px; visibility: hidden;" 
   		class="rwiki_help_popup" >
-  		<h3>Versions</h3>
-  		Each change in the page generates a new version.
-  		Versions start at version 0, when the page is
-  		first created and then increase by one each time
-  		the page is edited
-  		
+  		<h3><c:out value="${rlb.jsp_history_versions}"/></h3>
+  		<c:out value="${rlb.jsp_history_versions_help}"/>
   	</div>
   	<div id="userhelp" style=" position: absolute; top: -1000px; left: -1000px; visibility: hidden;" 
   		class="rwiki_help_popup" >
-  		<h3>User</h3>
-  		When a page is changed, either the content 
-  		or any of the other information associated
-  		with the page (eg permissions). The user
-  		that made the change is recorded against
-  		the version.
+  		<h3><c:out value="${rlb.jsp_history_user}"/></h3>
+  		<c:out value="${rlb.jsp_history_user_help}"/>
   	</div>
   	<div id="datehelp" style=" position: absolute; top: -1000px; left: -1000px; visibility: hidden;" 
   		class="rwiki_help_popup" >
-  		<h3>Date</h3>
-  		This is the date of the modification  		
+  		<h3><c:out value="${rlb.jsp_history_date}"/></h3>
+  		<c:out value="${rlb.jsp_history_date_help}"/>	
   	</div>
   	<div id="changeshelp" style=" position: absolute; top: -1000px; left: -1000px; visibility: hidden;" 
   		class="rwiki_help_popup" >
-  		<h3>Changes</h3>
-  		By clicking on the To Current or To Previous link,
-  		you will be shown the changes to the previous version or
-  		to the current version
+  		<h3><c:out value="${rlb.jsp_history_changes}"/></h3>
+  		<c:out value="${rlb.jsp_history_changes_help}"/>
   	</div>
   	<div id="reverthelp" style=" position: absolute; top: -1000px; left: -1000px; visibility: hidden;" 
   		class="rwiki_help_popup" >
-  		<h3>Revert</h3>
-  		By clicking the revert link against a past version of the page, the version
-  		 in question will be used to create a new version. The result is that the 
-  		 current page will contain the content and permissions of the version in 
-  		 question. 
+  		<h3><c:out value="${rlb.jsp_history_revert}"/></h3>
+  		<c:out value="${rlb.jsp_history_revert_help}"/>
   	</div>
   	<div id="changedhelp" style=" position: absolute; top: -1000px; left: -1000px; visibility: hidden;" 
   		class="rwiki_help_popup" >
-  		<h3>Content</h3>
-  		If the content was not changed between versions
-  		this column will indicate that the content was not changed
-  		This will be because the permissions, owner or realm were
-  		changed in the version.
-  		
+  		<h3><c:out value="${rlb.jsp_history_content}"/></h3>
+  		<c:out value="${rlb.jsp_history_content_help}"/>
   	</div>
   	<div id="permissionshelp" style=" position: absolute; top: -1000px; left: -1000px; visibility: hidden;" 
   	     class="rwiki_help_popup" >
-  		<pre>o--- s--- p-- = all disabled
-orwa srwa prw = all enabled
-|||| |||| ||Public Write granted
-|||| |||| |Public Read granted
-|||| |||| Public page permissions group
-|||| |||| 
-|||| |||Admin Role Permissions enabled
-|||| ||Write Role Permissions enabled
-|||| |Read Role Permissions enabled
-|||| Site Roler Permissions group
-||||
-|||Owner admin granted
-||Owner Write granted
-|Owner Read granted
-Page Owner Permissions Group
- 
-- means permssion denied
-
-  		</pre>
+  		<pre><c:out value="${rlb.jsp_history_permissions_help}"/></pre>
   	</div>
       
       <div id="rwiki_container">
@@ -136,38 +103,50 @@ Page Owner Permissions Group
 							viewLinkName="View"
 							homeBean="${homeBean}"
 							viewBean="${historyBean}"
+							resourceLoaderBean="${rlb}"
 						        />
 	    <span class="rwiki_searchBox">
-	      Search:	<input type="hidden" name="action" value="${requestScope.rsacMap.searchTarget}" />
+	      <c:out value="${rlb.jsp_search}"/>:	<input type="hidden" name="action" value="${requestScope.rsacMap.searchTarget}" />
 	      <input type="hidden" name="panel" value="Main" />
 	      <input type="text" name="search" />
 	    </span>
 	  </form>
 	</div>
-		<c:set var="rwikiContentStyle"  value="rwiki_content" />
-		
+	<c:choose>
+	  <c:when test="${rightRenderBean.hasContent}" >
+		 <c:set var="rwikiContentStyle"  value="withsidebar" />	
+	  </c:when>
+	  <c:otherwise>
+		 <c:set var="rwikiContentStyle"  value="nosidebar" />    
+	  </c:otherwise>
+	</c:choose>
+	
 	  <jsp:directive.include file="breadcrumb.jsp"/>
+		
 	  <!-- Creates the right hand sidebar -->
-	  <jsp:directive.include file="sidebar.jsp"/>
+	  <div id="rwiki_head" >				    
+		<jsp:directive.include file="sidebar-switcher.jsp"/>		     
+	  </div>
+	  
 	  <!-- Main page -->
-	  <div id="${rwikiContentStyle}" >
+	  <div id="rwiki_content" class="${rwikiContentStyle}" >
 
-	    <h3>History: <c:out value="${historyBean.localName}" /></h3>
+	    <h3><c:out value="${rlb.jsp_history}"/>: <c:out value="${historyBean.localName}" /></h3>
 	    <div class="rwikirenderedContent">
 	      <table class="rwiki_history">
 		<tr>
-			<th>Version<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'versionhelp'); return false;"
+			<th><c:out value="${rlb.jsp_history_version}"/><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'versionhelp'); return false;"
 				onMouseOut="hidePopup('versionhelp');" >?</a></th>
-			<th>User<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'userhelp'); return false;"
+			<th><c:out value="${rlb.jsp_history_user}"/><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'userhelp'); return false;"
 				onMouseOut="hidePopup('userhelp');" >?</a></th>
-			<th>Date<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'datehelp'); return false;"
+			<th><c:out value="${rlb.jsp_history_date}"/><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'datehelp'); return false;"
 				onMouseOut="hidePopup('datehelp');" >?</a></th>
-			<th colspan="2">Changes<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'changeshelp'); return false;"
+			<th colspan="2"><c:out value="${rlb.jsp_history_changes}"/><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'changeshelp'); return false;"
 				onMouseOut="hidePopup('changeshelp');" >?</a></th>
 		  <th>
 		  	<c:choose>
 		  		<c:when test="${permissionsBean.updateAllowed}">
-		  			Revert<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'reverthelp'); return false;"
+		  			<c:out value="${rlb.jsp_history_revert}"/><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'reverthelp'); return false;"
 		  				onMouseOut="hidePopup('reverthelp');" >?</a>
 		  		</c:when>
 		  		<c:otherwise>
@@ -175,10 +154,10 @@ Page Owner Permissions Group
 		  		</c:otherwise>
 		  	</c:choose>
 		  </th>
-			<th>Changed <a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'changedhelp'); return false;"
+			<th><c:out value="${rlb.jsp_history_changed}"/> <a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'changedhelp'); return false;"
 				onMouseOut="hidePopup('changedhelp');" >?</a>
 			</th>
-			<th>Permissions <a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'permissionshelp'); return false;"
+			<th><c:out value="${rlb.jsp_history_permissions}"/><c:out value=" "/> <a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'permissionshelp'); return false;"
 				onMouseOut="hidePopup('permissionshelp');" >?</a>
 			</th>
 		</tr>
@@ -186,7 +165,7 @@ Page Owner Permissions Group
 		  <td>
 		    <jsp:element name="a">
 		      <jsp:attribute name="href"><c:out value="${historyBean.viewUrl}"/></jsp:attribute>
-		      CURRENT (<c:out value="${renderBean.rwikiObject.revision}"/>)
+		      <c:out value="${rlb.jsp_history_current}"/><c:out value=" "/> (<c:out value="${renderBean.rwikiObject.revision}"/>)
 		    </jsp:element>
 		  </td>
 		  <td>
@@ -217,7 +196,7 @@ Page Owner Permissions Group
 			<jsp:attribute name="href">
 			  <c:out value="${historyBean.diffToCurrentUrl}" />
 			</jsp:attribute>
-			To Current
+			<c:out value="${rlb.jsp_history_to_current}"/>
 		      </jsp:element>
 		    </td>
 		    <td>
@@ -226,7 +205,7 @@ Page Owner Permissions Group
 			  <jsp:attribute name="href">
 			    <c:out value="${historyBean.diffToPreviousUrl}" />
 			  </jsp:attribute>
-			  To Previous
+			  <c:out value="${rlb.jsp_history_to_previous}"/>To Previous
 			</jsp:element>
 		      </c:if>
 		    </td>
@@ -238,7 +217,7 @@ Page Owner Permissions Group
 			      <c:out value="${historyBean.revertToRevisionUrl}" />
 			    </jsp:attribute>
 			    <jsp:attribute name="onclick">
-			    	return confirm('This will cause version V.<c:out value="${historyObject.revision}" /> to become the current version.\nAre you sure you want to do this?');
+			    	return confirm('<c:out value="${rlb.jsp_history_version_msg1}"/><c:out value="${historyObject.revision}" /> <c:out value="${rlb.jsp_history_version_msg2}"/>');
 			    </jsp:attribute>
 			    Revert to this version
 			  </jsp:element>
@@ -261,8 +240,11 @@ Page Owner Permissions Group
 		  </tr>
 		</c:forEach>
 	      </table>
-	    </div>
-	  </div>
+	    </div> <!-- rwikirenderedcontent -->
+	    
+	    
+	  </div> <!-- rwiki_content -->
+	  <jsp:directive.include file="sidebar.jsp"/>
 	</div>
       </div>
       <jsp:directive.include file="footer.jsp"/>

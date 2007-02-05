@@ -32,10 +32,14 @@
     ><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
   </jsp:text>
 	<c:set var="permissionsBean" value="${requestScope.rsacMap.permissionsBean}"/>
+	<c:set var="rlb" value="${requestScope.rsacMap.resourceLoaderBean}"/>
+	
 	<c:if test="${!permissionsBean.updateAllowed}">
 	<jsp:scriptlet>
 		if ( true ) {
-			throw new uk.ac.cam.caret.sakai.rwiki.service.exception.UpdatePermissionException("You are not allowed to edit this page");
+		    uk.ac.cam.caret.sakai.rwiki.tool.bean.ResourceLoaderBean rlb = 
+		       uk.ac.cam.caret.sakai.rwiki.tool.bean.helper.ResourceLoaderHelperBean.getResourceLoaderBean();
+			throw new uk.ac.cam.caret.sakai.rwiki.service.exception.UpdatePermissionException(rlb.getString("jsp_not_allowed_edit_page"));
 		}
 	</jsp:scriptlet>
 	</c:if>
@@ -47,9 +51,9 @@
   <c:set var="editBean" value="${requestScope.rsacMap.editBean}"/>
   <c:set var="nameHelperBean" value="${requestScope.rsacMap.nameHelperBean}"/>
   <c:set var="homeBean" value="${requestScope.rsacMap.homeBean}"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="${rlb.jsp_lang}" xml:lang="${rlb.jsp_xml_lang}" >
     <head>
-      <title>Edit: <c:out value="${viewBean.localName}"/></title>
+      <title><c:out value="${rlb.jsp_edit}"/>: <c:out value="${viewBean.localName}"/></title>
       <jsp:expression>request.getAttribute("sakai.html.head")</jsp:expression>
     </head>
     <jsp:element name="body">
@@ -71,31 +75,72 @@
 									viewLinkName="View"
 									homeBean="${homeBean}"
 									viewBean="${viewBean}"
+									resourceLoaderBean="${rlb}"
 								        />
 			    <span class="rwiki_searchBox">
-			      Search:	<input type="hidden" name="action" value="${requestScope.rsacMap.searchTarget}" />
+			      <c:out value="${rlb.jsp_search}"/>:	<input type="hidden" name="action" value="${requestScope.rsacMap.searchTarget}" />
 			      <input type="hidden" name="panel" value="Main" />
 			      <input type="text" name="search" />
 			    </span>
 			  </form>
 			</div>
-			<c:set var="rwikiContentStyle"  value="rwiki_content" />
+			<c:choose>
+			<c:when test="${rightRenderBean.hasContent}" >
+				<c:set var="rwikiContentStyle"  value="withsidebar" />	
+			</c:when>
+			<c:otherwise>
+				<c:set var="rwikiContentStyle"  value="nosidebar" />    
+			</c:otherwise>
+			</c:choose>
+	 
 			<jsp:directive.include file="breadcrumb.jsp"/>
 		    <!-- Creates the right hand sidebar -->
-		    <c:if test="${rightRenderBean.hasContent}">
-		      <jsp:directive.include file="sidebar-switcher.jsp"/>
-		    </c:if>
-		    <jsp:directive.include file="sidebar.jsp"/>
+		    
+		    
+		    
+		    
 		    <!-- Main page -->
-	  <div id="${rwikiContentStyle}" >
-	  <!--
-	  The bread crumbs tell us which page we are on
-	    <div class="pageName" title="${viewBean.pageName}"><c:out value="${viewBean.localName}"/></div>
-	  -->
-        <div class="tabcontainer" >
+		    
+	<div id="rwiki_head" >
+		<div id="rwiki_tabholder">
 	        <ul class="tabs" >
-				<li id="edit" class="tabHeadOn" >        	
-		       <p class="tabhead" title="Edit" ><a href="#" onClick="selectTabs('autosaveTab','tabOn','tabOff','previewTab','tabOn','tabOff','editTab','tabOff','tabOn','autosave','tabHeadOn','tabHeadOff','preview','tabHeadOn','tabHeadOff','edit','tabHeadOff','tabHeadOn'); return false;" >Edit</a></p>
+			<li id="edit" class="tabHeadOn" >
+			   <jsp:element name="p" >
+			   	<jsp:attribute name="class" >tabhead</jsp:attribute>
+			   	<jsp:attribute name="title" ><c:out value="${rlb.jsp_edit}"/></jsp:attribute>
+		        <jsp:body>
+		       		<a href="#" onClick="selectTabs('autosaveTab','tabOn','tabOff','previewTab','tabOn','tabOff','editTab','tabOff','tabOn','autosave','tabHeadOn','tabHeadOff','preview','tabHeadOn','tabHeadOff','edit','tabHeadOff','tabHeadOn'); return false;" ><c:out value="${rlb.jsp_edit}"/></a>
+		       	</jsp:body>
+		       </jsp:element>
+		    </li>
+		    <li id="preview" class="tabHeadOff"  >
+		    	<jsp:element name="p" >
+			   		<jsp:attribute name="class" >tabhead</jsp:attribute>
+			   		<jsp:attribute name="title" ><c:out value="${rlb.jsp_preview}"/></jsp:attribute>
+		        	<jsp:body>
+				   		<a href="#" onClick="selectTabs('autosaveTab','tabOn','tabOff','previewTab','tabOff','tabOn','editTab','tabOn','tabOff','autosave','tabHeadOn','tabHeadOff','preview','tabHeadOff','tabHeadOn','edit','tabHeadOn','tabHeadOff'); previewContent('content','previewContent', 'pageVersion', 'realm','pageName','?' ); return false;" ><c:out value="${rlb.jsp_preview}"/></a>
+				    </jsp:body>
+				</jsp:element>
+		    </li>
+		    <li id="autosave" class="autoSaveOffClass" >
+		    	<jsp:element name="p" >
+			   		<jsp:attribute name="class" >tabhead</jsp:attribute>
+			   		<jsp:attribute name="title" ><c:out value="${rlb.jsp_recovered_content}"/></jsp:attribute>
+		        	<jsp:body>
+						<a href="#" onClick="selectTabs('autosaveTab','tabOff','tabOn','previewTab','tabOn','tabOff','editTab','tabOn','tabOff','autosave','tabHeadOff','tabHeadOn','preview','tabHeadOn','tabHeadOff','edit','tabHeadOn','tabHeadOff'); return false;" ><c:out value="${rlb.jsp_recovered_content}"/></a>
+				   </jsp:body>
+				</jsp:element>
+		    </li>
+		    </ul>
+		</div>
+				    
+		<jsp:directive.include file="sidebar-switcher.jsp"/>		     
+		 
+	 </div>
+		       
+		       
+	  <div id="rwiki_content" class="${rwikiContentStyle}" >
+		       
 		       <div id="editTab" class="tabOn" >
 			       <form action="?#" method="post" id="editForm"  >
 				      <c:if test="${fn:length(errorBean.errors) gt 0}">
@@ -112,7 +157,7 @@
 						<c:if test="${editBean.saveType eq 'revert'}">
 						    <c:set target="${editBean}" property="previousContent" value="${currentRWikiObject.history[editBean.previousRevision].content}"/>
 						</c:if>
-						<p class="longtext"><label for="submittedContent">Submitted Content</label>
+						<p class="longtext"><label for="submittedContent"><c:out value="${rlb.jsp_submitted_content}"/></label>
 						  <jsp:element name="input" id="submittedContent" >
 						    <jsp:attribute name="type">hidden</jsp:attribute>
 						    <jsp:attribute name="name">submittedContent</jsp:attribute>
@@ -124,7 +169,7 @@
 						</pre>
 				      </c:if>
 				      <c:if test="${editBean.saveType eq 'preview' and nameHelperBean.submittedContent != null}">
-						<p class="longtext"><label for="submittedContent">Submitted Content prior to Preview</label>
+						<p class="longtext"><label for="submittedContent"><c:out value="${rlb.jsp_submitted_prior_content}"/></label>
 						  <jsp:element name="input">
 						    <jsp:attribute name="type">hidden</jsp:attribute>
 						    <jsp:attribute name="name">submittedContent</jsp:attribute>
@@ -136,7 +181,7 @@
 						</pre>
 				      </c:if>
 				      <c:if test="${fn:startsWith(editBean.saveType, 'attach') and nameHelperBean.submittedContent != null}">
-						<p class="longtext"><label for="submittedContent">Submitted Content prior to Attach</label>
+						<p class="longtext"><label for="submittedContent"><c:out value="${rlb.jsp_submitted_prior_content_attach}"/></label>
 						  <jsp:element name="input">
 						    <jsp:attribute name="type">hidden</jsp:attribute>
 						    <jsp:attribute name="name">submittedContent</jsp:attribute>
@@ -148,7 +193,7 @@
 						</pre>
 				      </c:if>
 			      
-				      <div class="longtext">
+				      <div>
 						<div id="textarea_outer_sizing_divx">
 						  <div id="textarea_inner_sizing_divx">
 						    <jsp:directive.include file="edittoolbar.jsp"/>
@@ -185,23 +230,37 @@
 				      <div class="rwiki_editControl" id="editControl">
 						<p class="act">
 					  		<c:if test="${requestScope.rsacMap.withnotification}" >
-					  			<input type="checkbox" name="smallchange" value="smallchange" /> Minor Change <br />
+					  			<input type="checkbox" name="smallchange" value="smallchange" /> <c:out value="${rlb.jsp_minor_change}"/> <br />
 					  		</c:if>
 					 		<input id="saveButton" type="submit" name="save" value="Save"  /><c:out value=" "/>
 					  		<c:if test="${((editBean.saveType eq 'preview' or fn:startsWith(editBean.saveType, 'attach')) and nameHelperBean.submittedContent != null) or (editBean.saveType ne null and editBean.saveType ne 'preview' and not(fn:startsWith(editBean.saveType, 'attach')))}">
-					    		<input id="saveButton" type="submit" name="save" value="Overwrite"/><c:out value=" "/>
+					    		<jsp:element name="input">
+									<jsp:attribute name="id">saveButton</jsp:attribute> 
+									<jsp:attribute name="type">submit</jsp:attribute> 
+									<jsp:attribute name="name">save</jsp:attribute>
+									<jsp:attribute name="value"><c:out value="${rlb.jsp_button_overwrite}" /></jsp:attribute>
+								</jsp:element>
+					    		<c:out value=" "/>
 					  		</c:if>
 					  		<!--
-					  		<input type="submit" name="save" value="Preview"/><c:out value=" "/>
+					    		<jsp:element name="input">
+									<jsp:attribute name="type">submit</jsp:attribute> 
+									<jsp:attribute name="name">save</jsp:attribute>
+									<jsp:attribute name="value"><c:out value="${rlb.jsp_button_preview}" /></jsp:attribute>
+								</jsp:element>
+					  		    <c:out value=" "/>
 					  		-->
-					  		<input type="submit" name="save" value="Cancel"/>
+	    					<jsp:element name="input">
+								<jsp:attribute name="type">submit</jsp:attribute> 
+								<jsp:attribute name="name">save</jsp:attribute>
+								<jsp:attribute name="value"><c:out value="${rlb.jsp_button_cancel}" /></jsp:attribute>
+							</jsp:element>
 						</p>
 				      </div>
 			    	</form>
-		    	</div>
-		    </li>
-		    <li id="preview" class="tabHeadOff"  >
-				<p class="tabhead" title="Preview"><a href="#" onClick="selectTabs('autosaveTab','tabOn','tabOff','previewTab','tabOff','tabOn','editTab','tabOn','tabOff','autosave','tabHeadOn','tabHeadOff','preview','tabHeadOff','tabHeadOn','edit','tabHeadOn','tabHeadOff'); previewContent('content','previewContent', 'pageVersion', 'realm','pageName','?' ); return false;" >Preview</a></p>
+		    	</div> <!-- end of edit tab -->
+		    	
+		    	
 		        <div id="previewTab" class="tabOff" >	        
 					<div class="rwikiRenderedContent" id="previewContent" >
 			      		<c:if test="${editBean.saveType eq 'preview'}">
@@ -211,34 +270,46 @@
 				  			<c:set target="${currentRWikiObject}" property="content" value="${currentContent}"/>	    
 			        	</c:if>
 					</div>
-		        </div>      
-		    </li>
-		    <li id="autosave" class="autoSaveOffClass" >
-		    
-				<p class="tabhead" title="Recovered Content"><a href="#" onClick="selectTabs('autosaveTab','tabOff','tabOn','previewTab','tabOn','tabOff','editTab','tabOn','tabOff','autosave','tabHeadOff','tabHeadOn','preview','tabHeadOn','tabHeadOff','edit','tabHeadOn','tabHeadOff'); return false;" >Recovered Content</a></p>
+		        </div> <!-- end of previewTab -->
+		        
+		              
 				<div id="autosaveTab" class="tabOff" >
 		    	   	<p class="shorttext">
-		   				<input type="button" name="restoreButton" id="restoreButton" value="Restore Saved Edit"
-		   				onClick="restoreSavedContent('pageVersion', 'content', 'restoreContent','restoreVersion','restoreDate','autosave','autoSaveOffClass' ); selectTabs('autosaveTab','tabOn','tabOff','previewTab','tabOn','tabOff','editTab','tabOff','tabOn','autosave','tabHeadOn','tabHeadOff','preview','tabHeadOn','tabHeadOff','edit','tabHeadOff','tabHeadOn'); return false;"
-		   				/>
+		    			<jsp:element name="input" >
+			   				<jsp:attribute name="type" >button</jsp:attribute>
+			   				<jsp:attribute name="id" >restoreButton</jsp:attribute>
+			   				<jsp:attribute name="name" >restoreButton</jsp:attribute>
+			   				<jsp:attribute name="title" ><c:out value="${rlb.jsp_button_restore_saved_edit}"/></jsp:attribute>
+			   				<jsp:attribute name="onClick" >restoreSavedContent('pageVersion', 'content', 'restoreContent','restoreVersion','restoreDate','autosave','autoSaveOffClass' ); selectTabs('autosaveTab','tabOn','tabOff','previewTab','tabOn','tabOff','editTab','tabOff','tabOn','autosave','tabHeadOn','tabHeadOff','preview','tabHeadOn','tabHeadOff','edit','tabHeadOff','tabHeadOn'); return false;</jsp:attribute>
+						</jsp:element>	
 		   			</p>
 		    	   	<p class="shorttext">
-		   				<label for="restoreVersion" >Auto Save Version</label>
-		   				<input type="input" name="restoreVersion" id="restoreVersion" value="none"/>
+		   				<label for="restoreVersion" ><c:out value="${rlb.jsp_auto_save_version}"/></label>
+		   				<jsp:element name="input" >
+			   				<jsp:attribute name="id" >restoreVersion</jsp:attribute>
+			   				<jsp:attribute name="name" >restoreVersion</jsp:attribute>
+			   				<jsp:attribute name="value" ><c:out value="${rlb.jsp_none}"/></jsp:attribute>
+						</jsp:element>	
 		   			</p>
 		   			<p class="shorttext">
-		   				<label for="restoreDate" >Auto Save Date</label>
-		   				<input type="input" name="restoreDate" id="restoreDate" value="none"/>
+		   				<label for="restoreDate" ><c:out value="${rlb.jsp_auto_save_date}"/></label>
+		   				<jsp:element name="input" >
+			   				<jsp:attribute name="id" >restoreDate</jsp:attribute>
+			   				<jsp:attribute name="name" >restoreDate</jsp:attribute>
+			   				<jsp:attribute name="value" ><c:out value="${rlb.jsp_none}"/></jsp:attribute>
+						</jsp:element>	
 		   			</p>
-		   			<div class="longtext">
-			    		<textarea cols="60" rows="25" name="restoreContent" id="restoreContent"  readonly="readonly" >no restored content
+		   			<div>
+			    		<textarea cols="60" rows="25" name="restoreContent" id="restoreContent"  readonly="readonly" ><c:out value="${rlb.jsp_no_restored_content}"/>
 			    		</textarea>
 					</div>
-				</div>
-			</li>
-		   </ul>
-	   </div>
-	  </div>
+				</div> <!-- endof autosave tab -->
+				
+				
+	  </div> <!-- end of content div -->
+  		
+  	  <jsp:directive.include file="sidebar.jsp"/>
+	  
 	</div>
       </div>
       <jsp:directive.include file="footer.jsp"/>

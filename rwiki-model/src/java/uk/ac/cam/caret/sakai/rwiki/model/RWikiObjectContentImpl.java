@@ -22,7 +22,6 @@ package uk.ac.cam.caret.sakai.rwiki.model;
 
 import uk.ac.cam.caret.sakai.rwiki.service.api.model.RWikiObjectContent;
 
-// FIXME: Component
 
 public class RWikiObjectContentImpl implements RWikiObjectContent
 {
@@ -55,14 +54,15 @@ public class RWikiObjectContentImpl implements RWikiObjectContent
 
 	public String getContent()
 	{
+		if ( content == null ) content = "";
 		return content;
 	}
 
 	public void setContent(String content)
 	{
-		this.content= content.replaceAll("[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f\\ud800-\\udfff\\uffff\\ufffe]", "");
 		// SAK-2470
-		if (this.content == null) this.content = "";
+		if (content == null) content = "";
+		this.content= content.replaceAll("[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f\\ud800-\\udfff\\uffff\\ufffe]", "");
 	}
 
 }

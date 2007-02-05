@@ -39,9 +39,11 @@
   <c:set var="reviewRenderBean" value="${requestScope.rsacMap.reviewRenderBean}"/>
   <c:set var="currentRWikiObject" value="${requestScope.rsacMap.currentRWikiObject}"/>
   <c:set var="homeBean" value="${requestScope.rsacMap.homeBean}"/>
-  <html xmlns="http://www.w3.org/1999/xhtml">
+  <c:set var="rlb" value="${requestScope.rsacMap.resourceLoaderBean}"/>
+  
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="${rlb.jsp_lang}" xml:lang="${rlb.jsp_xml_lang}" >
     <head>
-      <title>Review: <c:out value="${historyBean.localName}"/> Version: <c:out value="${interestedRevision}"/></title>
+      <title><c:out value="${rlb.jsp_review}"/>: <c:out value="${historyBean.localName}"/> <c:out value="${rlb.jsp_version}"/>: <c:out value="${interestedRevision}"/></title>
       <jsp:expression>request.getAttribute("sakai.html.head")</jsp:expression>
     </head>
     <jsp:element name="body">
@@ -62,33 +64,46 @@
 							viewLinkName="View Current"
 							homeBean="${homeBean}"
 							viewBean="${historyBean}"
+							resourceLoaderBean="${rlb}"
 						        />
 	    <span class="rwiki_searchBox">
-	    Search:	<input type="hidden" name="action" value="${requestScope.rsacMap.searchTarget}" />
+	    <c:out value="${rlb.jsp_search}"/>:	<input type="hidden" name="action" value="${requestScope.rsacMap.searchTarget}" />
 	    <input type="hidden" name="panel" value="Main" />
 	    <input type="text" name="search" />
 	    </span>
 	  </form>
 	</div>
-		<c:set var="rwikiContentStyle"  value="rwiki_content" />
+	<c:choose>
+	 <c:when test="${rightRenderBean.hasContent}" >
+		<c:set var="rwikiContentStyle"  value="withsidebar" />	
+	 </c:when>
+	 <c:otherwise>
+		<c:set var="rwikiContentStyle"  value="nosidebar" />    
+	 </c:otherwise>
+	</c:choose>
+	
 		
 	  <jsp:directive.include file="breadcrumb.jsp"/>
-	  <!-- Creates the right hand sidebar -->
-	  <jsp:directive.include file="sidebar.jsp"/>
+	  <div id="rwiki_head" >				    
+		<jsp:directive.include file="sidebar-switcher.jsp"/>		     
+	  </div>
+	  
 	  <!-- Main page -->
-		<div id="${rwikiContentStyle}" >
-			<h3>
-	      <c:out value="${historyBean.localName}"/> Version: <c:out value="${interestedRevision}"/>
+	  <div id="rwiki_content" class="${rwikiContentStyle}" >
+		<h3>
+	      <c:out value="${historyBean.localName}"/> <c:out value="${rlb.jsp_version}"/>Version: <c:out value="${interestedRevision}"/>
 	    </h3>
 
 	    <p class="alert">
-	      You are viewing version <c:out value="${interestedRevision}"/>
-	      of this page, updated <fmt:formatDate type="both" value="${reviewRenderBean.rwikiObject.version}"/>. The current 
-	      version is 
+	      <c:out value="${rlb.jsp_review_alert1}"/>You are viewing version <c:out value="${interestedRevision}"/>
+	      <c:out value="${rlb.jsp_review_alert2}"/>of this page, updated <fmt:formatDate type="both" value="${reviewRenderBean.rwikiObject.version}"/>. 
+	      <c:out value="${rlb.jsp_review_alert3}"/>The current version is 
 	      <jsp:element name="a">
 		<jsp:attribute name="href"><c:out value="${historyBean.viewUrl}"/></jsp:attribute>
-		version <c:out value="${currentRWikiObject.revision}"/> 
-	      </jsp:element>, updated 
+			<jsp:body>
+				<c:out value="${rlb.jsp_review_version}"/>version <c:out value="${currentRWikiObject.revision}"/> 
+			</jsp:body>
+	      </jsp:element>, <c:out value="${rlb.jsp_review_updated}"/>updated 
 	      <fmt:formatDate type="both" value="${currentRWikiObject.version}"/>
 	    </p>
 	    <div class="rwikiRenderBody">
@@ -97,6 +112,8 @@
 	      </div>
 	    </div>
 	  </div>
+	  <!-- Creates the right hand sidebar -->
+	  <jsp:directive.include file="sidebar.jsp"/>
 	</div>
       </div>
       <jsp:directive.include file="footer.jsp"/>

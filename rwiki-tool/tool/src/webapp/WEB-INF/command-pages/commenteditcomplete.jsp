@@ -33,8 +33,10 @@
   <jsp:text>
     <![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
   </jsp:text>
+  <c:set var="rlb" value="${requestScope.rsacMap.resourceLoaderBean}"/>
+  
   <div class="rwiki_help_popup" >
-  Comment Saved
-  <a href="#" onclick="toggleComments(null); toggleComments(null); return false;" >Ok</a>
+  <c:out value="${rlb.jsp_comment_saved}"/>
+  <a href="#" onclick="toggleComments(null); toggleComments(null); return false;" ><c:out value="${rlb.jsp_button_ok}"/></a>
   </div>
 </jsp:root>

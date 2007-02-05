@@ -36,9 +36,11 @@
   <c:set var="realmBean" value="${requestScope.rsacMap.realmBean}"/>
   <c:set var="realmCollectionBean" value="${requestScope.rsacMap.authZGroupCollectionBean}"/>
   <c:set var="errorBean" value="${requestScope.rsacMap.errorBean}"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <c:set var="rlb" value="${requestScope.rsacMap.resourceLoaderBean}"/>
+  
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="${rlb.jsp_lang}" xml:lang="${rlb.jsp_xml_lang}" >
     <head>
-      <title>Edit Section: <c:out value="${realmEditBean.localSpace}" /></title>
+      <title><c:out value="${rlb.jsp_edit_section}"/>: <c:out value="${realmEditBean.localSpace}" /></title>
       <jsp:expression>request.getAttribute("sakai.html.head")</jsp:expression>
     </head>
     <jsp:element name="body">
@@ -46,12 +48,11 @@
       <jsp:directive.include file="header.jsp"/>
       <div id="rwiki_container">
 	<div class="portletBody">
-	  <c:set var="rwikiContentStyle"  value="rwiki_content" />
 
 	  <!-- Main page -->
-	  <div id="${rwikiContentStyle}" >
+	  <div id="rwiki_content" class="nosidebar" >
 
-	    <h3>Edit ACL's Controlling Page Permissions: <c:out value="${realmBean.pageName}" /></h3>
+	    <h3><c:out value="${rlb.jsp_edit_acl_title}"/>: <c:out value="${realmBean.pageName}" /></h3>
 	    <c:if test="${fn:length(errorBean.errors) gt 0}">
 	      <!-- XXX This is hideous -->
 	      <p class="validation" style="clear: none;">
@@ -65,8 +66,8 @@
 	      <div class="rwikirenderedContent">
 		  <table class="rwiki_info" cellspacing="0">
 		    <tr id="realms_header">
-		      <!--<th>Path</th>-->
-		      <th>Realm</th>
+		      <!--<th><c:out value="${rlb.jsp_path}"/></th>-->
+		      <th><c:out value="${rlb.jsp_realm}"/></th>
 		    </tr>
 		<c:forEach var="realm" items="${realmCollectionBean.realms}">
 		  <!--<td><c:out value="${realm.path}"/></td>-->
@@ -77,13 +78,13 @@
 		    <td>
 		      <table class="rwiki_rolestable">
 			<tr id="permissions">
-			  <th>Roles</th>
-			  <td>Create</td>
-			  <td>Read</td>
-			  <td>Update</td>
-			  <!--<td>Delete</td>-->
-			  <td>Admin</td>
-			  <td>Super Admin</td>
+			  <th><c:out value="${rlb.jsp_permission_roles}"/></th>
+			  <td><c:out value="${rlb.jsp_permission_create}"/></td>
+			  <td><c:out value="${rlb.jsp_permission_read}"/></td>
+			  <td><c:out value="${rlb.jsp_permission_edit}"/></td>
+			  <!--<td><c:out value="${rlb.jsp_permission_delete}"/></td>-->
+			  <td><c:out value="${rlb.jsp_permission_admin}"/></td>
+			  <td><c:out value="${rlb.jsp_permission_super_admin}"/></td>
 			</tr>
 			<c:forEach var="role" items="${realm.roles}">
 			  <tr class="permissionsGroupRole">
@@ -163,8 +164,8 @@
 			  <input type="hidden" name="pageName" value="${realmEditBean.pageName}" />
 			  <input type="hidden" name="panel" value="Main"/>
 			  <input type="hidden" name="action" value="editRealmMany"/>
-			  <input type="submit" name="save" value="Save"/><c:out value=" "/>
-			  <input type="submit" name="save" value="Cancel"/>
+			  <input type="submit" name="save" value="${rlb.jsp_button_save}"/><c:out value=" "/>
+			  <input type="submit" name="save" value="${rlb.jsp_button_cancel}"/>
 			  <input type="hidden" name="realm" value="${realmEditBean.localSpace}"/>
 			</p>
 		      </div>

@@ -46,7 +46,6 @@ import uk.ac.cam.caret.sakai.rwiki.utils.TimeLogger;
 /**
  * @author andrew
  */
-// FIXME: Tool
 public class RWikiServlet extends HttpServlet
 {
 	private static Log log = LogFactory.getLog(RWikiServlet.class);
@@ -220,9 +219,11 @@ public class RWikiServlet extends HttpServlet
 		ToolSession ts = SessionManager.getCurrentToolSession();
 		if (isPageToolDefault(request))
 		{
-			log.debug("Incomming URL is " + request.getRequestURL().toString()
-					+ "?" + request.getQueryString());
-			log.debug("Restore " + ts.getAttribute(SAVED_REQUEST_URL));
+			if (log.isDebugEnabled())
+			{
+				log.debug("Incomming URL is " + request.getRequestURL().toString() + "?" + request.getQueryString());
+				log.debug("Restore " + ts.getAttribute(SAVED_REQUEST_URL));
+			}
 			return (String) ts.getAttribute(SAVED_REQUEST_URL);
 		}
 		if (isPageRestorable(request))
@@ -230,7 +231,10 @@ public class RWikiServlet extends HttpServlet
 			ts.setAttribute(SAVED_REQUEST_URL, request.getRequestURL()
 					.toString()
 					+ "?" + request.getQueryString());
-			log.debug("Saved " + ts.getAttribute(SAVED_REQUEST_URL));
+			if (log.isDebugEnabled())
+			{
+				log.debug("Saved " + ts.getAttribute(SAVED_REQUEST_URL));
+			}
 		}
 		return null;
 	}
@@ -250,16 +254,17 @@ public class RWikiServlet extends HttpServlet
 		if (RequestHelper.TITLE_PANEL.equals(request
 				.getParameter(RequestHelper.PANEL))) return false;
 
-		if (!request.getRequestURL().toString().equals(
-				request.getContextPath() + request.getServletPath()))
-		{
-			return false;
-		}
 
 		String action = request.getParameter(RequestHelper.ACTION);
-		if (action != null && action.length() > 0) return false;
+		if (action != null && action.length() > 0) {
+			return false;
+		}
 		String pageName = request.getParameter(ViewBean.PAGE_NAME_PARAM);
-		return (pageName == null || pageName.trim().length() == 0);
+		if  (pageName == null || pageName.trim().length() == 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
