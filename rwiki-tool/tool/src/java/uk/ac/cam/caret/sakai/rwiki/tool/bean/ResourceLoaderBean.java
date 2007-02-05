@@ -66,7 +66,7 @@ public class ResourceLoaderBean implements Map
 		return rl.getString(name);
 	}
 
-	public String getFormattedMessage(String key, Object[] args)
+	public Object getFormattedMessage(Object key, Object[] args)
 	{
 		return rl.getFormattedMessage(key, args);
 	}
