@@ -253,6 +253,9 @@ public class RWikiServlet extends HttpServlet
 	{
 		if (RequestHelper.TITLE_PANEL.equals(request
 				.getParameter(RequestHelper.PANEL))) return false;
+                if ( request.getPathInfo() != null && request.getPathInfo().startsWith("/helper/") ) {
+                       return false;
+                }
 
 
 		String action = request.getParameter(RequestHelper.ACTION);

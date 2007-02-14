@@ -229,7 +229,10 @@ a:hover.editToolBar,
 .editToolBarContainer {
     background-color: #efefde;
     height:1.6em;
-    padding:2px;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
     border:1px solid #ccc;
 }
 
@@ -239,6 +242,46 @@ a:hover.editToolBar,
    font-size:.9em;
    border: 1px solid #efeffe;
 }
+
+a.previewToolBar, 
+a:visited.previewToolBar     {
+    border: 1px solid #efefde;	
+    cursor: default;   
+
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+         
+}
+a:hover.previewToolBar, 
+    a:active.previewToolBar     {
+	border: 1px solid #316ac5;	
+    cursor: default;    
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+        
+   
+}
+.previewToolBarContainer {
+    background-color: #efefde;
+    height:1.6em;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    border:1px solid #ccc;
+}
+
+
+.previewToolBarContainer select {
+    zoom:1;
+   font-size:.9em;
+   border: 1px solid #efeffe;
+}
+
 
 
 a.anchorpoint {
@@ -278,14 +321,6 @@ a.anchorpoint {
 
 
 /* this causes the content area to expand to 100% */
-#rwiki_content,
-.nosidebar#rwiki_content {
-  float: none;
-  width:97%;
-  padding: 5px 5px 2px 2px;
-  overflow: hidden;  
-}
-
 .withsidebar#rwiki_content {
   float: left;
   width:75%;
@@ -293,9 +328,16 @@ a.anchorpoint {
   padding: 5px 10px 2px 2px;
 }
 
+.nosidebar#rwiki_content {
+  float: none;
+  width:97%;
+  padding: 5px 5px 2px 2px;
+  overflow: hidden;  
+}
 
-#rwiki_content textarea,
-.nosiderbar#rwiki_content{
+
+
+.nosidebar#rwiki_content textarea {
   border: 1px solid #cccccc;
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   width: 99%;
