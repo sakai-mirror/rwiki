@@ -12,7 +12,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/rwiki-model"/>
 	<classpathentry kind="var" path="MAVEN_REPO/org.springframework/jars/spring-1.2.8.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/rwiki-util"/>
-	<classpathentry kind="var" path="MAVEN_REPO/fop/jars/fop-20060405.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/fop/jars/fop-20070301.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/org.hibernate/jars/hibernate-3.1.3.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/ehcache/jars/ehcache-1.1.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/org.springframework/jars/spring-mock-1.2.6.jar"/>
