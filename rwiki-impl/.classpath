@@ -54,5 +54,7 @@
 	<classpathentry kind="var" path="MAVEN_REPO/xalan/jars/xalan-2.6.0.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/xerces/jars/xmlParserAPIs-2.6.2.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/xerces/jars/xercesImpl-2.6.2.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/search-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/search-util"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
