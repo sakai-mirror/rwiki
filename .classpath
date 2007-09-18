@@ -22,7 +22,7 @@
   <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar"/>
   <classpathentry sourcepath="JAVA_DIR/spring-framework-1.1.5/src" kind="var" path="M2_REPO/org/springframework/spring/2.0.6/spring-2.0.6.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate/3.1.3/hibernate-3.1.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate/3.2.5.ga/hibernate-3.2.5.ga.jar"/>
   <classpathentry kind="var" path="M2_REPO/ehcache/ehcache/1.1/ehcache-1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/easymock/easymock/1.1/easymock-1.1.jar"/>
   <classpathentry kind="var" path="JUNIT_HOME/junit.jar"/>
