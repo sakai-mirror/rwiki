@@ -50,12 +50,12 @@
   <classpathentry kind="var" path="M2_REPO/batik/batik-bridge/1.6/batik-bridge-1.6.jar"/>
   <classpathentry kind="var" path="M2_REPO/batik/batik-awt-util/1.6/batik-awt-util-1.6.jar"/>
   <classpathentry combineaccessrules="false" kind="src" path="/test-harness"/>
-  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/sakai-legacy-util-M2.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/sakai-legacy-service-M2.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/sakai-legacy-component-M2-jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/sakai-util-xml-M2.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/sakai-util-text-M2.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/sakai-util-java-M2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/sakai-legacy-util-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/sakai-legacy-service-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/sakai-legacy-component-SNAPSHOT-jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/sakai-util-xml-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/sakai-util-text-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/sakai-util-java-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/xerces/xmlParserAPIs/2.6.2/xmlParserAPIs-2.6.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/fop/fop/0.20.5/fop-0.20.5.jar"/>
   <classpathentry kind="output" path="bin"/>
