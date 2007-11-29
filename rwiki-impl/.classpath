@@ -37,5 +37,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/search-util"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/avalon/framework/avalon-framework-api/4.3.1/avalon-framework-api-4.3.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/avalon/framework/avalon-framework-impl/4.3.1/avalon-framework-impl-4.3.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/alias-api"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
