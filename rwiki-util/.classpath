@@ -17,5 +17,8 @@
   <classpathentry combineaccessrules="false" kind="src" path="/component-api"/>
   <classpathentry kind="var" path="M2_REPO/xalan/xalan/2.6.0/xalan-2.6.0.jar"/>
   <classpathentry combineaccessrules="false" kind="src" path="/rwiki-api"/>
+  <classpathentry combineaccessrules="false" kind="src" path="/alias-api"/>
+  <classpathentry combineaccessrules="false" kind="src" path="/entity-api"/>
+  <classpathentry combineaccessrules="false" kind="src" path="/site-api"/>
   <classpathentry kind="output" path="bin"/>
 </classpath>
