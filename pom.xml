@@ -4,7 +4,7 @@
   <parent>
     <artifactId>base</artifactId>
     <groupId>org.sakaiproject</groupId>
-    <version>2.6.0RC1-SNAPSHOT</version>
+    <version>3.0.0-milestone01</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>org.sakaiproject</groupId>
@@ -34,43 +34,43 @@
       <dependency>
         <groupId>org.sakaiproject</groupId>
         <artifactId>sakai-radeox</artifactId>
-        <version>2.6.0RC1-SNAPSHOT</version>
+        <version>3.0.0-milestone01</version>
         <type>jar</type>
       </dependency>
       <dependency>
         <groupId>org.sakaiproject</groupId>
         <artifactId>sakai-rwiki-model</artifactId>
-        <version>2.6.0RC1-SNAPSHOT</version>
+        <version>3.0.0-milestone01</version>
         <type>jar</type>
       </dependency>
       <dependency>
         <groupId>org.sakaiproject</groupId>
         <artifactId>sakai-rwiki-util</artifactId>
-        <version>2.6.0RC1-SNAPSHOT</version>
+        <version>3.0.0-milestone01</version>
         <type>jar</type>
       </dependency>
       <dependency>
         <groupId>org.sakaiproject</groupId>
         <artifactId>sakai-rwiki-diff</artifactId>
-        <version>2.6.0RC1-SNAPSHOT</version>
+        <version>3.0.0-milestone01</version>
         <type>jar</type>
       </dependency>
       <dependency>
         <groupId>org.sakaiproject</groupId>
         <artifactId>sakai-search-util</artifactId>
-        <version>2.6.0RC1-SNAPSHOT</version>
+        <version>3.0.0-milestone01</version>
         <type>jar</type>
       </dependency>
       <dependency>
         <groupId>org.sakaiproject</groupId>
         <artifactId>sakai-rwiki-impl</artifactId>
-        <version>2.6.0RC1-SNAPSHOT</version>
+        <version>3.0.0-milestone01</version>
         <type>jar</type>
       </dependency>
       <dependency>
         <groupId>org.sakaiproject</groupId>
         <artifactId>sakai-test-harness</artifactId>
-        <version>2.6.0RC1-SNAPSHOT</version>
+        <version>3.0.0-milestone01</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
