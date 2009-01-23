@@ -18,11 +18,11 @@
   <classpathentry kind="var" path="M2_REPO/batik/batik-transcoder/1.6-1/batik-transcoder-1.6-1.jar"/>
   <classpathentry kind="var" path="M2_REPO/batik/batik-util/1.6-1/batik-util-1.6-1.jar"/>
   <classpathentry kind="var" path="M2_REPO/batik/batik-xml/1.6-1/batik-xml-1.6-1.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-io/commons-io/1.2/commons-io-1.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-io/commons-io/1.4/commons-io-1.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/fop/fop/20070301/fop-20070301.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/kernel/sakai-kernel-util/1.0RC2-SNAPSHOT/sakai-kernel-util-1.0RC2-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/kernel/sakai-kernel-util/1.0/sakai-kernel-util-1.0.jar"/>
   <classpathentry kind="src" path="/sakai-radeox"/>
   <classpathentry kind="src" path="/sakai-rwiki-impl"/>
   <classpathentry kind="src" path="/sakai-rwiki-util"/>
