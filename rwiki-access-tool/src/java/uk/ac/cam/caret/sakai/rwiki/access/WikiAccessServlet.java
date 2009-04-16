@@ -1,6 +1,6 @@
 /**********************************************************************************
- * $URL$ 
- * $Id$
+ * $URL: https://source.sakaiproject.org/svn/rwiki/trunk/rwiki-access-tool/src/java/uk/ac/cam/caret/sakai/rwiki/access/WikiAccessServlet.java $ 
+ * $Id: WikiAccessServlet.java 51318 2008-08-24 05:28:47Z csev@umich.edu $
  ***********************************************************************************
  *
  * Copyright (c) 2006, 2008 Sakai Foundation
