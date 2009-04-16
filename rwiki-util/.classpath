@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+  <classpathentry kind="src" path="util/src/java"/>
+  <classpathentry kind="src" path="util/src/test"/>
+  <classpathentry kind="src" path="jrcs/src/java"/>
+  <classpathentry kind="src" path="jrcs/src/test"/>
+  <classpathentry kind="src" path="radeox/src/java"/>
+  <classpathentry kind="src" path="radeox/src/bundle"/>
+  <classpathentry kind="src" path="util/src/bundle"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="JUNIT_HOME/junit.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar"/>
+  <classpathentry combineaccessrules="false" kind="src" path="/user-api"/>
+  <classpathentry kind="src" path="util/src/testBundle"/>
+  <classpathentry combineaccessrules="false" kind="src" path="/util-util"/>
+  <classpathentry combineaccessrules="false" kind="src" path="/util-api"/>
+  <classpathentry combineaccessrules="false" kind="src" path="/component-api"/>
+  <classpathentry kind="var" path="M2_REPO/xalan/xalan/2.6.0/xalan-2.6.0.jar"/>
+  <classpathentry combineaccessrules="false" kind="src" path="/rwiki-api"/>
+  <classpathentry kind="output" path="bin"/>
+</classpath>
