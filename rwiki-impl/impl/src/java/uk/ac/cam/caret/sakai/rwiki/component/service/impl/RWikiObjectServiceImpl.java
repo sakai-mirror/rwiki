@@ -677,10 +677,14 @@ public class RWikiObjectServiceImpl implements RWikiObjectService
 		while (i.hasNext())
 		{
 			next = (String) i.next();
-			if (sb.length()+2+next.length() > maxReferencesStringSize) { // SAK-12115
+			int referencedLength = sb.length()+4+next.length();
+			if (referencedLength >= maxReferencesStringSize) { // SAK-12115
 				break;
 			}
-			sb.append("::").append(next); //$NON-NLS-1$
+			else
+			{
+				sb.append("::").append(next); //$NON-NLS-1$
+			}
 		}
 		sb.append("::"); //$NON-NLS-1$
 		return sb;
