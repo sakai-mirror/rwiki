@@ -1,0 +1,13 @@
+<projectDescription>
+  <name>sakai-rwiki-diff</name>
+  <comment>This project creates the  diff library used by RWiki</comment>
+  <projects/>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>
