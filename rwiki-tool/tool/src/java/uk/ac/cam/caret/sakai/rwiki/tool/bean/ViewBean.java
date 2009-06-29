@@ -556,6 +556,11 @@ public class ViewBean
 	{
 		return getPageUrl(pageName, WikiPageAction.EDITCOMMENT_ACTION.getName());
 	}
+	
+	public String getDeleteCommentURL()
+	{
+		return getPageUrl(pageName, WikiPageAction.DELETECOMMENT_ACTION.getName());
+	}
 
 	public String getListCommentsURL()
 	{

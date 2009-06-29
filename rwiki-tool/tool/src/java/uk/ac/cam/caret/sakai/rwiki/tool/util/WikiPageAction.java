@@ -77,6 +77,9 @@ public class WikiPageAction
 
 	public static final WikiPageAction EDITCOMMENT_ACTION = new WikiPageAction(
 			"commentedit");
+	
+	public static final WikiPageAction DELETECOMMENT_ACTION = new WikiPageAction(
+			"commentdelete");
 
 	public static final WikiPageAction LISTCOMMENT_ACTION = new WikiPageAction(
 			"commentslist");

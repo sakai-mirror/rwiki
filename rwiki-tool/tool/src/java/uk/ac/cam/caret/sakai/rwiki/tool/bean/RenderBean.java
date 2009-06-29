@@ -449,6 +449,13 @@ public class RenderBean
 				.getName(), rwo.getRealm()));
 		return vb.getEditCommentURL();
 	}
+	
+	public String getDeleteCommentURL()
+	{
+		ViewBean vb = new ViewBean(rwo.getName(), NameHelper.localizeSpace(rwo
+				.getName(), rwo.getRealm()));
+		return vb.getDeleteCommentURL();
+	}
 
 	public String getCommentLevel()
 	{
