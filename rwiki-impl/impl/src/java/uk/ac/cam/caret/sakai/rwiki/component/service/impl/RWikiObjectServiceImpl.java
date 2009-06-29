@@ -397,6 +397,109 @@ public class RWikiObjectServiceImpl implements RWikiObjectService
 		String user = sessionManager.getCurrentSessionUserId();
 		update(name, user, realm, version, content, permissions);
 	}
+	
+	/**
+	 * This will update an object setting the modified by and owner using the
+	 * supplied user and using the <b>current user</b> for permissions. The
+	 * reason this is private and is in the service at all, is that we need to
+	 * be able to move rwiki objects about on behalf of annother user
+	 * 
+	 * @param name
+	 * @param user
+	 *        The user to set owner and modified by, normally the current user
+	 * @param realm
+	 * @param version
+	 * @param content
+	 * @param permissions
+	 * @throws PermissionException
+	 * @throws VersionException
+	 */
+	private void delete(String name, String user, String realm, Date version,
+			String content,RWikiPermissions permissions)
+			throws PermissionException, VersionException, RuntimeException
+	{
+		// May throw ReadPermissionException...
+
+		RWikiCurrentObject rwo = getRWikiObject(name, realm);
+		
+		/* If we need to update history
+		RWikiHistoryObject rwho = null;
+
+		if (wikiSecurityService.checkUpdate((RWikiEntity) getEntity(rwo)))
+		{
+			rwho = updateContent(rwo, content, version);
+		}
+		else
+		{
+			throw new UpdatePermissionException("User: " + user //$NON-NLS-1$
+					+ " doesn't have permission to update: " + name); //$NON-NLS-1$
+		}
+		*/
+
+		if (permissions != null)
+		{
+			if (wikiSecurityService.checkAdmin((RWikiEntity) getEntity(rwo)))
+			{
+				rwo.setPermissions(permissions);
+			}
+			else
+			{
+				throw new UpdatePermissionException("User: " + user //$NON-NLS-1$
+						+ " doesn't have permission to update/delete and admin: " //$NON-NLS-1$
+						+ name);
+			}
+		}
+
+		rwo.setUser(user);
+		if (rwo.getOwner() == null)
+		{
+			rwo.setOwner(user);
+		}
+		try
+		{
+			cdao.delete(rwo);	
+			
+
+		}
+		catch (HibernateOptimisticLockingFailureException e)
+		{
+			throw new VersionException("Version has changed since: " + version, //$NON-NLS-1$
+					e);
+		}
+		catch (HibernateException e)
+		{
+			log.info("Caught hibernate exception, update failed."+e.getMessage());
+			throw new RuntimeException("An update could not be made to this wiki page. A possible cause is that you have too many links.");
+		}
+
+	}
+	
+	/**
+	 * This will update an object setting the modified by and owner using the
+	 * supplied user and using the <b>current user</b> for permissions. The
+	 * reason this is private and is in the service at all, is that we need to
+	 * be able to move rwiki objects about on behalf of annother user
+	 * 
+	 * @param name
+	 * @param user
+	 *        The user to set owner and modified by, normally the current user
+	 * @param realm
+	 * @param version
+	 * @param content
+	 * @param permissions
+	 * @throws PermissionException
+	 * @throws VersionException
+	 */
+	public void delete(String name, String realm, Date version,
+			String content) throws PermissionException, VersionException, RuntimeException
+	{
+		String user = sessionManager.getCurrentSessionUserId();
+		RWikiPermissions permissions=null;
+		
+		this.delete(name, user, realm, version, content, permissions);
+		
+	}
+		
 
 	/**
 	 * This will update an object setting the modified by and owner using the

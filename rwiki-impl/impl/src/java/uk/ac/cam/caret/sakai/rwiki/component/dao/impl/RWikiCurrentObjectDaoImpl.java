@@ -223,6 +223,23 @@ public class RWikiCurrentObjectDaoImpl extends HibernateDaoSupport implements
 		contentDAO.update(impl.getRWikiObjectContent());
 
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void delete(RWikiCurrentObject rwo)
+	{
+		// should have already checked
+		RWikiCurrentObjectImpl impl = (RWikiCurrentObjectImpl) rwo;
+		getHibernateTemplate().delete(impl);
+		
+		// remember to save the content, and make certain the contentDAO is set
+		// first
+		impl.setRwikiObjectContentDao(contentDAO);
+		impl.getRWikiObjectContent().setRwikiid(rwo.getId());
+		contentDAO.delete(impl.getRWikiObjectContent());
+
+	}
 
 	/**
 	 * {@inheritDoc}
