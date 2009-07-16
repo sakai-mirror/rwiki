@@ -110,20 +110,6 @@ public interface RWikiObjectService extends EntityProducer, EntityTransferrer, C
 	 * @throws PermissionException
 	 */
 	List search(String criteria, String realm) throws PermissionException;
-	
-	/**
-	 * Delete the named page, with permissions
-	 * 
-	 * @param name
-	 * @param realm
-	 * @param version
-	 * @param content
-	 * @param permissions
-	 * @throws PermissionException
-	 * @throws VersionException
-	 */		
-	void delete(String name, String realm, Date version,String content)
-	throws PermissionException, VersionException, RuntimeException;
 
 	/**
 	 * Update the named page, with permissions
@@ -135,8 +121,7 @@ public interface RWikiObjectService extends EntityProducer, EntityTransferrer, C
 	 * @param permissions
 	 * @throws PermissionException
 	 * @throws VersionException
-	 */		
-			
+	 */
 	void update(String name, String realm, Date version, String content,
 			RWikiPermissions permissions) throws PermissionException,
 			VersionException;

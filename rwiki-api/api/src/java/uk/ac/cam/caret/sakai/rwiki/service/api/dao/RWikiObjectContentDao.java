@@ -51,12 +51,5 @@ public interface RWikiObjectContentDao
 	 * @param content
 	 */
 	void update(RWikiObjectContent content);
-	
-	/**
-	 * Update the content object
-	 * 
-	 * @param delete
-	 */
-	void delete(RWikiObjectContent content);
 
 }

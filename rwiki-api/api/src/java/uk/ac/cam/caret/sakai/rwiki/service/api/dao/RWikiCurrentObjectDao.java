@@ -59,13 +59,6 @@ public interface RWikiCurrentObjectDao extends RWikiObjectDao
 	 * @param rwo
 	 */
 	void update(RWikiCurrentObject rwo, RWikiHistoryObject rwho);
-	
-	/**
-	 * Remove an RWikiCurrentObject
-	 * 
-	 * @param rwo
-	 */
-	void delete(RWikiCurrentObject rwo);
 
 	/**
 	 * Create a new Current Object

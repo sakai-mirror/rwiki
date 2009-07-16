@@ -101,12 +101,5 @@ public class RWikiCurrentObjectContentDaoImpl extends HibernateDaoSupport
 		getHibernateTemplate().saveOrUpdate(impl);
 
 	}
-	
-	public void delete(RWikiObjectContent content)
-	{
-		RWikiCurrentObjectContentImpl impl = (RWikiCurrentObjectContentImpl) content;
-		getHibernateTemplate().delete(impl);
-
-	}
 
 }
