@@ -155,8 +155,8 @@
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-test</artifactId>
-      <version>${sakai.spring.test.version}</version>
+      <artifactId>spring-mock</artifactId>
+      <version>${sakai.spring.mock.version}</version>
       <type>jar</type>
       <scope>test</scope>
     </dependency>
