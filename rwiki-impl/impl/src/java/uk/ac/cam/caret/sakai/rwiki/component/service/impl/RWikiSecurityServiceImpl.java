@@ -73,6 +73,8 @@ public class RWikiSecurityServiceImpl implements RWikiSecurityService
 		List l = functionManager.getRegisteredFunctions("rwiki."); //$NON-NLS-1$
 		if (!l.contains(SECURE_READ))
 			functionManager.registerFunction(SECURE_READ);
+		if (!l.contains(SECURE_COMMENT))
+			functionManager.registerFunction(SECURE_COMMENT);
 		if (!l.contains(SECURE_UPDATE))
 			functionManager.registerFunction(SECURE_UPDATE);
 		if (!l.contains(SECURE_CREATE))
