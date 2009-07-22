@@ -114,6 +114,9 @@ public interface RWikiSecurityService
 
 	/** Security function name for read. required to read */
 	public static final String SECURE_READ = "rwiki.read";
+	
+	/** Security function name for comment. required to have comment option */
+	public static final String SECURE_COMMENT = "rwiki.comment";
 
 	/** Security function name for update. required to update */
 	public static final String SECURE_UPDATE = "rwiki.update";
