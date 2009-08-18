@@ -1,0 +1,18 @@
+<projectDescription>
+  <name>sakai-rwiki-impl</name>
+  <comment/>
+  <projects>
+    <project>sakai-radeox</project>
+    <project>sakai-rwiki-api</project>
+    <project>sakai-rwiki-model</project>
+    <project>sakai-rwiki-util</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

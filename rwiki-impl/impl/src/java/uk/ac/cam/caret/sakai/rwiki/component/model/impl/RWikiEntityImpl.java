@@ -101,16 +101,22 @@ public class RWikiEntityImpl implements RWikiEntity
 					.getGroupAdmin()));
 			rp.addProperty(RWikiEntity.RP_GROUP_READ, String.valueOf(rwo
 					.getGroupRead()));
+			rp.addProperty(RWikiEntity.RP_GROUP_COMMENT, String.valueOf(rwo
+					.getGroupComment()));
 			rp.addProperty(RWikiEntity.RP_GROUP_WRITE, String.valueOf(rwo
 					.getGroupWrite()));
 			rp.addProperty(RWikiEntity.RP_OWNER_ADMIN, String.valueOf(rwo
 					.getOwnerAdmin()));
 			rp.addProperty(RWikiEntity.RP_OWNER_READ, String.valueOf(rwo
 					.getOwnerRead()));
+			rp.addProperty(RWikiEntity.RP_OWNER_COMMENT, String.valueOf(rwo
+					.getOwnerComment()));
 			rp.addProperty(RWikiEntity.RP_OWNER_WRITE, String.valueOf(rwo
 					.getOwnerWrite()));
 			rp.addProperty(RWikiEntity.RP_PUBLIC_READ, String.valueOf(rwo
 					.getPublicRead()));
+			rp.addProperty(RWikiEntity.RP_PUBLIC_COMMENT, String.valueOf(rwo
+					.getPublicComment()));
 			rp.addProperty(RWikiEntity.RP_PUBLIC_WRITE, String.valueOf(rwo
 					.getPublicWrite()));
 			rp.addProperty(RWikiEntity.RP_REVISION, String.valueOf(rwo
@@ -290,11 +296,14 @@ public class RWikiEntityImpl implements RWikiEntity
 		rwo.setUser(rp.getProperty(RWikiEntity.RP_USER));
 		rwo.setGroupAdmin(rp.getBooleanProperty(RWikiEntity.RP_GROUP_ADMIN));
 		rwo.setGroupRead(rp.getBooleanProperty(RWikiEntity.RP_GROUP_READ));
+		rwo.setGroupComment(rp.getBooleanProperty(RWikiEntity.RP_GROUP_COMMENT));
 		rwo.setGroupWrite(rp.getBooleanProperty(RWikiEntity.RP_GROUP_WRITE));
 		rwo.setOwnerAdmin(rp.getBooleanProperty(RWikiEntity.RP_OWNER_ADMIN));
 		rwo.setOwnerRead(rp.getBooleanProperty(RWikiEntity.RP_OWNER_READ));
+		rwo.setOwnerComment(rp.getBooleanProperty(RWikiEntity.RP_OWNER_COMMENT));
 		rwo.setOwnerWrite(rp.getBooleanProperty(RWikiEntity.RP_OWNER_WRITE));
 		rwo.setPublicRead(rp.getBooleanProperty(RWikiEntity.RP_PUBLIC_READ));
+		rwo.setPublicComment(rp.getBooleanProperty(RWikiEntity.RP_PUBLIC_COMMENT));
 		rwo.setPublicWrite(rp.getBooleanProperty(RWikiEntity.RP_PUBLIC_WRITE));
 		rwo.setRevision(new Integer(rp.getProperty(RWikiEntity.RP_REVISION)));
 		rwo.setVersion(new Date(rp.getLongProperty(RWikiEntity.RP_VERSION)));

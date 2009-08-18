@@ -203,6 +203,7 @@ public class RWikiObjectServiceImpl implements RWikiObjectService
 			edit.setFunction(RWikiObjectService.EVENT_RESOURCE_ADD);
 			edit.addFunction(RWikiObjectService.EVENT_RESOURCE_WRITE);
 			edit.addFunction(RWikiObjectService.EVENT_RESOURCE_READ);
+			edit.addFunction(RWikiObjectService.EVENT_RESOURCE_COMMENT);
 
 			// set the filter to any site related resource
 			edit.setResourceFilter(RWikiObjectService.REFERENCE_ROOT);
@@ -1721,6 +1722,14 @@ public class RWikiObjectServiceImpl implements RWikiObjectService
 	public boolean checkRead(RWikiObject rwo)
 	{
 		return wikiSecurityService.checkRead((RWikiEntity) getEntity(rwo));
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public boolean checkComment(RWikiObject rwo)
+	{
+		return wikiSecurityService.checkComment((RWikiEntity) getEntity(rwo));
 	}
 
 	/**

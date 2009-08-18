@@ -134,6 +134,11 @@ public class RWikiSecurityServiceImpl implements RWikiSecurityService
 	{
 		return (securityService.unlock(SECURE_READ, reference));
 	}
+	
+	public boolean checkCommentPermission(String reference)
+	{
+		return (securityService.unlock(SECURE_COMMENT, reference));
+	}
 
 	public boolean checkUpdatePermission(String reference)
 	{
@@ -246,6 +251,82 @@ public class RWikiSecurityServiceImpl implements RWikiSecurityService
 		{
 			long finish = System.currentTimeMillis();
 			TimeLogger.printTimer("canRead: " + progress, start, finish); //$NON-NLS-1$
+		}
+	}
+	
+	public boolean checkComment(RWikiEntity rwe)
+	{
+		RWikiObject rwo = rwe.getRWikiObject();
+		String progress = ""; //$NON-NLS-1$
+		long start = System.currentTimeMillis();
+		try
+		{
+
+			String user = sessionManager.getCurrentSessionUserId();
+
+			if (log.isDebugEnabled())
+			{
+				log.debug("checkComment for " + rwo.getName() + " by user: " //$NON-NLS-1$ //$NON-NLS-2$
+						+ user);
+			}
+
+			if (user != null && user.equals(rwo.getOwner())
+					&& (rwo.getOwnerComment() || rwo.getOwnerAdmin()))
+			{
+				if (log.isDebugEnabled())
+				{
+					log.debug("User is owner and allowed to comment"); //$NON-NLS-1$
+				}
+				progress = progress + "1"; //$NON-NLS-1$
+				return true;
+			}
+
+			String permissionsReference = rwe.getReference();
+			if ((rwo.getGroupComment() && checkGetPermission(permissionsReference))
+					|| (rwo.getGroupAdmin())
+					&& checkAdminPermission(permissionsReference))
+			{
+				if (log.isDebugEnabled())
+				{
+					log.debug("User is in group and allowed to comment"); //$NON-NLS-1$
+				}
+				progress = progress + "2"; //$NON-NLS-1$
+				return true;
+			}
+
+			if (rwo.getPublicComment())
+			{
+				if (log.isDebugEnabled())
+				{
+					log.debug("Object is public comment"); //$NON-NLS-1$
+				}
+				progress = progress + "3"; //$NON-NLS-1$
+				return true;
+			}
+
+			if (checkSuperAdminPermission(permissionsReference))
+			{
+				if (log.isDebugEnabled())
+				{
+					log
+							.debug("User is SuperAdmin for Realm thus default allowed to comment"); //$NON-NLS-1$
+				}
+				progress = progress + "4"; //$NON-NLS-1$
+				return true;
+			}
+
+			if (log.isDebugEnabled())
+			{
+				log.debug("Permission denied to comment " + rwo.getName() //$NON-NLS-1$
+						+ " by user: " + user); //$NON-NLS-1$
+			}
+			progress = progress + "5"; //$NON-NLS-1$
+			return false;
+		}
+		finally
+		{
+			long finish = System.currentTimeMillis();
+			TimeLogger.printTimer("canComment: " + progress, start, finish); //$NON-NLS-1$
 		}
 	}
 
