@@ -43,6 +43,15 @@ public interface RWikiSecurityService
 	 * @return
 	 */
 	boolean checkGetPermission(String reference);
+	
+	/**
+	 * Check for comment permission (rwiki.comment) on the reference which must point
+	 * to a resolvable entity. This check is performed for the current user
+	 * 
+	 * @param reference
+	 * @return
+	 */
+	boolean checkCommentPermission(String reference);
 
 	/**
 	 * Check for update permission (rwiki.update) on the reference which must
@@ -141,6 +150,15 @@ public interface RWikiSecurityService
 	 * @return
 	 */
 	boolean checkRead(RWikiEntity rwe);
+	
+	/**
+	 * Check for comment permission
+	 * 
+	 * @param rwo
+	 * @param user
+	 * @return
+	 */
+	boolean checkComment(RWikiEntity rwe);
 
 	/**
 	 * check for update permission

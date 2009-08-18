@@ -153,6 +153,20 @@ public interface RWikiObject extends Comparable
 	 * @param userRead
 	 */
 	void setOwnerRead(boolean ownerRead);
+	
+	/**
+	 * Can the user comment in the page
+	 * 
+	 * @return
+	 */
+	boolean getOwnerComment();
+
+	/**
+	 * set what the owner can do to the page, requires admin for the user
+	 * 
+	 * @param ownerComment
+	 */
+	void setOwnerComment(boolean ownerComment);
 
 	/**
 	 * can the user edit the page
@@ -196,6 +210,21 @@ public interface RWikiObject extends Comparable
 	 * @param groupRead
 	 */
 	void setGroupRead(boolean groupRead);
+	
+
+	/**
+	 * can the group comment in the page
+	 * 
+	 * @return
+	 */
+	boolean getGroupComment();
+
+	/**
+	 * set the group permission
+	 * 
+	 * @param groupComment
+	 */
+	void setGroupComment(boolean groupComment);
 
 	/**
 	 * can the group edit the page
@@ -238,6 +267,20 @@ public interface RWikiObject extends Comparable
 	 * @param publicRead
 	 */
 	void setPublicRead(boolean publicRead);
+	
+	/**
+	 * Can the public comment in the page
+	 * 
+	 * @return
+	 */
+	boolean getPublicComment();
+
+	/**
+	 * set the public read permissions
+	 * 
+	 * @param publicComment
+	 */
+	void setPublicComment(boolean publicCommnet);
 
 	/**
 	 * can the public edit the page

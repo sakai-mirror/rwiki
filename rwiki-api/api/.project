@@ -1,0 +1,13 @@
+<projectDescription>
+  <name>sakai-rwiki-api</name>
+  <comment>This project creates the general APIs used by the Sakai RWiki Tool</comment>
+  <projects/>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

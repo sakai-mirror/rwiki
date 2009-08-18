@@ -52,6 +52,10 @@ public interface RWikiPermissions
 	public boolean isGroupRead();
 
 	public void setGroupRead(boolean groupRead);
+	
+	public boolean isGroupComment();
+
+	public void setGroupComment(boolean groupComment);
 
 	public boolean isGroupWrite();
 
@@ -64,6 +68,10 @@ public interface RWikiPermissions
 	public boolean isOwnerRead();
 
 	public void setOwnerRead(boolean ownerRead);
+	
+	public boolean isOwnerComment();
+
+	public void setOwnerComment(boolean ownerComment);
 
 	public boolean isOwnerWrite();
 
@@ -72,6 +80,10 @@ public interface RWikiPermissions
 	public boolean isPublicRead();
 
 	public void setPublicRead(boolean publicRead);
+	
+	public boolean isPublicComment();
+
+	public void setPublicComment(boolean publicComment);
 
 	public boolean isPublicWrite();
 

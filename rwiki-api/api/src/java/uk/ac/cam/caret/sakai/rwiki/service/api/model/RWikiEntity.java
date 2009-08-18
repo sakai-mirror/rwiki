@@ -62,16 +62,22 @@ public interface RWikiEntity extends Entity
 	public static final String RP_GROUP_ADMIN = "group-admin";
 
 	public static final String RP_GROUP_READ = "group-read";
+	
+	public static final String RP_GROUP_COMMENT = "group-comment";
 
 	public static final String RP_GROUP_WRITE = "group-write";
 
 	public static final String RP_OWNER_ADMIN = "owner-admin";
 
 	public static final String RP_OWNER_READ = "owner-read";
+	
+	public static final String RP_OWNER_COMMENT = "owner-comment";
 
 	public static final String RP_OWNER_WRITE = "owner-write";
 
 	public static final String RP_PUBLIC_READ = "public-read";
+	
+	public static final String RP_PUBLIC_COMMENT = "public-comment";
 
 	public static final String RP_PUBLIC_WRITE = "public-write";
 

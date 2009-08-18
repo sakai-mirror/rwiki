@@ -58,6 +58,9 @@ public interface RWikiObjectService extends EntityProducer, EntityTransferrer, C
 
 	/** Name of the event when reading a resource. */
 	public static final String EVENT_RESOURCE_READ = "wiki.read";
+	
+	/** Name of the event when reading a resource. */
+	public static final String EVENT_RESOURCE_COMMENT = "wiki.comment";
 
 	/** Name of the event when writing a resource. */
 	public static final String EVENT_RESOURCE_WRITE = "wiki.revise";
@@ -310,6 +313,14 @@ public interface RWikiObjectService extends EntityProducer, EntityTransferrer, C
 	 * @return
 	 */
 	boolean checkRead(RWikiObject rwo);
+	
+	/**
+	 * Check for comment permission
+	 * 
+	 * @param rwo
+	 * @return
+	 */
+	boolean checkComment(RWikiObject rwo);
 
 	/**
 	 * check for update permission
