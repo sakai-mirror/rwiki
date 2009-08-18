@@ -28,6 +28,8 @@ public class UpdatePermissionsBean
 {
 
 	public static final String OWNER_READ_PARAM = "ownerRead";
+	
+	public static final String OWNER_COMMENT_PARAM = "ownerComment";
 
 	public static final String OWNER_WRITE_PARAM = "ownerWrite";
 
@@ -35,15 +37,21 @@ public class UpdatePermissionsBean
 
 	public static final String GROUP_READ_PARAM = "groupRead";
 
+	public static final String GROUP_COMMENT_PARAM = "groupComment";
+
 	public static final String GROUP_WRITE_PARAM = "groupWrite";
 
 	public static final String GROUP_ADMIN_PARAM = "groupAdmin";
 
 	public static final String PUBLIC_READ_PARAM = "publicRead";
 
+	public static final String PUBLIC_COMMENT_PARAM = "publicComment";
+
 	public static final String PUBLIC_WRITE_PARAM = "publicWrite";
 
 	public static final String OVERWRITE_OWNER_READ_PARAM = "overwriteOwnerRead";
+
+	public static final String OVERWRITE_OWNER_COMMENT_PARAM = "overwriteOwnerComment";
 
 	public static final String OVERWRITE_OWNER_WRITE_PARAM = "overwriteOwnerWrite";
 
@@ -51,11 +59,15 @@ public class UpdatePermissionsBean
 
 	public static final String OVERWRITE_GROUP_READ_PARAM = "overwriteGroupRead";
 
+	public static final String OVERWRITE_GROUP_COMMENT_PARAM = "overwriteGroupComment";
+
 	public static final String OVERWRITE_GROUP_WRITE_PARAM = "overwriteGroupWrite";
 
 	public static final String OVERWRITE_GROUP_ADMIN_PARAM = "overwriteGroupAdmin";
 
 	public static final String OVERWRITE_PUBLIC_READ_PARAM = "overwritePublicRead";
+
+	public static final String OVERWRITE_PUBLIC_COMMENT_PARAM = "overwritePublicComment";
 
 	public static final String OVERWRITE_PUBLIC_WRITE_PARAM = "overwritePublicWrite";
 

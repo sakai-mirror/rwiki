@@ -137,4 +137,15 @@ public class PermissionsBean
 	{
 		return objectService.checkRead(rwikiObject);
 	}
+	
+	/**
+	 * Using the current objectService checks whether the current RWikiObject
+	 * can be commented by the currentUser.
+	 * 
+	 * @return true if the currentUser has comment rights on this rwikiObject.
+	 */
+	public boolean isCommentAllowed()
+	{
+		return objectService.checkComment(rwikiObject);
+	}
 }

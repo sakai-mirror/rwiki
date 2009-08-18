@@ -73,6 +73,11 @@
     		<h3><c:out value="${rlb.jsp_page_edit_permission}"/></h3>
     		<c:out value="${rlb.jsp_page_edit_permission_help}"/>
     	</div>
+    	<div id="commenthelp" style=" position: absolute; top: -1000px; left: -1000px; visibility: hidden; " 
+    		class="rwiki_help_popup" >
+    		<h3><c:out value="${rlb.jsp_page_comment_permission}"/></h3>
+    		<c:out value="${rlb.jsp_page_comment_permission_help}"/>
+    	</div>
     	<div id="deletehelp" style=" position: absolute; top: -1000px; left: -1000px; visibility: hidden; " 
     		class="rwiki_help_popup" >
     		<h3><c:out value="${rlb.jsp_page_delete_permission}"/></h3>
@@ -231,6 +236,7 @@
 		  var NUMBER_OF_PERMISSIONS =0;
 		  var CREATE = NUMBER_OF_PERMISSIONS++;
 		  var READ = NUMBER_OF_PERMISSIONS++;
+		  var COMMENT = NUMBER_OF_PERMISSIONS++;
 		  var UPDATE = NUMBER_OF_PERMISSIONS++;
 		  var ADMIN = NUMBER_OF_PERMISSIONS++;
 		  var SUPERADMIN = NUMBER_OF_PERMISSIONS++;
@@ -238,12 +244,13 @@
 		  var permissionsMatriNCols = 5;
 		  var permissionsStem = "permissions_";
 
-		  function setPermissionDisplay(enabledClass,disabledClass,readSwitch,updateSwitch,adminSwitch) {
+		  function setPermissionDisplay(enabledClass,disabledClass,readSwitch,updateSwitch,adminSwitch,commentSwitch) {
 		    var switches = new Array();
 
 		    // lets try something a bit more magical...
 		    switches[CREATE] = true;
-		    switches[READ] = readSwitch;
+		    switches[READ] = readSwitch;		    
+		    switches[COMMENT] = commentSwitch;
 		    switches[UPDATE] = updateSwitch;
 		    switches[ADMIN] = adminSwitch;
 		    switches[SUPERADMIN] = true;
@@ -310,6 +317,11 @@
 		    permissionsMatrix[pmi] = x;
 		    pmi++;
 		    x = new Array(); 
+		    x[0] = <c:out value="${role.secureComment}" />;
+		    x[1] = "-xxxx";
+		    permissionsMatrix[pmi] = x;
+		    pmi++;
+		    x = new Array(); 
 		    x[0] = <c:out value="${role.secureAdmin}" />;
 		    x[1] = "---xx";
 		    permissionsMatrix[pmi] = x;
@@ -332,6 +344,8 @@
 		    		onMouseOut="hidePopup('readhelp');" >?</a></td>
 		    	<td><c:out value="${rlb.jsp_permission_edit}"/><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'updatehelp'); return false;"
 		    		onMouseOut="hidePopup('updatehelp');" >?</a></td>
+		    	<td><c:out value="${rlb.jsp_permission_comment}"/><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'commenthelp'); return false;"
+		    		onMouseOut="hidePopup('commenthelp');" >?</a></td>
 		    	<!--<td><c:out value="${rlb.jsp_permission_delete}"/><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'deletehelp'); return false;"
 		    		onMouseOut="hidePopup('deletehelp');" >?</a></td>-->
 		    	<td><c:out value="${rlb.jsp_permission_admin}"/><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'adminhelp'); return false;"
@@ -393,6 +407,26 @@
 			</td>
 			<td>
 			  <c:choose>
+			    <c:when test="${currentRWikiObject.groupComment}">
+			      <jsp:element name="span" >
+				<jsp:attribute name="id" >permissions_<c:out value="${pmcounter}" /></jsp:attribute>
+				<c:set var="pmcounter" value="${pmcounter+1}" />
+				<jsp:attribute name="class">rwiki_info_secure_granted</jsp:attribute>
+				  <rwiki:granted span="false" granted="${role.secureComment}" resourceLoaderBean="${rlb}" />
+			      </jsp:element>
+			    </c:when>
+			    <c:otherwise>
+			      <jsp:element name="span" >
+				<jsp:attribute name="id" >permissions_<c:out value="${pmcounter}" /></jsp:attribute>
+				<c:set var="pmcounter" value="${pmcounter+1}" />
+				<jsp:attribute name="class">rwiki_info_secure_denied</jsp:attribute>
+				  <rwiki:granted span="false" granted="${role.secureComment}" resourceLoaderBean="${rlb}" />
+			      </jsp:element>
+			    </c:otherwise>
+			  </c:choose>
+			</td>
+			<td>
+			  <c:choose>
 			    <c:when test="${currentRWikiObject.groupAdmin}">
 			      <jsp:element name="span" >
 				<jsp:attribute name="id" >permissions_<c:out value="${pmcounter}" /></jsp:attribute>
@@ -431,10 +465,10 @@
 			    <c:choose>
 			      <c:when test="${currentRWikiObject.groupRead}">
 				<input type="checkbox" name="groupRead" checked="checked" 
-				  onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked);"/>
+				  onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);"/>
 			      </c:when>
 			      <c:otherwise>
-				<input type="checkbox" name="groupRead" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked);"/>
+				<input type="checkbox" name="groupRead" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);"/>
 			      </c:otherwise>
 			    </c:choose>
 			  </td>
@@ -442,20 +476,31 @@
 			    <c:choose>
 			      <c:when test="${currentRWikiObject.groupWrite}">
 				<input type="checkbox" name="groupWrite" checked="checked" 
-				  onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked);" />
+				  onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);" />
 			      </c:when>
 			      <c:otherwise>
-				<input type="checkbox" name="groupWrite" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked);" />
+				<input type="checkbox" name="groupWrite" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);" />
+			      </c:otherwise>
+			    </c:choose>
+			  </td>
+			  <td>
+			    <c:choose>
+			      <c:when test="${currentRWikiObject.groupComment}">
+				<input type="checkbox" name="groupComment" checked="checked" 
+				  onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);"/>
+			      </c:when>
+			      <c:otherwise>
+				<input type="checkbox" name="groupRead" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);"/>
 			      </c:otherwise>
 			    </c:choose>
 			  </td>
 			  <td>
 			    <c:choose>
 			      <c:when test="${currentRWikiObject.groupAdmin}">
-				<input type="checkbox" name="groupAdmin" checked="checked" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked);"/>
+				<input type="checkbox" name="groupAdmin" checked="checked" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);"/>
 			      </c:when>
 			      <c:otherwise>
-				<input type="checkbox" name="groupAdmin" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked);"/>
+				<input type="checkbox" name="groupAdmin" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);"/>
 			      </c:otherwise>
 			    </c:choose>
 			  </td>
@@ -491,11 +536,21 @@
 			  </td>
 			  <td>
 			    <c:choose>
-			      <c:when test="${currentRWikiObject.ownerAdmin}">
-				<input type="checkbox" name="ownerAdmin" checked="checked" onClick="if ( checked ) { ownerRead.checked = checked; ownerWrite.checked = checked; }"/>
+			      <c:when test="${currentRWikiObject.ownerComment}">
+				<input type="checkbox" name="ownerComment" checked="checked"/>
 			      </c:when>
 			      <c:otherwise>
-				<input type="checkbox" name="ownerAdmin" onClick="if (checked) { ownerRead.checked = checked; ownerWrite.checked = checked; }"/>
+				<input type="checkbox" name="ownerComment"/>
+			      </c:otherwise>
+			    </c:choose>
+			  </td>
+			  <td>
+			    <c:choose>
+			      <c:when test="${currentRWikiObject.ownerAdmin}">
+				<input type="checkbox" name="ownerAdmin" checked="checked" onClick="if ( checked ) { ownerRead.checked = checked; ownerWrite.checked = checked; ownerComment.checked = checked; }"/>
+			      </c:when>
+			      <c:otherwise>
+				<input type="checkbox" name="ownerAdmin" onClick="if (checked) { ownerRead.checked = checked; ownerWrite.checked = checked; ownerComment.checked = checked; }"/>
 			      </c:otherwise>
 			    </c:choose>
 			  </td>
@@ -522,6 +577,16 @@
 			      </c:when>
 			      <c:otherwise>
 				<input type="checkbox" name="publicWrite" onClick="if (checked) publicRead.checked = checked;"/>
+			      </c:otherwise>
+			    </c:choose>
+			  </td>
+			  <td>
+			    <c:choose>
+			      <c:when test="${currentRWikiObject.publicComment}">
+				<input type="checkbox" name="publicComment" checked="checked"/>
+			      </c:when>
+			      <c:otherwise>
+				<input type="checkbox" name="publicComment"/>
 			      </c:otherwise>
 			    </c:choose>
 			  </td>
@@ -580,6 +645,9 @@
 			  <td>
 			      <rwiki:granted granted="${currentRWikiObject.groupWrite}" resourceLoaderBean="${rlb}"/>
 			  </td>
+			  <td>
+			  	<rwiki:granted granted="${currentRWikiObject.groupComment }" resourceLoaderBean="${rlb}" />
+			  </td>
 			  <!--
 			  <td>
 			      <rwiki:granted granted="${currentRWikiObject.groupDelete}" resourceLoaderBean="${rlb}"/>
@@ -604,6 +672,9 @@
 			  <td>
 			      <rwiki:granted granted="${currentRWikiObject.ownerWrite}" resourceLoaderBean="${rlb}"/>
 			  </td>
+			  <td>
+			      <rwiki:granted granted="${currentRWikiObject.ownerComment}" resourceLoaderBean="${rlb}" />
+			  </td>
 			  <!--
 			  <td>
 			      <rwiki:granted granted="${currentRWikiObject.ownerDelete}" resourceLoaderBean="${rlb}"/>
@@ -623,6 +694,9 @@
 			  </td>
 			  <td>
 			      <rwiki:granted granted="${currentRWikiObject.publicWrite}" resourceLoaderBean="${rlb}"/>
+			  </td>
+			  <td>
+			      <rwiki:granted granted="${currentRWikiObject.publicComment}" resourceLoaderBean="${rlb}"/>
 			  </td>
 			  <!--<td></td>-->
 			  <td></td>
@@ -740,7 +814,7 @@
 		  </tbody>
 		</table>
 		<script type="text/javascript"><![CDATA[<!--
-		  setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',]]><c:out value="${currentRWikiObject.groupRead}, ${currentRWikiObject.groupWrite}, ${currentRWikiObject.groupAdmin}"/>);
+		  setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',]]><c:out value="${currentRWikiObject.groupRead}, ${currentRWikiObject.groupWrite}, ${currentRWikiObject.groupAdmin}, ${currentRWikiObject.groupComment}"/>);
 		  --&gt;
 		</script>
 	      </div>

@@ -60,6 +60,11 @@ public class RoleBean
 	{
 		return role.isAllowed(RWikiSecurityService.SECURE_READ);
 	}
+	
+	public boolean isSecureComment()
+	{
+		return role.isAllowed(RWikiSecurityService.SECURE_COMMENT);
+	}
 
 	public boolean isSecureUpdate()
 	{

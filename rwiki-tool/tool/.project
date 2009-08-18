@@ -1,0 +1,17 @@
+<projectDescription>
+  <name>sakai-rwiki-tool</name>
+  <comment>This project creates a WAR containing the RWiki Tool for Sakai.</comment>
+  <projects>
+    <project>sakai-rwiki-api</project>
+    <project>sakai-rwiki-diff</project>
+    <project>sakai-rwiki-util</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

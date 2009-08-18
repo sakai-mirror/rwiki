@@ -25,7 +25,7 @@ public class MultiRealmEditBean
 
 	private RequestScopeSuperBean rsac = null;
 
-	private static final String[] permissionNames = { "Create", "Read", "Edit", "Delete", "Admin", "Super Admin" };
+	private static final String[] permissionNames = { "Create", "Read", "Edit", "Delete", "Admin", "Super Admin", "Comment"};
 
 	private static final int PERM_CREATE = 0;
 
@@ -34,6 +34,8 @@ public class MultiRealmEditBean
 	private static final int PERM_DELETE = 3;
 
 	private static final int PERM_READ = 1;
+
+	private static final int PERM_COMMENT = 6;
 
 	private static final int PERM_SUPERADMIN = 5;
 
@@ -117,6 +119,10 @@ public class MultiRealmEditBean
 			case PERM_READ:
 				fieldName = "create_" + azbg.getEscapedId() + "_" + rb.getId();
 				format = rb.isSecureRead() ? permissionEditOffFormat : permissionEditOnFormat;
+				break;
+			case PERM_COMMENT:
+				fieldName = "create_" + azbg.getEscapedId() + "_" + rb.getId();
+				format = rb.isSecureComment() ? permissionEditOffFormat : permissionEditOnFormat;
 				break;
 			case PERM_SUPERADMIN:
 				fieldName = "create_" + azbg.getEscapedId() + "_" + rb.getId();

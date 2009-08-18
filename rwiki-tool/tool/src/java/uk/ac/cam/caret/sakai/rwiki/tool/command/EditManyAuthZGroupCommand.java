@@ -306,6 +306,22 @@ public class EditManyAuthZGroupCommand implements HttpCommand
 				role.disallowFunction(RWikiSecurityService.SECURE_READ);
 			}
 		}
+		
+		if (map.get("comment_" + escapedId + "_" + id) != null)
+		{
+
+			if (!role.isAllowed(RWikiSecurityService.SECURE_COMMENT))
+			{
+				role.allowFunction(RWikiSecurityService.SECURE_COMMENT);
+			}
+		}
+		else
+		{
+			if (role.isAllowed(RWikiSecurityService.SECURE_COMMENT))
+			{
+				role.disallowFunction(RWikiSecurityService.SECURE_COMMENT);
+			}
+		}
 
 		if (map.get("update_" + escapedId + "_" + id) != null)
 		{

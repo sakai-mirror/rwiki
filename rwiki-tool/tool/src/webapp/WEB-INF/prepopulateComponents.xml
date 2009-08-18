@@ -76,11 +76,14 @@
 
     <property name="ownerAdmin"><value>true</value></property>
     <property name="ownerRead"><value>true</value></property>
+    <property name="ownerComment"><value>true</value></property>
     <property name="ownerWrite"><value>true</value></property>
     <property name="groupAdmin"><value>false</value></property>
     <property name="groupRead"><value>true</value></property>
+    <property name="groupComment"><value>true</value></property>
     <property name="groupWrite"><value>false</value></property>
     <property name="publicRead"><value>false</value></property>
+    <property name="publicComment"><value>false</value></property>
     <property name="publicWrite"><value>false</value></property>
 
     <property name="rwikiObjectContentDao"><ref bean="rwikiCurrentObjectContentDaoImpl"/></property>
@@ -97,11 +100,14 @@
 
     <property name="ownerAdmin"><value>true</value></property>
     <property name="ownerRead"><value>true</value></property>
+    <property name="ownerComment"><value>true</value></property>
     <property name="ownerWrite"><value>true</value></property>
     <property name="groupAdmin"><value>true</value></property>
     <property name="groupRead"><value>true</value></property>
+    <property name="groupComment"><value>true</value></property>
     <property name="groupWrite"><value>true</value></property>
     <property name="publicRead"><value>false</value></property>
+    <property name="publicComment"><value>false</value></property>
     <property name="publicWrite"><value>false</value></property>
 
     <property name="rwikiObjectContentDao"><ref bean="rwikiCurrentObjectContentDaoImpl"/></property>
@@ -139,11 +145,14 @@
 
     <property name="ownerAdmin"><value>true</value></property>
     <property name="ownerRead"><value>true</value></property>
+    <property name="ownerComment"><value>true</value></property>
     <property name="ownerWrite"><value>true</value></property>
     <property name="groupAdmin"><value>true</value></property>
     <property name="groupRead"><value>true</value></property>
+    <property name="groupComment"><value>true</value></property>
     <property name="groupWrite"><value>false</value></property>
     <property name="publicRead"><value>false</value></property>
+    <property name="publicComment"><value>false</value></property>
     <property name="publicWrite"><value>false</value></property>
 
     <property name="rwikiObjectContentDao"><ref bean="rwikiCurrentObjectContentDaoImpl"/></property>
@@ -166,11 +175,14 @@
 
     <property name="ownerAdmin"><value>true</value></property>
     <property name="ownerRead"><value>true</value></property>
+    <property name="ownerComment"><value>true</value></property>
     <property name="ownerWrite"><value>true</value></property>
     <property name="groupAdmin"><value>true</value></property>
     <property name="groupRead"><value>true</value></property>
+    <property name="groupComment"><value>true</value></property>
     <property name="groupWrite"><value>false</value></property>
     <property name="publicRead"><value>false</value></property>
+    <property name="publicComment"><value>false</value></property>
     <property name="publicWrite"><value>false</value></property>
 
     <property name="rwikiObjectContentDao"><ref bean="rwikiCurrentObjectContentDaoImpl"/></property>
@@ -188,11 +200,14 @@
 
     <property name="ownerAdmin"><value>true</value></property>
     <property name="ownerRead"><value>true</value></property>
+    <property name="ownerComment"><value>true</value></property>
     <property name="ownerWrite"><value>true</value></property>
     <property name="groupAdmin"><value>true</value></property>
     <property name="groupRead"><value>true</value></property>
+    <property name="groupComment"><value>true</value></property>
     <property name="groupWrite"><value>false</value></property>
     <property name="publicRead"><value>false</value></property>
+    <property name="publicComment"><value>false</value></property>
     <property name="publicWrite"><value>false</value></property>
     <property name="rwikiObjectContentDao"><ref bean="rwikiCurrentObjectContentDaoImpl"/></property>
 
@@ -209,11 +224,14 @@
 
     <property name="ownerAdmin"><value>true</value></property>
     <property name="ownerRead"><value>true</value></property>
+    <property name="ownerComment"><value>true</value></property>
     <property name="ownerWrite"><value>true</value></property>
     <property name="groupAdmin"><value>true</value></property>
     <property name="groupRead"><value>true</value></property>
+    <property name="groupComment"><value>true</value></property>
     <property name="groupWrite"><value>true</value></property>
     <property name="publicRead"><value>false</value></property>
+    <property name="publicComment"><value>false</value></property>
     <property name="publicWrite"><value>false</value></property>
     <property name="rwikiObjectContentDao"><ref bean="rwikiCurrentObjectContentDaoImpl"/></property>
 
@@ -231,11 +249,14 @@
 
     <property name="ownerAdmin"><value>true</value></property>
     <property name="ownerRead"><value>true</value></property>
+    <property name="ownerComment"><value>true</value></property>
     <property name="ownerWrite"><value>true</value></property>
     <property name="groupAdmin"><value>false</value></property>
     <property name="groupRead"><value>true</value></property>
+    <property name="groupComment"><value>true</value></property>
     <property name="groupWrite"><value>false</value></property>
     <property name="publicRead"><value>false</value></property>
+    <property name="publicComment"><value>false</value></property>
     <property name="publicWrite"><value>false</value></property>
     <property name="rwikiObjectContentDao"><ref bean="rwikiCurrentObjectContentDaoImpl"/></property>
 
@@ -252,11 +273,14 @@
 
     <property name="ownerAdmin"><value>true</value></property>
     <property name="ownerRead"><value>true</value></property>
+    <property name="ownerComment"><value>true</value></property>
     <property name="ownerWrite"><value>true</value></property>
     <property name="groupAdmin"><value>false</value></property>
     <property name="groupRead"><value>true</value></property>
+    <property name="groupComment"><value>true</value></property>    
     <property name="groupWrite"><value>false</value></property>
     <property name="publicRead"><value>true</value></property>
+    <property name="publicComment"><value>true</value></property>
     <property name="publicWrite"><value>false</value></property>
     <property name="rwikiObjectContentDao"><ref bean="rwikiCurrentObjectContentDaoImpl"/></property>
 

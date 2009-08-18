@@ -35,6 +35,7 @@
 		             <td>${rlb.jsp_permission_create}</td>
 		             <td>${rlb.jsp_permission_read}</td>
 		             <td>${rlb.jsp_permission_edit}</td>
+		             <td>${rlb.jsp_permission_comment}</td>
 		             <td>${rlb.jsp_permission_admin}</td>
 		             <td>${rlb.jsp_permission_super_admin}</td>
 		           </tr>
@@ -61,6 +62,13 @@
 			             #else
 			               <input type="checkbox" name="update_${role.id}"/>
    			          #end
+			             </td>
+			             <td>
+			             #if (${role.secureComment} )
+   			            <input type="checkbox" name="read_${role.id}" checked="checked"/>
+			             #else
+			               <input type="checkbox" name="read_${role.id}"/>
+			             #end
 			             </td>
 			             <td>
 			             #if (${role.secureAdmin})

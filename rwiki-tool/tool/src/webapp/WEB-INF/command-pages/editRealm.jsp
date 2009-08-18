@@ -68,6 +68,7 @@
 		      <th><c:out value="${rlb.jsp_role_permissions}"/></th>
 		      <td><c:out value="${rlb.jsp_permission_create}"/></td>
 		      <td><c:out value="${rlb.jsp_permission_read}"/></td>
+		      <td><c:out value="${rlb.jsp_permission_comment}"/></td>
 		      <td><c:out value="${rlb.jsp_permission_edit}"/></td>
 		      <!--<td><c:out value="${rlb.jsp_permission_delete}"/></td>-->
 		      <td><c:out value="${rlb.jsp_permission_admin}"/></td>
@@ -103,6 +104,16 @@
 			    </c:when>
 			    <c:otherwise>
 			      <input type="checkbox" name="update_${role.id}"/>
+			    </c:otherwise>
+			  </c:choose>
+			</td>
+			<td>
+			  <c:choose>
+			    <c:when test="${role.secureComment}">
+			      <input type="checkbox" name="comment_${role.id}" checked="checked"/>
+			    </c:when>
+			    <c:otherwise>
+			      <input type="checkbox" name="comment_${role.id}"/>
 			    </c:otherwise>
 			  </c:choose>
 			</td>

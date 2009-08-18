@@ -328,6 +328,22 @@ public class EditAuthZGroupCommand implements HttpCommand
 				roleEdit.disallowFunction(RWikiSecurityService.SECURE_READ);
 			}
 		}
+		
+		if (map.get("comment_" + id) != null)
+		{
+
+			if (!roleEdit.isAllowed(RWikiSecurityService.SECURE_COMMENT))
+			{
+				roleEdit.allowFunction(RWikiSecurityService.SECURE_COMMENT);
+			}
+		}
+		else
+		{
+			if (roleEdit.isAllowed(RWikiSecurityService.SECURE_COMMENT))
+			{
+				roleEdit.disallowFunction(RWikiSecurityService.SECURE_COMMENT);
+			}
+		}
 
 		if (map.get("update_" + id) != null)
 		{

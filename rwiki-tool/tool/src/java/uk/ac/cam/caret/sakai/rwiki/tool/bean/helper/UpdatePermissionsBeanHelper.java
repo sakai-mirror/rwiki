@@ -51,6 +51,9 @@ public class UpdatePermissionsBeanHelper
 		String permission;
 		permission = req.getParameter(UpdatePermissionsBean.OWNER_READ_PARAM);
 		ub.getPermissions().setOwnerRead(convertPermission(permission));
+		
+		permission = req.getParameter(UpdatePermissionsBean.OWNER_COMMENT_PARAM);
+		ub.getPermissions().setOwnerComment(convertPermission(permission));
 
 		permission = req.getParameter(UpdatePermissionsBean.OWNER_WRITE_PARAM);
 		ub.getPermissions().setOwnerWrite(convertPermission(permission));
@@ -61,6 +64,9 @@ public class UpdatePermissionsBeanHelper
 		permission = req.getParameter(UpdatePermissionsBean.GROUP_READ_PARAM);
 		ub.getPermissions().setGroupRead(convertPermission(permission));
 
+		permission = req.getParameter(UpdatePermissionsBean.GROUP_COMMENT_PARAM);
+		ub.getPermissions().setGroupComment(convertPermission(permission));
+
 		permission = req.getParameter(UpdatePermissionsBean.GROUP_WRITE_PARAM);
 		ub.getPermissions().setGroupWrite(convertPermission(permission));
 
@@ -70,6 +76,9 @@ public class UpdatePermissionsBeanHelper
 		permission = req.getParameter(UpdatePermissionsBean.PUBLIC_READ_PARAM);
 		ub.getPermissions().setPublicRead(convertPermission(permission));
 
+		permission = req.getParameter(UpdatePermissionsBean.PUBLIC_COMMENT_PARAM);
+		ub.getPermissions().setPublicComment(convertPermission(permission));
+
 		permission = req.getParameter(UpdatePermissionsBean.PUBLIC_WRITE_PARAM);
 		ub.getPermissions().setPublicWrite(convertPermission(permission));
 
@@ -77,6 +86,11 @@ public class UpdatePermissionsBeanHelper
 				.getParameter(UpdatePermissionsBean.OVERWRITE_OWNER_READ_PARAM);
 		ub.getOverwritePermissions()
 				.setOwnerRead(convertPermission(permission));
+
+		permission = req
+				.getParameter(UpdatePermissionsBean.OVERWRITE_OWNER_COMMENT_PARAM);
+		ub.getOverwritePermissions()
+				.setOwnerComment(convertPermission(permission));
 
 		permission = req
 				.getParameter(UpdatePermissionsBean.OVERWRITE_OWNER_WRITE_PARAM);
@@ -94,6 +108,11 @@ public class UpdatePermissionsBeanHelper
 				.setGroupRead(convertPermission(permission));
 
 		permission = req
+				.getParameter(UpdatePermissionsBean.OVERWRITE_GROUP_COMMENT_PARAM);
+		ub.getOverwritePermissions()
+				.setGroupComment(convertPermission(permission));
+
+		permission = req
 				.getParameter(UpdatePermissionsBean.OVERWRITE_GROUP_WRITE_PARAM);
 		ub.getOverwritePermissions().setGroupWrite(
 				convertPermission(permission));
@@ -106,6 +125,11 @@ public class UpdatePermissionsBeanHelper
 		permission = req
 				.getParameter(UpdatePermissionsBean.OVERWRITE_PUBLIC_READ_PARAM);
 		ub.getOverwritePermissions().setPublicRead(
+				convertPermission(permission));
+
+		permission = req
+				.getParameter(UpdatePermissionsBean.OVERWRITE_PUBLIC_COMMENT_PARAM);
+		ub.getOverwritePermissions().setPublicComment(
 				convertPermission(permission));
 
 		permission = req

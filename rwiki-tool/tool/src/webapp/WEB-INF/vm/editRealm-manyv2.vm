@@ -52,6 +52,7 @@
               	 	   <td><label>${rlb.jsp_permission_create}</label></td>
               	 	   <td><label>${rlb.jsp_permission_read}</label></td>
               	 	   <td><label>${rlb.jsp_permission_edit}</label></td>
+              	 	   <td><label>${rlb.jsp_permission_comment}</label></td>
               	 	   <td><label>${rlb.jsp_permission_admin}</label></td>
               	 	   <td><label>${rlb.jsp_permission_super_admin}</label></td>
               	 </tr>
@@ -78,6 +79,13 @@
               	        <input type="checkbox" name="update_${azgb.id}_${rb.id}" />
               	      #else
               	         <input type="checkbox" name="update_${azgb.id}_${rb.id}" checked="checked"/>
+              	      #end
+              	      </td> 
+              	      <td>
+              	      #if ({$rb.secureComment})
+              	        <input type="checkbox" name="commetn_${azgb.id}_${rb.id}" />
+              	      #else
+              	         <input type="checkbox" name="comment_${azgb.id}_${rb.id}" checked="checked"/>
               	      #end
               	      </td> 
               	      <td>

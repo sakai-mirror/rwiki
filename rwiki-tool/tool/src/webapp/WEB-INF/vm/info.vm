@@ -15,6 +15,7 @@
 #helppopup( "permissionshelp" ${rlb.jsp_page_permissions} ${rlb.jsp_page_permissions_help} )   		
 #helppopup( "createhelp" ${rlb.jsp_create_site_permissions} ${rlb.jsp_create_site_permissions_help} )
 #helppopup( "readhelp" ${rlb.jsp_page_read_permission} ${rlb.jsp_page_read_permission_help} )
+#helppopup( "commenthelp" ${rlb.jsp_page_comment_permission} ${rlb.jsp_page_comment_permission_help} )
 #helppopup( "updatehelp" ${rlb.jsp_page_edit_permission} ${rlb.jsp_page_edit_permission_help} )
 #helppopup( "deletehelp" ${rlb.jsp_page_delete_permission} ${rlb.jsp_page_delete_permission_help} )
 #helppopup( "adminhelp" ${rlb.jsp_page_admin_permission} ${rlb.jsp_page_admin_permission_help} )
@@ -107,6 +108,11 @@
 		    permissionsMatrix[pmi] = x;
 		    pmi++;
 		    x = new Array(); 
+		    x[0] = ${role.secureComment};
+		    x[1] = "-xxxx";
+		    permissionsMatrix[pmi] = x;
+		    pmi++;
+		    x = new Array(); 
 		    x[0] = ${role.secureAdmin};
 		    x[1] = "---xx";
 		    permissionsMatrix[pmi] = x;
@@ -118,7 +124,7 @@
 		    pmi++;
 		  #end
 		</script>
-		<table class="rwiki_info" cellspacing="0" summary="This table gives the permissions for this page. Column 1 gives the role name. Column 2 lists the status of the 'create' permission. Column 3 lists the status of the 'read' permission. Column 4 lists the status of the 'edit' permission. Column 5 lists the status of the 'admin' permission. Column 6 lists the status of the 'super-admin' permission. Edit, read and create permissions can be enabled and disabled on this page by checking and unchecking the checkboxes in the relevant column. This will change the status of the permission as given in the table.">
+		<table class="rwiki_info" cellspacing="0" summary="This table gives the permissions for this page. Column 1 gives the role name. Column 2 lists the status of the 'create' permission. Column 3 lists the status of the 'read' permission. Column 4 lists the status of the 'edit' permission. Column 5 lists the status of the 'comment' permission. Column 6 lists the status of the 'admin' permission. Column 7 lists the status of the 'super-admin' permission. Edit, read, comment and create permissions can be enabled and disabled on this page by checking and unchecking the checkboxes in the relevant column. This will change the status of the permission as given in the table.">
 		  <tbody>
 		    <tr id="permissions">
 		    	<th>${rlb.jsp_page_perms_by_role}<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'permissionshelp'); return false;"
@@ -129,6 +135,8 @@
 		    		onMouseOut="hidePopup('readhelp');" >?</a></td>
 		    	<td>${rlb.jsp_permission_edit}<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'updatehelp'); return false;"
 		    		onMouseOut="hidePopup('updatehelp');" >?</a></td>
+		    	<td>${rlb.jsp_permission_comment}<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'commenthelp'); return false;"
+		    		onMouseOut="hidePopup('commenthelp');" >?</a></td>
 		    	<!--<td>${rlb.jsp_permission_delete}<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'deletehelp'); return false;"
 		    		onMouseOut="hidePopup('deletehelp');" >?</a></td>-->
 		    	<td>${rlb.jsp_permission_admin}<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'adminhelp'); return false;"
@@ -171,6 +179,18 @@
 		       #set( $pmcounter = $pmcounter+1 )		  		
 			      </td>
 			      <td>
+			      #if (${currentRWikiObject.groupComment})
+			        <span id="permissions_${pmcounter}" class="rwiki_info_secure_granted" >
+			        #granted( ${role.secureComment} false )
+			        </span>
+			      #else
+			        <span id="permissions_${pmcounter}" class="rwiki_info_secure_denied" >
+			        #granted( ${role.secureComment} false )
+			        </span>
+         #end	
+		       #set( $pmcounter = $pmcounter+1 )		  		
+			      </td>
+			      <td>
 			      #if (${currentRWikiObject.groupAdmin})
 			        <span id="permissions_${pmcounter}" class="rwiki_info_secure_granted" >
 			        #granted( ${role.secureAdmin} false )
@@ -198,17 +218,25 @@
 			     <td>
 			     #if (${currentRWikiObject.groupRead} )
 				       <input type="checkbox" name="groupRead" checked="checked" 
-				          onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked);"/>
+				          onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);"/>
 			     #else
-			        <input type="checkbox" name="groupRead" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked);"/>
+			        <input type="checkbox" name="groupRead" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);"/>
 			     #end
 			     </td>
 			     <td>
 			     #if (${currentRWikiObject.groupWrite} )
 				      <input type="checkbox" name="groupWrite" checked="checked" 
-				          onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked);" />
+				          onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);" />
 			     #else
-			     			<input type="checkbox" name="groupWrite" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked);" />
+			     			<input type="checkbox" name="groupWrite" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);" />
+			     #end
+			     </td>
+			     <td>
+			     #if (${currentRWikiObject.groupComment} )
+				       <input type="checkbox" name="groupRead" checked="checked" 
+				          onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);"/>
+			     #else
+			        <input type="checkbox" name="groupComment" onClick="setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',groupRead.checked,groupWrite.checked,groupAdmin.checked,groupComment.checked);"/>
 			     #end
 			     </td>
 			     <td>
@@ -243,10 +271,17 @@
 			      #end
 			      </td>
 			      <td>
-			      #if (${currentRWikiObject.ownerAdmin})
-				      <input type="checkbox" name="ownerAdmin" checked="checked" onClick="if ( checked ) { ownerRead.checked = checked; ownerWrite.checked = checked; }"/>
+			      #if (${currentRWikiObject.ownerComment})
+				       <input type="checkbox" name="ownerComment" checked="checked"/>
 			      #else
-				      <input type="checkbox" name="ownerAdmin" onClick="if (checked) { ownerRead.checked = checked; ownerWrite.checked = checked; }"/>
+				       <input type="checkbox" name="ownerComment"/>
+			      #end
+			      </td>
+			      <td>
+			      #if (${currentRWikiObject.ownerAdmin})
+				      <input type="checkbox" name="ownerAdmin" checked="checked" onClick="if ( checked ) { ownerRead.checked = checked; ownerWrite.checked = checked;  ownerComment.checked = checked}"/>
+			      #else
+				      <input type="checkbox" name="ownerAdmin" onClick="if (checked) { ownerRead.checked = checked; ownerWrite.checked = checked;  ownerComment.checked = checked}"/>
 			      #end
 			      </td>
 			      <td>&nbsp;</td>
@@ -267,6 +302,13 @@
 				      <input type="checkbox" name="publicWrite" checked="checked" onClick="if ( checked) publicRead.checked = checked;"/>
 			     #else
 				      <input type="checkbox" name="publicWrite" onClick="if (checked) publicRead.checked = checked;"/>
+			     #end
+			     </td>
+			     <td>
+			     #if (${currentRWikiObject.publicComment})
+				      <input type="checkbox" name="publicComment" checked="checked"/>
+			     #else
+				      <input type="checkbox" name="publicComment"/>
 			     #end
 			     </td>
 			     <td></td>
@@ -319,6 +361,9 @@
 			  	  #granted( ${currentRWikiObject.groupWrite} true )
 			    </td>
 			    <td>
+			  	  #granted( ${currentRWikiObject.groupComment} true )
+			    </td>
+			    <td>
 			  	  #granted( ${currentRWikiObject.groupAdmin} true )
 			    </td>
 			    <td></td>
@@ -339,6 +384,9 @@
 			      #granted( ${currentRWikiObject.ownerWrite} true)
 			     </td>
 			     <td>
+			      #granted( ${currentRWikiObject.ownerComment} true)
+			     </td>
+			     <td>
 			      #granted( ${currentRWikiObject.ownerAdmin} true)
 			     </td>
 			     <td>&nbsp;</td>
@@ -352,6 +400,9 @@
 			     </td>
 			     <td>
 			      #granted( ${currentRWikiObject.publicWrite} true)
+			     </td>
+			     <td>
+			      #granted( ${currentRWikiObject.publicComment} true)
 			     </td>
 			     <td></td>
 			     <td></td>
@@ -473,7 +524,7 @@
 		  </tbody>
 		</table>
 		<script type="text/javascript">
-		  setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',${currentRWikiObject.groupRead}, ${currentRWikiObject.groupWrite}, ${currentRWikiObject.groupAdmin});
+		  setPermissionDisplay('rwiki_info_secure_granted','rwiki_info_secure_denied',${currentRWikiObject.groupRead}, ${currentRWikiObject.groupWrite}, ${currentRWikiObject.groupAdmin}, ${currentRWikiObject.groupComment});
 		</script>
 	 </div>
 
