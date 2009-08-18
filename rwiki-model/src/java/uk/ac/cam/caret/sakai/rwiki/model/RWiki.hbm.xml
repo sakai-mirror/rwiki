@@ -102,11 +102,15 @@
 		<property name="ownerRead" type="boolean"  />
 		<property name="ownerWrite" type="boolean" />
 		<property name="ownerAdmin" type="boolean" />
+		<property name="ownerComment" type="boolean"  />
 		<property name="groupRead" type="boolean" />
 		<property name="groupWrite" type="boolean" />
 		<property name="groupAdmin" type="boolean" />
+		<property name="groupComment" type="boolean" />
 		<property name="publicRead" type="boolean" />
 		<property name="publicWrite" type="boolean" />
+		<property name="publicComment" type="boolean" />
+		
 
 		<property name="sha1" length="64" />
 		
@@ -152,11 +156,14 @@
 	<property name="ownerRead" type="boolean"  />
 	<property name="ownerWrite" type="boolean" />
 	<property name="ownerAdmin" type="boolean" />
+	<property name="ownerComment" type="boolean" />
 	<property name="groupRead" type="boolean" />
 	<property name="groupWrite" type="boolean" />
 	<property name="groupAdmin" type="boolean" />
+	<property name="groupComment" type="boolean" />
 	<property name="publicRead" type="boolean" />
 	<property name="publicWrite" type="boolean" />
+    <property name="publicComment" type="boolean" />
 
 	<property name="sha1" length="64" />
 		

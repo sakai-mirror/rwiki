@@ -77,17 +77,23 @@ public abstract class RWikiObjectImpl implements RWikiObject
 
 	protected boolean m_ownerread = true;
 
+	protected boolean m_ownercomment = true;
+
 	protected boolean m_ownerwrite = true;
 
 	protected boolean m_owneradmin = true;
 
 	protected boolean m_groupread = true;
 
+	protected boolean m_groupcomment = true;
+
 	protected boolean m_groupwrite = true;
 
 	protected boolean m_groupadmin = true;
 
 	protected boolean m_publicread = false;
+
+	protected boolean m_publiccomment = false;
 
 	protected boolean m_publicwrite = false;
 
@@ -313,6 +319,16 @@ public abstract class RWikiObjectImpl implements RWikiObject
 	{
 		return m_groupread;
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uk.ac.cam.caret.sakai.rwiki.tool.service.RWikiObject#getGroupComment()
+	 */
+	public boolean getGroupComment()
+	{
+		return m_groupcomment;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -332,6 +348,16 @@ public abstract class RWikiObjectImpl implements RWikiObject
 	public boolean getPublicRead()
 	{
 		return m_publicread;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uk.ac.cam.caret.sakai.rwiki.tool.service.RWikiObject#getPublicComment()
+	 */
+	public boolean getPublicComment()
+	{
+		return m_publiccomment;
 	}
 
 	/*
@@ -363,6 +389,16 @@ public abstract class RWikiObjectImpl implements RWikiObject
 	{
 		return m_ownerread;
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uk.ac.cam.caret.sakai.rwiki.tool.service.RWikiObject#getUserComment()
+	 */
+	public boolean getOwnerComment()
+	{
+		return m_ownercomment;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -393,6 +429,16 @@ public abstract class RWikiObjectImpl implements RWikiObject
 	{
 		m_groupread = groupread;
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uk.ac.cam.caret.sakai.rwiki.tool.service.RWikiObject#setGroupComment(boolean)
+	 */
+	public void setGroupComment(boolean groupcomment)
+	{
+		m_groupcomment = groupcomment;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -412,6 +458,16 @@ public abstract class RWikiObjectImpl implements RWikiObject
 	public void setPublicRead(boolean publicread)
 	{
 		m_publicread = publicread;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uk.ac.cam.caret.sakai.rwiki.tool.service.RWikiObject#setPublicComment(boolean)
+	 */
+	public void setPublicComment(boolean publiccomment)
+	{
+		m_publiccomment = publiccomment;
 	}
 
 	/*
@@ -463,6 +519,16 @@ public abstract class RWikiObjectImpl implements RWikiObject
 	{
 		m_ownerread = userread;
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uk.ac.cam.caret.sakai.rwiki.tool.service.RWikiObject#setUserComment(boolean)
+	 */
+	public void setOwnerComment(boolean usercomment)
+	{
+		m_ownercomment = usercomment;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -488,12 +554,15 @@ public abstract class RWikiObjectImpl implements RWikiObject
 		rwo.setContent(this.getContent());
 		rwo.setGroupAdmin(this.getGroupAdmin());
 		rwo.setGroupRead(this.getGroupRead());
+		rwo.setGroupComment(this.getGroupComment());
 		rwo.setGroupWrite(this.getGroupWrite());
 		rwo.setPublicRead(this.getPublicRead());
+		rwo.setPublicComment(this.getPublicComment());
 		rwo.setPublicWrite(this.getPublicWrite());
 		rwo.setReferenced(this.getReferenced());
 		rwo.setOwnerAdmin(this.getOwnerAdmin());
 		rwo.setOwnerRead(this.getOwnerRead());
+		rwo.setOwnerComment(this.getOwnerComment());
 		rwo.setOwnerWrite(this.getOwnerWrite());
 	}
 
@@ -502,12 +571,15 @@ public abstract class RWikiObjectImpl implements RWikiObject
 		rwo.setContent(this.getContent());
 		rwo.setGroupAdmin(this.getGroupAdmin());
 		rwo.setGroupRead(this.getGroupRead());
+		rwo.setGroupComment(this.getGroupComment());
 		rwo.setGroupWrite(this.getGroupWrite());
 		rwo.setPublicRead(this.getPublicRead());
+		rwo.setPublicComment(this.getPublicComment());
 		rwo.setPublicWrite(this.getPublicWrite());
 		rwo.setReferenced(this.getReferenced());
 		rwo.setOwnerAdmin(this.getOwnerAdmin());
 		rwo.setOwnerRead(this.getOwnerRead());
+		rwo.setOwnerComment(this.getOwnerComment());
 		rwo.setOwnerWrite(this.getOwnerWrite());
 		rwo.setSha1(this.getSha1());
 	}
@@ -575,15 +647,18 @@ public abstract class RWikiObjectImpl implements RWikiObject
 		{
 			// yuck
 			throw new IllegalArgumentException(
-					"Must be given an array of length 8");
+					"Must be given an array of length 11");
 		}
 		this.setOwnerRead(permissions[0]);
+		this.setOwnerComment(permissions[8]);
 		this.setOwnerWrite(permissions[1]);
 		this.setOwnerAdmin(permissions[2]);
 		this.setGroupRead(permissions[3]);
+		this.setGroupComment(permissions[9]);
 		this.setGroupWrite(permissions[4]);
 		this.setGroupAdmin(permissions[5]);
 		this.setPublicRead(permissions[6]);
+		this.setPublicComment(permissions[10]);
 		this.setPublicWrite(permissions[7]);
 
 	}
@@ -591,12 +666,15 @@ public abstract class RWikiObjectImpl implements RWikiObject
 	public void setPermissions(RWikiPermissions permissions)
 	{
 		setOwnerRead(permissions.isOwnerRead());
+		setOwnerComment(permissions.isOwnerComment());
 		setOwnerWrite(permissions.isOwnerWrite());
 		setOwnerAdmin(permissions.isOwnerAdmin());
 		setGroupRead(permissions.isGroupRead());
+		setGroupComment(permissions.isGroupComment());
 		setGroupWrite(permissions.isGroupWrite());
 		setGroupAdmin(permissions.isGroupAdmin());
 		setPublicRead(permissions.isPublicRead());
+		setPublicComment(permissions.isPublicComment());
 		setPublicWrite(permissions.isPublicWrite());
 	}
 
@@ -604,12 +682,15 @@ public abstract class RWikiObjectImpl implements RWikiObject
 	{
 		RWikiPermissions permissions = new RWikiPermissionsImpl();
 		permissions.setOwnerRead(getOwnerRead());
+		permissions.setOwnerComment(getOwnerComment());
 		permissions.setOwnerWrite(getOwnerWrite());
 		permissions.setOwnerAdmin(getOwnerAdmin());
 		permissions.setGroupRead(getGroupRead());
+		permissions.setGroupComment(getGroupComment());
 		permissions.setGroupWrite(getGroupWrite());
 		permissions.setGroupAdmin(getGroupAdmin());
 		permissions.setPublicRead(getPublicRead());
+		permissions.setPublicComment(getPublicComment());
 		permissions.setPublicWrite(getPublicWrite());
 		return permissions;
 	}

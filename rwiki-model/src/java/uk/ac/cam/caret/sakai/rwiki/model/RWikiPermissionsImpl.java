@@ -27,13 +27,13 @@ import uk.ac.cam.caret.sakai.rwiki.service.api.model.RWikiPermissions;
  */
 public class RWikiPermissionsImpl implements RWikiPermissions
 {
-	public static final int OWNER_READ_INDEX, OWNER_WRITE_INDEX,
+	public static final int OWNER_READ_INDEX, OWNER_COMMENT_INDEX, OWNER_WRITE_INDEX,
 			OWNER_ADMIN_INDEX;
 
-	public static final int GROUP_READ_INDEX, GROUP_WRITE_INDEX,
+	public static final int GROUP_READ_INDEX, GROUP_COMMENT_INDEX,GROUP_WRITE_INDEX,
 			GROUP_ADMIN_INDEX;
 
-	public static final int PUBLIC_READ_INDEX, PUBLIC_WRITE_INDEX;
+	public static final int PUBLIC_READ_INDEX, PUBLIC_COMMENT_INDEX,PUBLIC_WRITE_INDEX;
 
 	public static final int PERMISSIONS_LENGTH;
 
@@ -41,12 +41,15 @@ public class RWikiPermissionsImpl implements RWikiPermissions
 	{
 		int i = 0;
 		OWNER_READ_INDEX = i++;
+		OWNER_COMMENT_INDEX = i++;
 		OWNER_WRITE_INDEX = i++;
 		OWNER_ADMIN_INDEX = i++;
 		GROUP_READ_INDEX = i++;
+		GROUP_COMMENT_INDEX = i++;
 		GROUP_WRITE_INDEX = i++;
 		GROUP_ADMIN_INDEX = i++;
 		PUBLIC_READ_INDEX = i++;
+		PUBLIC_COMMENT_INDEX = i++;
 		PUBLIC_WRITE_INDEX = i++;
 		// end permissions
 		PERMISSIONS_LENGTH = i;
@@ -102,7 +105,8 @@ public class RWikiPermissionsImpl implements RWikiPermissions
 	{
 		return permissions[GROUP_READ_INDEX];
 	}
-
+	
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -111,6 +115,26 @@ public class RWikiPermissionsImpl implements RWikiPermissions
 	public void setGroupRead(boolean groupRead)
 	{
 		this.permissions[GROUP_READ_INDEX] = groupRead;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uk.ac.cam.caret.sakai.rwiki.model.impl.RWikiPermissions#isGroupComment()
+	 */
+	public boolean isGroupComment()
+	{
+		return permissions[GROUP_COMMENT_INDEX];
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uk.ac.cam.caret.sakai.rwiki.model.impl.RWikiPermissions#setGroupComment(boolean)
+	 */
+	public void setGroupComment(boolean groupComment)
+	{
+		this.permissions[GROUP_COMMENT_INDEX] = groupComment;
 	}
 
 	/*
@@ -172,6 +196,25 @@ public class RWikiPermissionsImpl implements RWikiPermissions
 	{
 		this.permissions[OWNER_READ_INDEX] = ownerRead;
 	}
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uk.ac.cam.caret.sakai.rwiki.model.impl.RWikiPermissions#isOwnerComment()
+	 */
+	public boolean isOwnerComment()
+	{
+		return permissions[OWNER_COMMENT_INDEX];
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uk.ac.cam.caret.sakai.rwiki.model.impl.RWikiPermissions#setOwnerComment(boolean)
+	 */
+	public void setOwnerComment(boolean ownerComment)
+	{
+		this.permissions[OWNER_COMMENT_INDEX] = ownerComment;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -212,6 +255,26 @@ public class RWikiPermissionsImpl implements RWikiPermissions
 	{
 		this.permissions[PUBLIC_READ_INDEX] = publicRead;
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uk.ac.cam.caret.sakai.rwiki.model.impl.RWikiPermissions#isPublicComment()
+	 */
+	public boolean isPublicComment()
+	{
+		return permissions[PUBLIC_COMMENT_INDEX];
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uk.ac.cam.caret.sakai.rwiki.model.impl.RWikiPermissions#setPublicComment(boolean)
+	 */
+	public void setPublicComment(boolean publicComment)
+	{
+		this.permissions[PUBLIC_COMMENT_INDEX] = publicComment;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -235,15 +298,18 @@ public class RWikiPermissionsImpl implements RWikiPermissions
 
 	public String toString()
 	{
-		char[] perms = "o--- s--- p--".toCharArray();
+		char[] perms = "o---- s---- p---".toCharArray();
 		if (isOwnerRead()) perms[1] = 'r';
+		if (isOwnerComment()) perms[4] = 'c';
 		if (isOwnerWrite()) perms[2] = 'w';
 		if (isOwnerAdmin()) perms[3] = 'a';
-		if (isGroupRead()) perms[6] = 'r';
-		if (isGroupWrite()) perms[7] = 'w';
-		if (isGroupAdmin()) perms[8] = 'a';
-		if (isPublicRead()) perms[11] = 'r';
-		if (isPublicWrite()) perms[12] = 'w';
+		if (isGroupRead()) perms[7] = 'r';
+		if (isGroupComment()) perms[10] = 'c';
+		if (isGroupWrite()) perms[8] = 'w';
+		if (isGroupAdmin()) perms[9] = 'a';
+		if (isPublicRead()) perms[13] = 'r';
+		if (isPublicWrite()) perms[14] = 'w';
+		if (isPublicComment()) perms[15] = 'c';
 		return new String(perms);
 	}
 
