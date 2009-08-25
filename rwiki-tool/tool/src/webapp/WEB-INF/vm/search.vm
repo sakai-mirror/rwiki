@@ -29,25 +29,28 @@
 	#else
 		#set($rwikiContentStyle = "nosidebar")
 	#end
+	<h3 class="breadcrumb specialLink" >
 	#breadcrumbs()
+	</h3>
 	<div id="rwiki_head" >				    
 		#sidebar_switcher()
 	</div>
-	<div id="rwiki_content" class="${rwikiContentStyle}" >
-		<h3>${rlb.jsp_search}: ${util.escapeHtml($searchBean.search)}</h3>
 
+	<div id="rwiki_content" class="${rwikiContentStyle}" >
+
+		<h3>${rlb.jsp_search}: ${util.escapeHtml($searchBean.search)}</h3>
 		#set($searchResults = ${searchBean.searchResults})
 		#set($searchViewBean = ${util.newViewBean($requestScope)})
-      	<p>
+      	<ul class="attachList">
       	#if ( $searchResults.size() > 0 ) 
       		#foreach( $result in $searchResults )
       		   #set( $searchViewBean.pageName  = ${result.name})
-      	    <a href="${util.escapeHtml(${searchViewBean.viewUrl})}" >${util.escapeHtml($searchViewBean.localName)}</a>
+	      	    <li><a href="${util.escapeHtml(${searchViewBean.viewUrl})}" >${util.escapeHtml($searchViewBean.localName)}</a></li>
       		#end
       	#else
-      		${rlb.jsp_no_results_found}</b>
+      		<p class="instruction"></p>${rlb.jsp_no_results_found}</p>
 	  	#end
-	  	</p>
+	  	</ul>
 	 </div>
 	 #sidebar()
   </div>

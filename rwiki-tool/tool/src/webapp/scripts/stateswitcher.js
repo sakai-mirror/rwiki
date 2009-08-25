@@ -714,6 +714,12 @@ function setEnabledElement(elId, enabled) {
 	}
 	if (el != null) {
 		el.innerHTML = enabled ? yes_val : no_val;
+		if (el.innerHTML == no_val) {
+			$(el).addClass('highlight')
+		}
+		else {
+			$(el).removeClass('highlight')
+	}
 	} 
 }
 
@@ -729,3 +735,21 @@ function setClassName(elId,className) {
 	}
 }
 
+rearrangeBreadCrumb = function(){
+	$('#wikiCrumb').hide();
+	$('#wikiCrumb li:last-child').remove();
+	if($('#wikiCrumb li').length > 0){
+		$('#visitedPages').show();
+	}
+	if ($("#wikiCrumb").height() > 200) {
+		$("#wikiCrumb").addClass("oversizeCrumb")
+	}
+
+	var pos=$('#visitedPages').position();
+	$('#visitedPages').click (function(event){
+		$('#wikiCrumb').css('top',pos.top + $('#visitedPages').height() + 5);
+		$('#wikiCrumb').toggle();
+		$('#visitedPages').toggleClass('visitedPagesOff');
+		event.preventDefault();
+	});
+}
