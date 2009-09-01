@@ -603,6 +603,9 @@ added only to site index, could be added to other things*/
 .searchResultList li h5 a{
 	text-decoration:underline;
 	}
+.searchResultList li strong{
+	font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
 .searchResultList li .searchItemBody{
 	color:#000
 }
@@ -612,7 +615,7 @@ added only to site index, could be added to other things*/
 
 .searchResultPager{
 	display:inline;
-	margin:0;
+	margin:1em 0;
 	padding:.2em;
 	background:#eee
 }
@@ -902,3 +905,5 @@ ul.tree div a {
 }
 ul.tree li A:link, ul.tree li A:hover, ul.tree li A:visited { color: #111111 }
 ul.tree li .over{ background-color: pink }
+
+¡
