@@ -168,6 +168,9 @@ a.anchorpoint { vertical-align: top }
 	border: 1px solid #cccccc;
 	font-family: "Lucida Console", Monaco, "Courier New", "Lucida Sans Typewriter", monospace !important;
 	width: 99%;
+/*
+	width: auto;
+*/
 	padding: 3px;
 	font-size: 10pt
 }
@@ -177,6 +180,9 @@ a.anchorpoint { vertical-align: top }
 	font-family: "Lucida Console", Monaco, "Courier New", "Lucida Sans Typewriter", monospace !important;
 	padding: 3px;
 	width: 100%;
+/*
+	width: auto;
+*/
 	font-size: 10pt
 }
 #restoreContent{ background: #eee; cursor: not-allowed }
@@ -562,18 +568,19 @@ MOOT
 	padding-left: 1em;
 	background: #fff url(/library/image/sakai/collapse.gif) left no-repeat
 }
-.commentsToolBar{ padding-left: 3em; font-size: .8em }
-.commentsToolBar a{
+.commentsToolBar{ padding: .3em 3em; font-size: .8em;line-height:2em;}
+#createCommentLink{
 	background: url(/library/image/silk/comment_add.png) center left no-repeat;
-	padding-left: 1.6em
+	padding:3em 1.6em;
 }
+
 .rwiki_comments { list-style: none; margin: 0; padding: 0 }
 .rwiki_comments .hidden .rwikicommenttop, .rwiki_comments .hidden .rwikicomenttext{background:#eee;color:#999}
 .rwiki_comments .hidden .commentAuthor{ /*.commentHeader*/
 	color: #bbb 
 }
 
-.lastmodified { font-size: smaller; text-align: right; color: #555 }
+.lastmodified { font-size: smaller; text-align: right; color: #555;padding:.5em 0}
 
 /*view:index-list
 added to blocks that are higher than 300px - creates a scroll if so and sizes them to 300px

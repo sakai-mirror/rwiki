@@ -359,28 +359,3 @@ function hidePopup(divid) {
         targetdiv.style.visibility = "hidden";		
      }
 }
-
-// toggle a fade
-jQuery.fn.fadeToggle = function(speed, easing, callback){
-    return this.animate({
-        opacity: 'toggle'
-    }, speed, easing, callback);
-};
-utils.resizeFrame = function(updown){
-    var clientH;
-    if (top.location !== self.location) {
-        var frame = parent.document.getElementById(window.name);
-    }
-    if (frame) {
-        if (updown === 'shrink') {
-            clientH = document.body.clientHeight;
-        }
-        else {
-            clientH = document.body.clientHeight + 50;
-        }
-        $(frame).height(clientH);
-    }
-    else {
-        // throw( "resizeFrame did not get the frame (using name=" + window.name + ")" );
-    }
-};

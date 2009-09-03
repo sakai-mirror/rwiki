@@ -65,7 +65,7 @@
 		#set( $rwikiContentStyle = "nosidebar" )
 	#end
 	
-				<div class="navPanel">
+		<div class="navPanel">
 			<div class="viewNav">
 				<h3 class="breadcrumb">
 					<span id="breadPref">${rlb.jsp_info}:&nbsp;</span><span id="breadCurr">${util.escapeHtml($renderBean.localisedPageName)}</span>

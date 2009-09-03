@@ -4,9 +4,6 @@
 	lang="${rlb.jsp_lang}" 
 	xml:lang="${rlb.jsp_xml_lang}" >
     <head>
-## 	<script  type="text/javascript" src="/library/js/jquery.js"> <!-- don't reduce this! --></script>
-<script  type="text/javascript" src="/library/js/jquery/jquery-ui/js/jquery.js"> <!-- don't reduce this! --></script>
-
       <title>${title}</title>
       ${request.getAttribute("sakai.html.head")}
       #if ( $viewBean ) 

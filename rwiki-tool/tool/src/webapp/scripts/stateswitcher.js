@@ -89,7 +89,7 @@ function onload() {
 }
 function storeCaret(el) {
     if ( el.createTextRange ) 
-        el.caretPos = document.selection.createRange().duplicate();        
+        el.caretPos = document.selection.createRange().duplicate();
 }
 
 function addAttachment(textareaid, formid, editcontrolid, type) {
@@ -735,21 +735,3 @@ function setClassName(elId,className) {
 	}
 }
 
-rearrangeBreadCrumb = function(){
-	$('#wikiCrumb').hide();
-	$('#wikiCrumb li:last-child').remove();
-	if($('#wikiCrumb li').length > 0){
-		$('#visitedPages').show();
-	}
-	if ($("#wikiCrumb").height() > 200) {
-		$("#wikiCrumb").addClass("oversizeCrumb")
-	}
-
-	var pos=$('#visitedPages').position();
-	$('#visitedPages').click (function(event){
-		$('#wikiCrumb').css('top',pos.top + $('#visitedPages').height() + 5);
-		$('#wikiCrumb').toggle();
-		$('#visitedPages').toggleClass('visitedPagesOff');
-		event.preventDefault();
-	});
-}

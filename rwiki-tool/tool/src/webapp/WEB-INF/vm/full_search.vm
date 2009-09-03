@@ -30,18 +30,21 @@
 		#set( $rwikiContentStyle = "nosidebar" )
 	#end
 	
-	
-			<div class="navPanel">
-			<div class="viewNav">
-				<h3 class="breadcrumb">
-					<span id="breadPref">${rlb.jsp_search}:&nbsp;</span><span id="breadCurr">${util.escapeHtml($searchBean.search)}</span>
-				</h3>
-			</div>	
-			<div class="listNav specialLink">
-				<a href="#" class="visitedPagesOn" id="visitedPages" style="display:none">${rlb.jsp_visited_pages_link}</a>
-				<ul id="wikiCrumb" style="display:none">#breadcrumbs()</ul>
-			</div>
+	#set ($searchBean.pagesize = 10 )
+	#set ($searchResults = ${searchBean.searchResults} )
+	#set ($searchPages = ${searchBean.searchPages} )
+	#set ($requestSearchPages = ${searchBean.requestPage} )
+	<div class="navPanel">
+		<div class="viewNav">
+			<h3 class="breadcrumb">
+				<span id="breadPref">${rlb.jsp_search}:&nbsp;</span><span id="breadCurr">${util.escapeHtml($searchBean.search)}</span><span class="instruction textPanelFooter" style="font-size:80%">&nbsp;&nbsp;(${rlb.jsp_search_took} ${searchBean.timeTaken} ${rlb.jsp_ms_found} ${searchBean.nresults})</span>
+			</h3>
+		</div>	
+		<div class="listNav specialLink">
+			<a href="#" class="visitedPagesOn" id="visitedPages" style="display:none">${rlb.jsp_visited_pages_link}</a>
+			<ul id="wikiCrumb" style="display:none">#breadcrumbs()</ul>
 		</div>
+	</div>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -51,18 +54,6 @@
 	<div id="rwiki_head" >				    
 		#sidebar_switcher()
 	</div>
-	
-	#set ($searchBean.pagesize = 10 )
-	#set ($searchResults = ${searchBean.searchResults} )
-	#set ($searchPages = ${searchBean.searchPages} )
-	#set ($requestSearchPages = ${searchBean.requestPage} )
-
-	## todo: this does not seem to be returning good info - hide for now
-
-	## <p class="instruction">${rlb.jsp_search_took} ${searchBean.timeTaken} ${rlb.jsp_ms_found} ${searchBean.nresults}</p>
-
-	## todo: this is redundant.
-	## <p class="instruction">${rlb.jsp_search_title}  ${rlb.jsp_search_open_q}${util.escapeHtml($searchBean.search)}${rlb.jsp_search_close_q}</p>
 
 	#set ($searchViewBean = ${util.newViewBean($requestScope)} ) 
 	#set ($searchViewBean.localSpace = $currentLocalSpace)
