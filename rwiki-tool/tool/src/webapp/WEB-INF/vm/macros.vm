@@ -239,10 +239,10 @@ ${util.formatDateTime($date,$request)}
      <div id="rwiki_sidebar_switcher" class="specialLink">
         <a id="sidebar_switch_on" 
         	href="#" 
-        	onclick="showSidebar('none')" >Show hints</a>
+        	onclick="showSidebar('none')" >${rlb.jsp_show_hints}</a>
         <a id="sidebar_switch_off" 
         	href="#" 
-        	onclick="hideSidebar('none')" >Hide hints</a>
+        	onclick="hideSidebar('none')" >${rlb.jsp_hide_hints}</a>
 	 </div>
   #end
 #end

@@ -528,6 +528,10 @@ function hideSidebar(id) {
   document.getElementById('rwiki_content').className = 'nosidebar';
   document.getElementById('sidebar_switch_on').style.display='block';
   document.getElementById('sidebar_switch_off').style.display='none';
+  $('#content').css('width','99%');
+	if ($('#ie8').length) {
+		utils.fixIE8TextArea();
+	}
   sizeFrameAfterAjax();
 }
 function showSidebar(id) {
@@ -535,6 +539,7 @@ function showSidebar(id) {
   document.getElementById('rwiki_content').className = 'withsidebar';
   document.getElementById('sidebar_switch_on').style.display='none';
   document.getElementById('sidebar_switch_off').style.display='block';
+  $('#content').css('width','100%');
   sizeFrameAfterAjax();
 }
 var previewDiv;

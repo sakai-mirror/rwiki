@@ -19,7 +19,6 @@
  * limitations under the License.
  *
  **********************************************************************************/
-
 var sakai = sakai ||
 {};
 var utils = utils ||
@@ -52,20 +51,53 @@ utils.resizeFrame = function(updown){
 
 
 rearrangeBreadCrumb = function(){
-	$('#wikiCrumb').hide();
-	$('#wikiCrumb li:last-child').remove();
-	if($('#wikiCrumb li').length > 0){
-		$('#visitedPages').show();
-	}
-	if ($("#wikiCrumb").height() > 200) {
-		$("#wikiCrumb").addClass("oversizeCrumb")
-	}
+    $('#wikiCrumb').hide();
+    $('#wikiCrumb li:last-child').remove();
+    if ($('#wikiCrumb li').length > 0) {
+        $('#visitedPages').show();
+    }
+    if ($("#wikiCrumb").height() > 200) {
+        $("#wikiCrumb").addClass("oversizeCrumb")
+    }
+    
+    var pos = $('#visitedPages').position();
+    $('#visitedPages').click(function(event){
+        $('#wikiCrumb').css('top', pos.top + $('#visitedPages').height() + 5);
+        $('#wikiCrumb').toggle();
+        $('#visitedPages').toggleClass('visitedPagesOff');
+        event.preventDefault();
+    });
+}
 
-	var pos=$('#visitedPages').position();
-	$('#visitedPages').click (function(event){
-		$('#wikiCrumb').css('top',pos.top + $('#visitedPages').height() + 5);
-		$('#wikiCrumb').toggle();
-		$('#visitedPages').toggleClass('visitedPagesOff');
-		event.preventDefault();
-	});
+
+utils.fixIE8TextArea = function(){
+    var initIETaWidth;
+    var initIETaCols;
+    var autoIETaWidth;
+    var theseCols;
+    var ta = $('#content');
+    
+    if ($(ta).length) {
+        //get init width and cols values
+        initIETaWidth = $(ta).width();
+        initIETaCols = $(ta).attr('cols')
+        
+        //set the width to auto to fix IE 8 textarea bugs
+        $(ta).css('width', 'auto');
+        
+        //check the new width
+        autoIETaWidth = $(ta).width();
+        
+        theseCols = initIETaCols
+        /*
+         is it smaller than the init? Add a column till it is about the same
+         size as the initial size
+         */
+        while (autoIETaWidth < (initIETaWidth - 20)) {
+            $(ta).attr('cols', theseCols + 1)
+            theseCols = $(ta).attr('cols');
+            autoIETaWidth = $(ta).width();
+        }
+        
+    }
 }
