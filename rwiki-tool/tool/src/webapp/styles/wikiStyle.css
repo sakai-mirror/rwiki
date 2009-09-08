@@ -168,9 +168,6 @@ a.anchorpoint { vertical-align: top }
 	border: 1px solid #cccccc;
 	font-family: "Lucida Console", Monaco, "Courier New", "Lucida Sans Typewriter", monospace !important;
 	width: 99%;
-/*
-	width: auto;
-*/
 	padding: 3px;
 	font-size: 10pt
 }
@@ -180,9 +177,6 @@ a.anchorpoint { vertical-align: top }
 	font-family: "Lucida Console", Monaco, "Courier New", "Lucida Sans Typewriter", monospace !important;
 	padding: 3px;
 	width: 100%;
-/*
-	width: auto;
-*/
 	font-size: 10pt
 }
 #restoreContent{ background: #eee; cursor: not-allowed }
@@ -302,14 +296,14 @@ h3.breadcrumb #breadCurr{
 	border:1px solid #ccc;
 	right:3em;
 	list-style-position: inside;
-	margin:0;padding:.2em;
+	margin:0;padding:0 1em 0 0 ;
 	background:#ffe;
 	}
 
 #wikiCrumb li{
 	list-style:none;
 	background:url(/library/image/silk/page_white_text.png) 5px 5px  no-repeat;
-	padding:.3em .3em .3em 2.3em;
+	padding:.3em 1em .3em 2em;
 	line-height:1.5em;
 	margin:0;
 }
@@ -336,6 +330,7 @@ a.rwiki_help_popup_link span{ padding: 0 }
 	margin-bottom: 4px;
 	padding: 5px 5px 5px 5px;
 	color: inherit;
+	width:325px;
 	border: 1px solid #09c;
 	background-color: #cef;
 	line-height: 100%
@@ -495,6 +490,11 @@ MOOT
 	background: url(/library/image/silk/arrow_right.png) bottom left no-repeat;
 	padding: .3em  0 0 2em
 }
+#commentLinks li span{
+	background: url(/library/image/silk/comment.png) bottom left no-repeat;
+	padding: .3em  0 0 2em
+}
+
 /*PART 1 - View*/
 /*view:last mod message */
 /*comments*/

@@ -290,7 +290,7 @@ ${util.formatDateTime($date,$request)}
 	##start comments macro
 	#if (${requestScope.Withcomments})
 	
-
+		<a name="tocomments"></a>
 		<ul class="rwiki_comments specialLink">
 			<li class="commentsHeader">
 				<h5 class="commentsTitle specialLink" >
@@ -304,7 +304,6 @@ ${util.formatDateTime($date,$request)}
 		</ul>	
 		<ul class="rwiki_comments specialLink" id ="commentsList">	
 			#set ($commentCount =0)
-			<a name="tocomments"></a>
 			#foreach( $comment in ${renderBean.comments} )
 			#set ($commentCount =$commentCount + 1)
 			  #if (${comment.canRead})

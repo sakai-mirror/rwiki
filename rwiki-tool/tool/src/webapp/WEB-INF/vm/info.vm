@@ -56,9 +56,6 @@
 	</ul>
 	  </form>
 
-
-
-	
 	#if (${rightRenderBean.hasContent})
 		#set( $rwikiContentStyle = "withsidebar" )
 	#else
@@ -171,7 +168,7 @@
 			        <span id="permissions_${pmcounter}" class="rwiki_info_secure_denied" >
 			        #granted( ${role.secureRead} false )
 			        </span>
-         #end	
+		         #end	
 		       #set( $pmcounter = $pmcounter+1 )		  		
 			      </td>
 			      <td>
@@ -206,6 +203,9 @@
 			      </td>
 		    </tr>
 		    #end
+			
+			## begin admin permissions
+
 		    #if (${permissionsBean.adminAllowed})
 			   <tr id="permissionsGroup">
 			     <th><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'siteenablehelp'); return false;"
@@ -322,8 +322,10 @@
 			   #end
 			  #else
 			  ##
+			## end admin permissions
 		   ##  No Page edit allowed
 		   ##
+
 			   <tr id="permissionsGroup">
 			    <th>${rlb.jsp_enable_disable_page}<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'siteenabledisphelp'); return false;"
 			      onMouseOut="hidePopup('siteenabledisphelp');" ></a></th>
@@ -341,11 +343,10 @@
 			   </tr>
 			   <tr id="permissionsAdditional">
 			    <th class="exclude">${rlb.jsp_additional_page_permissions}</th>
-			    <td colspan="5" class="exclude">&nbsp;</td>
+			    <td colspan="5" style="border-left:none;border-right:none">&nbsp;</td>
 		   	</tr>
-			
 			   <tr id="permissionsOwner">
-			     <th>${rlb.jsp_page_owner}<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'pageownerdisphelp'); return false;"
+			     <th> aaa1 ${rlb.jsp_page_owner}<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'pageownerdisphelp'); return false;"
 			      onMouseOut="hidePopup('pageownerdisphelp');" ></a></th>
 			     <td>&nbsp;</td>
 			     <td>
@@ -408,7 +409,10 @@
 		    		onMouseOut="hidePopup('outgoinghelp');" >${rlb.jsp_outgoing}</a></th>
 		     <td colspan="6">
 			    #set( $referencedLinks = ${referencesBean.referencedPageLinks} )
-			    #if ( $referencedLinks && $referencedLinks.size() > 0 ) 
+				#if( $referencedLinks && $referencedLinks.size() > 60) ##SAK-12115
+					${rlb.jsp_info_outgoing_manylinks}
+				#end
+				#if ( $referencedLinks && $referencedLinks.size() > 0 && ( $referencedLinks && $referencedLinks.size()	<= 60)) 
 			      <ul id="referencedLinks">
 			      #foreach( $item in ${referencedLinks} )
 			          <li><span>${item}</span></li>
@@ -423,7 +427,7 @@
 		     <td colspan="6">
 		      <ul id="commentLinks">
 			    #foreach( $comment in ${renderBean.comments} )
-			     <li>${comment.CommentPageLink}</li>
+			     <li><span>${comment.CommentPageLink}</span></li>
 			    #end
 			      </ul>
 			 </td>
