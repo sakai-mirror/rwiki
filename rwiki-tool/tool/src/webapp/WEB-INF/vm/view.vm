@@ -33,6 +33,18 @@
 	#else
 		#set( $rwikiContentStyle = "nosidebar" )
 	#end
+	#if ($renderBean.localisedPageNameLength>255)
+		<div class="messageError">
+			<h4>
+				${rlb.jsp_page_length_alert_title}
+			</h4>
+			<div class="messageError">
+				${rlb.jsp_page_length_alert_view}
+			</div>
+		</div> 
+	
+	#end
+
 		<div class="navPanel">
 			<div class="viewNav">
 				<h3 class="breadcrumb">
@@ -45,6 +57,7 @@
 				<ul id="wikiCrumb" style="display:none">#breadcrumbs()</ul>
 			</div>
 		</div>
+
 			<div class="lastmodified specialLink" >
 			 	<span style="font-weight:bold;color:#000">
 				${util.escapeHtml($renderBean.localisedPageName)}
@@ -65,6 +78,7 @@
 	<div id="rwiki_head"><!-- avoid min height in IEX-->
 		#sidebar_switcher()
 	</div>
+	
 	<div id="rwiki_content" class="${rwikiContentStyle}" >
 	    <div class="rwikiRenderBody">
 	      <div class="rwikiRenderedContent"> 

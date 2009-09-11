@@ -238,7 +238,7 @@
 			   </tr>
 			   <tr id="permissionsAdditional">
 			      <th class="exclude">${rlb.jsp_additional_page_permissions}</th>
-			      <td class="exclude" colspan="5">&nbsp;</td>
+			      <td style="border-left:none;border-right:none" colspan="5">&nbsp;</td>
 			   </tr>
 			   <tr id="permissionsOwner">
 			      <th><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'pageownerhelp'); return false;"
@@ -346,7 +346,7 @@
 			    <td colspan="5" style="border-left:none;border-right:none">&nbsp;</td>
 		   	</tr>
 			   <tr id="permissionsOwner">
-			     <th> aaa1 ${rlb.jsp_page_owner}<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'pageownerdisphelp'); return false;"
+			     <th>${rlb.jsp_page_owner}<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'pageownerdisphelp'); return false;"
 			      onMouseOut="hidePopup('pageownerdisphelp');" ></a></th>
 			     <td>&nbsp;</td>
 			     <td>

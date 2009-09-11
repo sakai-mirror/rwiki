@@ -329,12 +329,16 @@ a.rwiki_help_popup_link span{ padding: 0 }
 	margin-top: 4px;
 	margin-bottom: 4px;
 	padding: 5px 5px 5px 5px;
+	width:100%;
+    width: 27em;
 	color: inherit;
-	width:325px;
 	border: 1px solid #09c;
 	background-color: #cef;
-	line-height: 100%
+	line-height: 100%;
 }
+.rwiki_help_popup textarea{
+	width:98%
+	}
 .rwiki_help_popup .act{ padding: 0; margin: 0 }
 .rwiki_help_popup h3{
 	font-size: 1em;

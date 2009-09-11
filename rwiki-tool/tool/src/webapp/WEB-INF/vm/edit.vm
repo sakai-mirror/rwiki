@@ -62,6 +62,18 @@
 	#else
 		#set( $rwikiContentStyle = "nosidebar" )
 	#end
+	#if ($renderBean.localisedPageNameLength>255)
+		<div class="messageError">
+			<h4>
+				${rlb.jsp_page_length_alert_title}
+			</h4>
+			<div class="messageError">
+				${rlb.jsp_page_length_alert_edit}
+			</div>
+		</div> 
+	
+	#end
+
 		<div class="navPanel">
 			<div class="viewNav">
 				<h3 class="breadcrumb" >
