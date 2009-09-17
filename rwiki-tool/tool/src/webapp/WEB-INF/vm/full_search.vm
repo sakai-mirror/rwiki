@@ -76,7 +76,7 @@
 				#set ($itemCount =$itemCount + 1)
 				<!--is-->
 				<li>
-					<h5><a href="${result.url}" target="searchresult" class="searchTopLink">${result.title}</a></h5> 
+					<h5> <a href="${result.url}" class="searchTopLink" >${searchBean.pageNameFromSearchTitle(${result.title})}</a></h5> 
 					<div class="searchItemBody" >${result.searchResult}</div>
 					<div class="searchItemFooter" ><a href="${result.url}" target="searchresult" class="searchBottonLink" >${result.url}</a></div>
 
@@ -92,6 +92,7 @@
 					<li>${rlb.jsp_search_result_page}</li>
 					#set ($pageTotal=0)
 					#foreach( $pages in ${searchPages})
+					## what is the reason for this?
 					#set ($pageTotal=$pageTotal + 1)
 						<li><a href="${util.escapeHtml(${pages.fullSearchLinkUrl})}" >${pages.page}</a></li>
 					#end

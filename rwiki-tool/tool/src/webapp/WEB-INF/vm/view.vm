@@ -17,7 +17,12 @@
 	    ##  $useEditLink $useInfoLink $useHistoryLink $useWatchLink $withNotification 
 	    ##  $homeBean $viewBean $resourceLoaderBean )
 	    ##            uhl  upl  uvl  vln    uel   uil  uhl  uwl  wn
-	  	 #commandlinks(true true true ${rlb.jsp_view}	true  true true true ${requestScope.Withnotification}	${homeBean} ${viewBean} ${rlb} ) 
+
+		#if ($renderBean.localisedPageNameLength>255)
+			#commandlinks(true false true ${rlb.jsp_view}  false  false false false ${requestScope.Withnotification}       ${homeBean} ${viewBean} ${rlb} )
+		#else
+			#commandlinks(true true true ${rlb.jsp_view}   true  true true true ${requestScope.Withnotification}   ${homeBean} ${viewBean} ${rlb} )	                  #commandlinks(true true true ${rlb.jsp_view}   true  true true true ${requestScope.Withnotification}   ${homeBean} ${viewBean} ${rlb} )
+		#end
 	    <li class="rwiki_searchBox">
 	      <label for="searchField">${rlb.jsp_search}:</label>
 	      <input type="hidden" name="action" value="${util.escapeHtml($requestScope.SearchTarget)}" />
@@ -39,11 +44,11 @@
 				${rlb.jsp_page_length_alert_title}
 			</h4>
 			<div class="messageError">
-				${rlb.jsp_page_length_alert_view}
+				${rlb.jsp_page_length_alert}
 			</div>
 		</div> 
 	
-	#end
+	#else
 
 		<div class="navPanel">
 			<div class="viewNav">
@@ -86,6 +91,7 @@
 	      </div>
 	    </div>
 		 #comments()
+	#end ##end of if else that checks for page title length
   </div>
 	 #sidebar()
   </div>
