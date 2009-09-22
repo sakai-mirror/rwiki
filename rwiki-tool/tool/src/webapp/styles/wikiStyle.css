@@ -802,6 +802,7 @@ h6 {
 	list-style-type: none
 }
 /* wiki lists */
+ul {padding:.5em;list-style-position:inside;}
 ul.minus { list-style-type: square }
 ul.star { list-style-type: circle }
 ol.roman { list-style-type: lower-roman }
