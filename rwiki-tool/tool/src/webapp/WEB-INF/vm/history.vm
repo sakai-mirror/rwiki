@@ -135,7 +135,7 @@
 			     <a href="${util.escapeHtml(${historyBean.revertToRevisionUrl})}" 
 			      onclick="return confirm('${rlb.jsp_history_version_msg1}${historyObject.revision} ${rlb.jsp_history_version_msg2}');"
 			      >
-			      ${rlb.jsp_history_revert_this_version}
+			    	${rlb.jsp_history_revert_this_version}
 			     </a>
 			     #else
 			     &nbsp;
@@ -144,8 +144,7 @@
 		  	<td>
 		  		 #if (${reverseHistoryHelperBean.theSame})
 		  		  #set ( $sameas = ${historyObject.revision} - 1 )
-			      ${rlb.jsp_history_content_same_as} 
-##		  				Content same as V.${sameas}
+					  ${rlb.jsp_history_content_same_as}${sameas}
 		  			#end
 		  	</td>
 		  	<td>

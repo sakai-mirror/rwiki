@@ -355,11 +355,25 @@ public class RenderBean
 		return NameHelper.localizeName(rwo.getName(), rwo.getRealm());
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
-	* The localised name of the rwikiObject
-	*
-	* @return length of the localised page name
-	*/
+	 * The localised name of the rwikiObject
+	 * 
+	 * @return length of the localised page name
+	 */
 	public Integer getLocalisedPageNameLength()
 	{
 		return NameHelper.localizeName(rwo.getName(), rwo.getRealm()).length();
