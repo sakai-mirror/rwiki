@@ -58,9 +58,9 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			rearrangeBreadCrumb();
-		})
-	</script>
-		
+			utils.setuphelplinks();
+			});
+	</script>		
 	<div id="rwiki_head" ><!-- avoid min height in IEX-->			    
 		#sidebar_switcher()
 	</div>
@@ -68,27 +68,20 @@
 	 <div class="rwikirenderedContent">
 	  <table class="listHier lines centerLines" style="width:95%;margin-right:15em;font-size:90%" summary="${rlb.jsp_history_list_caption}">
 		  <tr>
-			  <th><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'versionhelp'); return false;"
-				  onMouseOut="hidePopup('versionhelp');" >${rlb.jsp_history_version}</a></th>
-			  <th><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'userhelp'); return false;"
-				  onMouseOut="hidePopup('userhelp');" >${rlb.jsp_history_user}</a></th>
-			  <th><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'datehelp'); return false;"
-				  onMouseOut="hidePopup('datehelp');" >${rlb.jsp_history_date}</a></th>
-			  <th><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'changeshelp'); return false;"
-				  onMouseOut="hidePopup('changeshelp');" >${rlb.jsp_history_changes}</a></th>
+			  <th><a href="#" class="rwiki_help_popup_link" name="versionhelp" >${rlb.jsp_history_version}</a></th>
+			  <th><a href="#" class="rwiki_help_popup_link" name="userhelp" >${rlb.jsp_history_user}</a></th>
+			  <th><a href="#" class="rwiki_help_popup_link" name="datehelp" >${rlb.jsp_history_date}</a></th>
+			  <th><a href="#" class="rwiki_help_popup_link" name="changeshelp" >${rlb.jsp_history_changes}</a></th>
 		   <th>
      #if (${permissionsBean.updateAllowed})
-		  			<a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'reverthelp'); return false;"
-		  				onMouseOut="hidePopup('reverthelp');" >${rlb.jsp_history_revert}</a>
+		  			<a href="#" class="rwiki_help_popup_link" name="reverthelp" >${rlb.jsp_history_revert}</a>
 		  	#else
 		  			&nbsp;
 		  	#end
 		   </th>
-			  <th><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'changedhelp'); return false;"
-				  onMouseOut="hidePopup('changedhelp');" >${rlb.jsp_history_changed}</a>
+			  <th><a href="#" class="rwiki_help_popup_link" name="changedhelp" >${rlb.jsp_history_changed}</a>
 			  </th>
-			  <th><a href="#" class="rwiki_help_popup_link" onClick="showPopupHere(this,'permissionshelp'); return false;"
-				  onMouseOut="hidePopup('permissionshelp');" >${rlb.jsp_history_permissions}</a>
+			  <th><a href="#" class="rwiki_help_popup_link" name="permissionshelp" >${rlb.jsp_history_permissions}</a>
 			  </th>
 		  </tr>
 		  <tr>
@@ -135,7 +128,7 @@
 			     <a href="${util.escapeHtml(${historyBean.revertToRevisionUrl})}" 
 			      onclick="return confirm('${rlb.jsp_history_version_msg1}${historyObject.revision} ${rlb.jsp_history_version_msg2}');"
 			      >
-			    	${rlb.jsp_history_revert_this_version}
+			      ${rlb.jsp_history_revert_this_version}
 			     </a>
 			     #else
 			     &nbsp;
@@ -144,7 +137,8 @@
 		  	<td>
 		  		 #if (${reverseHistoryHelperBean.theSame})
 		  		  #set ( $sameas = ${historyObject.revision} - 1 )
-					  ${rlb.jsp_history_content_same_as}${sameas}
+			      ${rlb.jsp_history_content_same_as} 
+##		  				Content same as V.${sameas}
 		  			#end
 		  	</td>
 		  	<td>

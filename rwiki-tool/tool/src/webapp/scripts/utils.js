@@ -108,3 +108,16 @@ utils.fixIE8TextArea = function(){
     }
 };
 
+utils.setuphelplinks = function(){
+    $('.rwiki_help_popup_link').hover(function(){
+        showPopupHere(this, this.name);
+    }, function(){
+        hidePopup(this.name);
+    });
+    $('.rwiki_help_popup_link').focus(function(){
+        showPopupHere(this, this.name);
+    });
+    $('.rwiki_help_popup_link').blur(function(){
+        hidePopup(this.name);
+    });
+};
