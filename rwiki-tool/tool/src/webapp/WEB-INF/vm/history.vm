@@ -58,7 +58,18 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			rearrangeBreadCrumb();
-			utils.setuphelplinks();
+			$('.rwiki_help_popup_link').hover(function(){
+				showPopupHere(this,this.name);
+				},
+				function(){
+					hidePopup(this.name)
+				});
+			$('.rwiki_help_popup_link').focus(function(){
+					showPopupHere(this,this.name);
+				});
+			$('.rwiki_help_popup_link').blur(function(){
+					hidePopup(this.name)
+				});
 			});
 	</script>		
 	<div id="rwiki_head" ><!-- avoid min height in IEX-->			    

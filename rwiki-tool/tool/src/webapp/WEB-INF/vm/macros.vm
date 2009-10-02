@@ -262,7 +262,6 @@ ${util.formatDateTime($date,$request)}
 <li>${link}</li>
 #end
 #end
-</ul>			
 #end
 
 #end
@@ -275,10 +274,10 @@ ${util.formatDateTime($date,$request)}
  #set ( $first = ( true ) );
 	#foreach ( $link in $links )
 	 #if ( $first )  	
-			${link} 
+			<li class="first">${link} </li>
 			#set ($first = ( false ))
 		#else
-		  &gt; ${link}
+		  <li>${link}</li>
 		#end
 	#end
 </h3>

@@ -17,7 +17,7 @@
 	  </form>
 	<h3 class="breadcrumb specialLink">
 		<ul class="wikiCrumb">
-		#breadcrumbs()
+			#breadcrumbs()
 		</ul>
 	</h3>
 	<div id="rwiki_content" class="nosidebar" >
@@ -168,6 +168,7 @@
 						        <div id="textarea_inner_sizing_divx">
 						           #edittoolbar()
 						           #if ( ${editBean.saveType} && ("preview" ==  ${editBean.saveType}|| ${editBean.saveType.startsWith("attach")}) )
+								   <label for="content" class="">${rlb.jsp_edit_content_label}</label>
 						           <textarea cols="60" 
 						                     rows="25" 
 						                     name="content" 
@@ -176,6 +177,7 @@
 						                     onclick="storeCaret(this)" 
 						                     onkeyup="storeCaret(this)" >${util.escapeHtml($editBean.previousContent)}</textarea>
 						 	         #else
+								   <label for="content" class="">${rlb.jsp_edit_content_label}</label>
 						           <textarea cols="60" 
 						                     rows="25" 
 						                     name="content" 
