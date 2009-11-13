@@ -30,9 +30,9 @@ limitations under the License.
   <artifactId>rwiki-base</artifactId>
   <name>Sakai RWiki Project</name>
   <scm>
-    <connection>scm:svn:https://source.sakaiproject.org/svn/rwiki/trunk</connection>
-    <developerConnection>scm:svn:https://source.sakaiproject.org/svn/rwiki/trunk</developerConnection>
-    <url>https://source.sakaiproject.org/svn/rwiki/trunk</url>
+    <connection>scm:svn:https://source.sakaiproject.org/svn/rwiki/branches/sakai-2.7.x</connection>
+    <developerConnection>scm:svn:https://source.sakaiproject.org/svn/rwiki/branches/sakai-2.7.x</developerConnection>
+    <url>https://source.sakaiproject.org/svn/rwiki/branches/sakai-2.7.x</url>
   </scm>
   <packaging>pom</packaging>
   <modules>
