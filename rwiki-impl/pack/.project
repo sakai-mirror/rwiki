@@ -1,0 +1,21 @@
+<projectDescription>
+  <name>sakai-rwiki-pack</name>
+  <comment>Deployment of components</comment>
+  <projects>
+    <project>sakai-entity-util</project>
+    <project>sakai-event-util</project>
+    <project>sakai-radeox</project>
+    <project>sakai-rwiki-impl</project>
+    <project>sakai-rwiki-util</project>
+    <project>sakai-search-util</project>
+    <project>sakai-util</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>
