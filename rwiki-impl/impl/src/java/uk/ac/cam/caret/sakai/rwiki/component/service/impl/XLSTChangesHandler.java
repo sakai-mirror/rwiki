@@ -330,7 +330,7 @@ public class XLSTChangesHandler extends XSLTEntityHandler
 
 		ch.startElement(SchemaNames.NS_CONTAINER, SchemaNames.EL_CHANGE,
 				SchemaNames.EL_NSCHANGE, propA);
-		renderToXML(rwo, ch,true,true);
+		renderToXML(rwo, ch,true);
 		ch.endElement(SchemaNames.NS_CONTAINER, SchemaNames.EL_CHANGE,
 				SchemaNames.EL_NSCHANGE);
 		// end of output current version
