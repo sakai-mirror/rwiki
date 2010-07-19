@@ -149,6 +149,8 @@ public class RWikiObjectServiceImpl implements RWikiObjectService
 	
 	private int maxReferencesStringSize = 4000;
 
+	private boolean trackReads = ServerConfigurationService.getBoolean("wiki.trackreads", false);
+   
 	/**
 	 * Configuration: to run the ddl on init or not.
 	 * 
@@ -1484,6 +1486,12 @@ public class RWikiObjectServiceImpl implements RWikiObjectService
 										sideBar = null;
 									}
 								}
+                        
+								if ( trackReads )
+									eventTrackingService.post(
+											eventTrackingService.newEvent(
+																					RWikiObjectService.EVENT_RESOURCE_READ, ref.getReference(), false,
+																					NotificationService.PREF_NONE));
 								eh.outputContent(entity, sideBar, req, res);
 							}
 							else
@@ -1517,6 +1525,12 @@ public class RWikiObjectServiceImpl implements RWikiObjectService
 										sideBar = null;
 									}
 								}
+                        
+								if ( trackReads )
+									eventTrackingService.post(
+											eventTrackingService.newEvent(
+																					RWikiObjectService.EVENT_RESOURCE_READ, ref.getReference(), false,
+																					NotificationService.PREF_NONE));
 								eh.outputContent(entity, sideBar, req, res);
 							}
 							else
