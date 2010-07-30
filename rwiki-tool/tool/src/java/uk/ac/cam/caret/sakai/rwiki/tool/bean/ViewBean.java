@@ -606,14 +606,14 @@ public class ViewBean
 
 	public String getBaseAccessUrl()
 	{
-		// /wiki 
-		return RWikiObjectService.REFERENCE_ROOT + pageName + ".";
+		return ServerConfigurationService.getAccessUrl()
+				+ RWikiObjectService.REFERENCE_ROOT + pageName + ".";
 
 	}
 	public String getRssAccessUrl()
 	{
-		// /wiki 
-		return RWikiObjectService.REFERENCE_ROOT + getPageSpace() + "/.20.rss";
+		return ServerConfigurationService.getAccessUrl()
+				+ RWikiObjectService.REFERENCE_ROOT + getPageSpace() + "/.20.rss";
  	}
 	public String getPreferencesUrl()
 	{

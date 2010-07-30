@@ -140,12 +140,13 @@ public class RWikiEntityImpl implements RWikiEntity
 	{
 		if (rwo == null)
 		{
-			return RWikiObjectService.REFERENCE_ROOT + encode(reference.getId())
+			return ServerConfigurationService.getAccessUrl()
+					+ RWikiObjectService.REFERENCE_ROOT + encode(reference.getId())
 					+ ".";
 		} 
 		else {
-			// /wiki access url 
-			return RWikiObjectService.REFERENCE_ROOT + encode(rwo.getName()) + ".";
+			return ServerConfigurationService.getAccessUrl()
+				+ RWikiObjectService.REFERENCE_ROOT + encode(rwo.getName()) + ".";
 		}
 	}
 

@@ -49,7 +49,7 @@
                         </title>
                         <link>
                             <xsl:value-of
-                                select="concat($baseurl,'/wiki',@name,'.html')"
+                                select="concat($baseurl,'/access/wiki',@name,'.html')"
                             />
                         </link>
                         <description>
