@@ -85,9 +85,9 @@ limitations under the License.
         <type>jar</type>
       </dependency>
       <dependency>
-        <groupId>org.sakaiproject</groupId>
-        <artifactId>sakai-search-util</artifactId>
-        <version>2.6-SNAPSHOT</version>
+        <groupId>org.sakaiproject.search</groupId>
+        <artifactId>search-util</artifactId>
+        <version>1.2.1-sakai26-SNAPSHOT</version>
         <type>jar</type>
       </dependency>
       <dependency>
