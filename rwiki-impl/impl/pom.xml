@@ -83,6 +83,11 @@
       <version>1.0.4</version>
       <type>jar</type>
     </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <type>jar</type>
+    </dependency>
 <!--javax.servletservlet-api${sakai.servletapi.version}jar-->
     <dependency>
       <groupId>org.sakaiproject</groupId>
