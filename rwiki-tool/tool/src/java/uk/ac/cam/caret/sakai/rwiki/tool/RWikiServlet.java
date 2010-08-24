@@ -158,6 +158,15 @@ public class RWikiServlet extends HttpServlet
 			response.sendRedirect(targetURL);
 			return;
 		}
+		
+		// SAK-18989 - full search (search.enabled = true) with empty search term will caused
+		// runtime exception "Failed to parse Query"
+		// solution: redirect to the page was accessed by the user
+		String searchTerm = request.getParameter ("search");
+		if (StringUtils.equals (action, "full_search") && StringUtils.isEmpty(searchTerm)) {
+			response.sendRedirect(request.getRequestURI());
+			return;
+		}
 
 		// Must be done on every request
 		prePopulateRealm(request);
