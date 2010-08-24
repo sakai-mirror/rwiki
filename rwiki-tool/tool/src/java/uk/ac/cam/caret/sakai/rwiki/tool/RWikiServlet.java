@@ -30,6 +30,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.sakaiproject.tool.api.Tool;
@@ -150,24 +151,16 @@ public class RWikiServlet extends HttpServlet
 		request.setAttribute(Tool.NATIVE_URL, Tool.NATIVE_URL);
 		
 		String targetURL = persistState(request);
-		String queryString= request.getQueryString();
-		String[] query=null;
-		if (queryString!=null)
-		{
-			query= queryString.split("&");
-		}
-				
-		if (targetURL != null && targetURL.trim().length() > 0 && !(query[0].equals("action=search")||query[0].equals("action=full_search")))
+		
+		String action = request.getParameter ("action");
+		if (!StringUtils.isEmpty (targetURL) && !StringUtils.equals (action, "search") && !StringUtils.equals (action, "full_search"))
 		{
 			response.sendRedirect(targetURL);
 			return;
 		}
-		
 
 		// Must be done on every request
 		prePopulateRealm(request);
-				
-		
 
 		addWikiStylesheet(request);
 
