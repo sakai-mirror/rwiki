@@ -922,4 +922,13 @@ ul.tree div a {
 ul.tree li A:link, ul.tree li A:hover, ul.tree li A:visited { color: #111111 }
 ul.tree li .over{ background-color: pink }
 
-¡
+/** special class to position something offscreen, hide it for standard access,
+but render it for accessibility */
+.hidden {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
