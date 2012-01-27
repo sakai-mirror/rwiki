@@ -29,9 +29,9 @@ limitations under the License.
   <version>2.9.0-b02</version>
   <name>Sakai RWiki Project</name>
   <scm>
-    <connection>scm:svn:https://source.sakaiproject.org/svn/rwiki/branches/sakai-2.9.x</connection>
-    <developerConnection>scm:svn:https://source.sakaiproject.org/svn/rwiki/branches/sakai-2.9.x</developerConnection>
-    <url>https://source.sakaiproject.org/svn/rwiki/branches/sakai-2.9.x</url>
+    <connection>scm:svn:https://source.sakaiproject.org/svn/rwiki/tags/sakai-2.9.0-b02</connection>
+    <developerConnection>scm:svn:https://source.sakaiproject.org/svn/rwiki/tags/sakai-2.9.0-b02</developerConnection>
+    <url>https://source.sakaiproject.org/svn/rwiki/tags/sakai-2.9.0-b02</url>
   </scm>
   <packaging>pom</packaging>
   <modules>
